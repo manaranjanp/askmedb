@@ -57,7 +57,69 @@ print(result.answer)   # "There are 150 customers in the database."
 print(result.sql)      # "SELECT COUNT(*) FROM customers"
 ```
 
-## Configuration
+## Design & Architecture
+
+> **Interactive version:** Open [`design.html`](design.html) in a browser for the full interactive agent-loop animation.
+
+### The Inspiration
+
+> *"Our data agent lets employees go from question to insight in minutes, not days. This lowers the bar to pulling data and nuanced analysis across all functions, not just by our data team."*
+> — OpenAI's Blog
+
+OpenAI's agent operates across 70,000 datasets, uses GPT-5 for reasoning, and features six layers of context enrichment including code-level table understanding, institutional knowledge from Slack and Docs, and a self-learning memory system.
+
+AskMeDB captures the core concepts in a **minimal, self-contained library** anyone can run locally:
+
+- A realistic business use case with 4–5 related tables
+- Context-grounded SQL generation (not naive text-to-SQL)
+- A self-correction loop that fixes broken queries
+- A learning system that remembers past mistakes
+- A conversational interface that supports follow-up questions
+
+### Architecture: The 4-Layer Context Model
+
+The single biggest lesson from OpenAI's blog is that **context is everything**. A raw LLM given just "What is our MRR?" and a database schema will generate plausible-looking but often incorrect SQL. AskMeDB uses four layers of context assembled into every LLM call:
+
+| Layer | Purpose | Source |
+|-------|---------|--------|
+| **1. Schema Context** | Complete table metadata — column names, types, descriptions, PKs, FKs | `schema.json` |
+| **2. Business Rules** | Metric definitions, calculation formulas, and gotchas | `business_rules.json` |
+| **3. Query Patterns** | Pre-validated SQL examples annotated with keywords, retrieved by matching | `query_patterns.sql` |
+| **4. Learnings** | Auto-accumulated corrections from past self-corrections | `learnings.json` |
+
+### The Agent Loop
+
+Every question passes through this flow:
+
+```
+  User Question (natural language)
+        │
+        ▼
+  Context Assembly (all 4 layers → system prompt)
+        │
+        ▼
+  LLM Call (SQL generation, temperature=0.0)
+        │
+        ▼
+  SQL Execution (run against database)
+        │
+        ▼
+  ┌─── Error? ───┐
+  │               │
+  No              Yes
+  │               │
+  ▼               ▼
+Answer        Self-Correction
+Synthesis     (up to 3 retries → saves learning)
+  │               │
+  └───────┬───────┘
+          ▼
+   Display to User
+```
+
+Two LLM calls per question: one to generate SQL (deterministic, temperature=0.0), and one to synthesize a human-readable answer from the results (slightly creative, temperature=0.3). If the SQL fails, the self-correction loop adds up to 3 more LLM calls to fix it.
+
+## Advanced Usage
 
 ```python
 from askmedb import AskMeDBEngine, AskMeDBConfig, SQLiteConnector, AutoSchemaProvider
@@ -90,7 +152,7 @@ from askmedb import AutoSchemaProvider, JSONSchemaProvider, DictSchemaProvider
 # Auto-detect from database (easiest)
 schema = AutoSchemaProvider(db)
 
-# Load from a JSON file
+# Load from a JSON file (see example below)
 schema = JSONSchemaProvider("schema.json")
 
 # Pass a dictionary directly
@@ -108,6 +170,49 @@ schema = DictSchemaProvider({
     ],
 })
 ```
+
+### Example `schema.json`
+
+The JSON schema file describes your database structure, including table descriptions, column types, and relationships. Here's a trimmed example from the included CloudMetrics demo:
+
+```json
+{
+  "database": "cloudmetrics.db",
+  "description": "CloudMetrics SaaS subscription analytics database.",
+  "tables": [
+    {
+      "name": "customers",
+      "description": "All registered customer companies.",
+      "columns": [
+        {"name": "customer_id", "type": "INTEGER", "description": "Unique customer identifier", "primary_key": true},
+        {"name": "company_name", "type": "TEXT", "description": "Registered company name"},
+        {"name": "industry", "type": "TEXT", "description": "Industry vertical. One of: Technology, Healthcare, Finance, Retail, Education, Manufacturing"},
+        {"name": "signup_date", "type": "DATE", "description": "Date the customer first signed up (YYYY-MM-DD format)"}
+      ],
+      "relationships": [
+        {"column": "customer_id", "references": "subscriptions.customer_id", "type": "one-to-many"}
+      ]
+    },
+    {
+      "name": "subscriptions",
+      "description": "Customer subscriptions to plans.",
+      "columns": [
+        {"name": "subscription_id", "type": "INTEGER", "description": "Unique subscription identifier", "primary_key": true},
+        {"name": "customer_id", "type": "INTEGER", "description": "Foreign key to customers table"},
+        {"name": "plan_id", "type": "INTEGER", "description": "Foreign key to plans table"},
+        {"name": "status", "type": "TEXT", "description": "One of: active, churned, trial, paused"},
+        {"name": "mrr", "type": "REAL", "description": "Monthly Recurring Revenue in USD"}
+      ],
+      "relationships": [
+        {"column": "customer_id", "references": "customers.customer_id", "type": "many-to-one"},
+        {"column": "plan_id", "references": "plans.plan_id", "type": "many-to-one"}
+      ]
+    }
+  ]
+}
+```
+
+The full schema file is at [`examples/cloudmetrics/knowledge/schema.json`](examples/cloudmetrics/knowledge/schema.json).
 
 ## Enriching Context
 

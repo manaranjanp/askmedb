@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Part 1: Building a Natural Language Data Agent - Design & Architecture</title>
+<title>AskMeDB: Design and Architecture</title>
 <style>
   :root {
     --bg: #fff;
@@ -36,18 +36,6 @@
     color: var(--text);
     padding: 4rem 2rem;
     text-align: center;
-  }
-  .header .series-badge {
-    display: inline-block;
-    background: #f1f5f9;
-    color: var(--gray-dark);
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.05em;
-    font-weight: 600;
-    border: 1px solid var(--border);
   }
   .header h1 {
     font-size: 2.5rem;
@@ -128,23 +116,6 @@
     font-weight: 600;
     color: var(--text);
     margin-bottom: 0.3rem;
-  }
-
-  /* ── 5-table diagram ── */
-  .diagram {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 2rem;
-    margin: 1.5rem 0;
-    text-align: center;
-  }
-  .diagram pre {
-    background: none;
-    color: var(--text);
-    text-align: left;
-    display: inline-block;
-    font-size: 0.85rem;
   }
 
   /* ── Layer grid: blue/orange alternating ── */
@@ -426,72 +397,6 @@
     border-color: var(--accent);
   }
 
-  /* ── Design Decision Cards ── */
-  .decision-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 1rem 0;
-  }
-  .decision-card h4 {
-    font-size: 1.05rem;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-  }
-  .decision-card p {
-    font-size: 0.92rem;
-    margin-bottom: 0.5rem;
-  }
-  .decision-card .production-note {
-    font-size: 0.85rem;
-    color: var(--gray-medium);
-    background: #f9fafb;
-    border: 1px dashed var(--gray-light);
-    border-radius: 6px;
-    padding: 0.6rem 0.9rem;
-    margin-top: 0.75rem;
-  }
-  .decision-card .production-note strong {
-    color: var(--orange);
-  }
-
-  /* ── Tag ── */
-  .tag {
-    display: inline-block;
-    background: var(--accent-light);
-    color: var(--accent);
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    margin-right: 0.3rem;
-  }
-  .tag.tag-orange {
-    background: var(--orange-light);
-    color: var(--orange);
-  }
-
-  /* ── Navigation Footer ── */
-  .nav-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 0;
-    margin-top: 3rem;
-    border-top: 1px solid var(--border);
-  }
-  .nav-btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background: var(--accent);
-    color: white;
-    border-radius: 8px;
-    font-weight: 500;
-    text-decoration: none;
-  }
-  .nav-btn:hover { opacity: 0.9; text-decoration: none; }
-  .nav-btn.disabled { background: var(--border); color: var(--text-secondary); pointer-events: none; }
-
   @media (max-width: 600px) {
     .header h1 { font-size: 1.8rem; }
     .layer-grid { grid-template-columns: 1fr; }
@@ -503,18 +408,11 @@
 <body>
 
 <div class="header">
-  <div class="series-badge">PART 1 OF 4 &mdash; DATA AGENT SERIES</div>
-  <h1>Building a Natural Language Data Agent: Design & Architecture</h1>
-  <p class="subtitle">How we designed a local AI data agent inspired by OpenAI's approach, powered by Groq and Llama 3.3</p>
+  <h1>AskMeDB: Design and Architecture</h1>
+  <p class="subtitle">How we designed a natural-language database query agent inspired by OpenAI's approach</p>
 </div>
 
 <div class="container">
-
-  <p>What if anyone on your team could ask a data question in plain English and get an accurate, well-reasoned answer in seconds &mdash; without writing a single line of SQL?</p>
-
-  <p>That's the promise of AI data agents. In January 2026, OpenAI published a detailed blog about their in-house data agent that does exactly this across 600 petabytes of internal data. We took their ideas and built a fully functional local demo: a Python-based data agent that uses <strong>Groq's Llama 3.3 70B</strong> to translate natural language questions into SQL, execute them against a local SQLite database, and present synthesized answers.</p>
-
-  <p>In this 4-part series, we'll walk through the entire journey. This first post covers the <strong>why</strong>, the <strong>what</strong>, and the <strong>how</strong> of the architecture.</p>
 
   <h2>The Inspiration</h2>
 
@@ -525,7 +423,7 @@
 
   <p>OpenAI's agent operates across 70,000 datasets, uses GPT-5 for reasoning, and features six layers of context enrichment including code-level table understanding, institutional knowledge from Slack and Docs, and a self-learning memory system. It's sophisticated &mdash; and built for their internal scale.</p>
 
-  <p>Our goal was different: build a <strong>minimal, self-contained demo</strong> that captures the core concepts anyone can run locally. Specifically:</p>
+  <p>Our goal was different: build a <strong>minimal, self-contained library</strong> that captures the core concepts anyone can run locally. Specifically:</p>
 
   <ul>
     <li>A realistic business use case with 4-5 related tables</li>
@@ -534,31 +432,6 @@
     <li>A learning system that remembers past mistakes</li>
     <li>A conversational interface that supports follow-up questions</li>
   </ul>
-
-  <h2>The Business Use Case: CloudMetrics</h2>
-
-  <p>We chose a <strong>B2B SaaS subscription analytics</strong> scenario &mdash; a company called "CloudMetrics" that sells project management software. This domain works well because it naturally involves:</p>
-
-  <ul>
-    <li><strong>Time-series data</strong> &mdash; subscriptions, invoices, and tickets all have date dimensions</li>
-    <li><strong>Multi-table joins</strong> &mdash; answering "revenue by plan" requires joining invoices &rarr; subscriptions &rarr; plans</li>
-    <li><strong>Business logic</strong> &mdash; "MRR" means only active subscriptions; "revenue" means only paid invoices</li>
-    <li><strong>Non-trivial queries</strong> &mdash; churn rates, resolution times, and ranked results require CTEs and window functions</li>
-  </ul>
-
-  <p>The database has <strong>5 tables</strong> with realistic relationships:</p>
-
-  <div class="diagram">
-<pre>
-  customers (200 rows)
-      |
-      +----&lt; subscriptions (282 rows) &gt;---- plans (4 rows)
-      |            |
-      |            +----&lt; invoices (1,831 rows)
-      |
-      +----&lt; support_tickets (709 rows)
-</pre>
-  </div>
 
   <h2>Architecture: The 4-Layer Context Model</h2>
 
@@ -617,11 +490,11 @@
     </div>
     <div class="flow-arrow" id="arrow-2"><div class="arrow-line"></div></div>
 
-    <!-- Step 3: Groq LLM -->
+    <!-- Step 3: LLM -->
     <div class="flow-row">
       <div class="flow-block blue-block" data-step="3" onclick="showDetail(this)" id="block-llm">
-        Groq LLM Call
-        <div class="block-label">Llama 3.3 70B &bull; SQL Generation</div>
+        LLM Call
+        <div class="block-label">SQL Generation</div>
       </div>
     </div>
     <div class="flow-arrow" id="arrow-3"><div class="arrow-line"></div></div>
@@ -630,7 +503,7 @@
     <div class="flow-row">
       <div class="flow-block orange-block" data-step="4" onclick="showDetail(this)" id="block-exec">
         SQL Execution
-        <div class="block-label">Run against SQLite</div>
+        <div class="block-label">Run against database</div>
       </div>
     </div>
     <div class="flow-arrow" id="arrow-4"><div class="arrow-line"></div></div>
@@ -650,7 +523,7 @@
         <div class="branch-label no-label">No error</div>
         <div class="flow-block blue-block" data-step="6" onclick="showDetail(this)" id="block-synth" style="min-width:180px;">
           Answer Synthesis
-          <div class="block-label">Groq LLM &bull; temp=0.3</div>
+          <div class="block-label">LLM &bull; temp=0.3</div>
         </div>
       </div>
       <div class="branch-path">
@@ -684,61 +557,6 @@
 
   <p>Two LLM calls per question: one to generate SQL (deterministic, temperature=0.0), and one to synthesize a human-readable answer from the results (slightly creative, temperature=0.3). If the SQL fails, the self-correction loop adds up to 3 more LLM calls to fix it.</p>
 
-  <h2>Key Design Decisions</h2>
-
-  <p>This demo makes two deliberate simplifications. Both are explicitly designed to be swappable for production-grade alternatives.</p>
-
-  <h3>LLM: Groq + Llama 3.3 70B</h3>
-
-  <div class="decision-card">
-    <h4><span class="tag">Fast</span> <span class="tag">128K context</span> <span class="tag tag-orange">Free tier</span></h4>
-    <p>Groq provides extremely fast inference on open models. The Llama 3.3 70B model is capable enough for SQL generation while being significantly cheaper than proprietary alternatives. Its 128K context window comfortably fits our schema, business rules, query patterns, and conversation history in every call.</p>
-    <div class="production-note">
-      <strong>Production upgrade:</strong> Swap to GPT-4, Claude, or a fine-tuned domain-specific model. The <code>llm_client.py</code> interface stays the same &mdash; only the API endpoint and model name change.
-    </div>
-  </div>
-
-  <h3>Retrieval: Keyword Matching</h3>
-
-  <div class="decision-card">
-    <h4><span class="tag">Simple</span> <span class="tag tag-orange">8 patterns</span></h4>
-    <p>For a demo with 8 query patterns and a handful of learnings, simple set intersection on tokenized words is sufficient. Each query pattern is annotated with keywords; when a user asks a question, we tokenize it and find patterns with the most keyword overlap. No external dependencies, no model loading, instant results.</p>
-    <div class="production-note">
-      <strong>Production upgrade:</strong> Use embedding-based retrieval with a vector database (e.g., Pinecone, Chroma, or pgvector). Embed all query patterns and learnings, then retrieve by cosine similarity. This scales to thousands of patterns and handles semantic matching far better than keyword overlap.
-    </div>
-  </div>
-
-  <h2>Project Structure</h2>
-
-<pre><code>dataagent/
-+-- requirements.txt          # groq, faker, rich, python-dotenv
-+-- .env.example              # GROQ_API_KEY template
-+-- setup_db.py               # Creates SQLite DB + synthetic data
-+-- app.py                    # Main CLI REPL
-+-- knowledge/
-|   +-- schema.json           # Layer 1
-|   +-- business_rules.json   # Layer 2
-|   +-- query_patterns.sql    # Layer 3
-|   +-- learnings.json        # Layer 4 (starts empty)
-+-- agent/
-    +-- llm_client.py         # Groq API wrapper
-    +-- context_builder.py    # Assembles 4 layers into prompt
-    +-- sql_executor.py       # SQLite execution + formatting
-    +-- self_correction.py    # Retry loop + learning save
-    +-- conversation.py       # History management
-    +-- response_parser.py    # Extracts SQL from LLM output</code></pre>
-
-  <p>The separation between <code>knowledge/</code> (static context files) and <code>agent/</code> (runtime logic) mirrors OpenAI's distinction between offline context enrichment and the runtime agent. The knowledge files can be edited independently of the code &mdash; improving them directly improves the agent's output without changing a line of Python.</p>
-
-  <h2>What's Next</h2>
-
-  <p>In <a href="02-data-foundation.html">Part 2</a>, we'll dive into the data layer: how the 5 tables were designed, how we generated 3,000+ rows of realistic synthetic data with controlled distributions, and how the knowledge files ground the LLM in accurate context.</p>
-
-  <div class="nav-footer">
-    <span class="nav-btn disabled">&larr; Previous</span>
-    <a href="02-data-foundation.html" class="nav-btn">Part 2: Data Foundation &rarr;</a>
-  </div>
-
 </div>
 
 <script>
@@ -754,16 +572,16 @@
       text: 'All four context layers are assembled into a single system prompt. The schema describes every table and column. Business rules define metrics like MRR and churn. Relevant query patterns are retrieved via keyword matching. Past learnings are appended to prevent repeated mistakes.'
     },
     3: {
-      title: 'Groq LLM Call (SQL Generation)',
-      text: 'The assembled context + user question are sent to Llama 3.3 70B on Groq with temperature=0.0 for deterministic output. The model returns structured REASONING (its chain of thought) and a SQL query. The low temperature ensures consistent, reproducible SQL generation.'
+      title: 'LLM Call (SQL Generation)',
+      text: 'The assembled context + user question are sent to the LLM with temperature=0.0 for deterministic output. The model returns structured REASONING (its chain of thought) and a SQL query. The low temperature ensures consistent, reproducible SQL generation.'
     },
     4: {
       title: 'SQL Execution',
-      text: 'The extracted SQL query is executed against the local SQLite database. Results are captured as rows and columns. If the query succeeds, we proceed to answer synthesis. If it throws an error (syntax error, missing column, etc.), we branch to self-correction.'
+      text: 'The extracted SQL query is executed against the database. Results are captured as rows and columns. If the query succeeds, we proceed to answer synthesis. If it throws an error (syntax error, missing column, etc.), we branch to self-correction.'
     },
     5: {
       title: 'Error Check',
-      text: 'A decision point: did the SQL execution succeed or fail? Common failures include PostgreSQL syntax on SQLite (e.g., DATE_TRUNC instead of strftime), wrong column names, or invalid joins. The error message is captured verbatim for the correction loop.'
+      text: 'A decision point: did the SQL execution succeed or fail? Common failures include dialect-specific syntax errors (e.g., DATE_TRUNC instead of strftime on SQLite), wrong column names, or invalid joins. The error message is captured verbatim for the correction loop.'
     },
     6: {
       title: 'Answer Synthesis',
@@ -771,11 +589,11 @@
     },
     7: {
       title: 'Self-Correction Loop',
-      text: 'The original query, the error message, and all context are sent back to the LLM with instructions to fix the SQL. This can retry up to 3 times. On success, the correction is saved to learnings.json so the same mistake is avoided in future queries.'
+      text: 'The original query, the error message, and all context are sent back to the LLM with instructions to fix the SQL. This can retry up to 3 times. On success, the correction is saved to learnings so the same mistake is avoided in future queries.'
     },
     8: {
       title: 'Display to User',
-      text: 'The final answer is displayed using the Rich library with formatted tables, syntax-highlighted SQL, reasoning panels, and color-coded output. The conversation history is updated so follow-up questions have context.'
+      text: 'The final answer is displayed with the generated SQL and any warnings. The conversation history is updated so follow-up questions have context.'
     }
   };
 
