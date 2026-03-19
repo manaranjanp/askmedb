@@ -59,8 +59,6 @@ print(result.sql)      # "SELECT COUNT(*) FROM customers"
 
 ## Design & Architecture
 
-> **Interactive version:** Open [`design.html`](design.html) in a browser for the full interactive agent-loop animation.
-
 ### The Inspiration
 
 > *"Our data agent lets employees go from question to insight in minutes, not days. This lowers the bar to pulling data and nuanced analysis across all functions, not just by our data team."*
@@ -80,44 +78,13 @@ AskMeDB captures the core concepts in a **minimal, self-contained library** anyo
 
 The single biggest lesson from OpenAI's blog is that **context is everything**. A raw LLM given just "What is our MRR?" and a database schema will generate plausible-looking but often incorrect SQL. AskMeDB uses four layers of context assembled into every LLM call:
 
-| Layer | Purpose | Source |
-|-------|---------|--------|
-| **1. Schema Context** | Complete table metadata — column names, types, descriptions, PKs, FKs | `schema.json` |
-| **2. Business Rules** | Metric definitions, calculation formulas, and gotchas | `business_rules.json` |
-| **3. Query Patterns** | Pre-validated SQL examples annotated with keywords, retrieved by matching | `query_patterns.sql` |
-| **4. Learnings** | Auto-accumulated corrections from past self-corrections | `learnings.json` |
+![4-Layer Context Model](layers.jpg)
 
 ### The Agent Loop
 
-Every question passes through this flow:
+Every question passes through this flow. Two LLM calls per question: one to generate SQL (deterministic, temperature=0.0), and one to synthesize a human-readable answer from the results (slightly creative, temperature=0.3). If the SQL fails, the self-correction loop adds up to 3 more LLM calls to fix it.
 
-```
-  User Question (natural language)
-        │
-        ▼
-  Context Assembly (all 4 layers → system prompt)
-        │
-        ▼
-  LLM Call (SQL generation, temperature=0.0)
-        │
-        ▼
-  SQL Execution (run against database)
-        │
-        ▼
-  ┌─── Error? ───┐
-  │               │
-  No              Yes
-  │               │
-  ▼               ▼
-Answer        Self-Correction
-Synthesis     (up to 3 retries → saves learning)
-  │               │
-  └───────┬───────┘
-          ▼
-   Display to User
-```
-
-Two LLM calls per question: one to generate SQL (deterministic, temperature=0.0), and one to synthesize a human-readable answer from the results (slightly creative, temperature=0.3). If the SQL fails, the self-correction loop adds up to 3 more LLM calls to fix it.
+![Agent Loop](agent.jpg)
 
 ## Advanced Usage
 
