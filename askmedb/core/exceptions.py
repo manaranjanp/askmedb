@@ -1,12 +1,12 @@
-"""Custom exceptions for AskDB."""
+"""Custom exceptions for AskMeDB."""
 
 
-class AskDBError(Exception):
-    """Base exception for AskDB."""
+class AskMeDBError(Exception):
+    """Base exception for AskMeDB."""
     pass
 
 
-class SQLExecutionError(AskDBError):
+class SQLExecutionError(AskMeDBError):
     """Raised when SQL execution fails."""
 
     def __init__(self, message: str, sql: str = ""):
@@ -14,16 +14,16 @@ class SQLExecutionError(AskDBError):
         super().__init__(message)
 
 
-class LLMError(AskDBError):
+class LLMError(AskMeDBError):
     """Raised when LLM call fails."""
     pass
 
 
-class SchemaError(AskDBError):
+class SchemaError(AskMeDBError):
     """Raised when schema loading or validation fails."""
     pass
 
 
-class ConfigError(AskDBError):
+class ConfigError(AskMeDBError):
     """Raised when configuration is invalid."""
     pass

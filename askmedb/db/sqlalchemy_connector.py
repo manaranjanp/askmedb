@@ -24,7 +24,7 @@ class SQLAlchemyConnector(BaseDBConnector):
         if not HAS_SQLALCHEMY:
             raise ImportError(
                 "SQLAlchemy is required for SQLAlchemyConnector. "
-                "Install it with: pip install askdb[sql]"
+                "Install it with: pip install askmedb[sql]"
             )
         self.engine = create_engine(connection_string)
         self._dialect = dialect or self.engine.dialect.name

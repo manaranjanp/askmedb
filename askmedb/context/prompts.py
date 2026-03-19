@@ -1,4 +1,4 @@
-"""Prompt templates for AskDB."""
+"""Prompt templates for AskMeDB."""
 
 DIALECT_HINTS = {
     "sqlite": (
@@ -33,7 +33,7 @@ _DEFAULT_DIALECT_HINT = (
 
 
 class PromptTemplate:
-    """Customizable prompt template for AskDB.
+    """Customizable prompt template for AskMeDB.
 
     The default template produces the same output as the original CloudMetrics
     agent but with configurable sections.

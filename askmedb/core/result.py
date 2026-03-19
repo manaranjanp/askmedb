@@ -1,4 +1,4 @@
-"""Query result dataclass for AskDB."""
+"""Query result dataclass for AskMeDB."""
 
 from dataclasses import dataclass, field
 from typing import Optional
@@ -6,7 +6,7 @@ from typing import Optional
 
 @dataclass
 class QueryResult:
-    """Result returned by AskDBEngine.ask().
+    """Result returned by AskMeDBEngine.ask().
 
     Attributes:
         question: The original natural-language question.

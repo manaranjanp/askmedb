@@ -1,12 +1,12 @@
-"""Configuration dataclass for AskDB."""
+"""Configuration dataclass for AskMeDB."""
 
 from dataclasses import dataclass, field
 from typing import Optional
 
 
 @dataclass
-class AskDBConfig:
-    """Configuration for an AskDB engine instance.
+class AskMeDBConfig:
+    """Configuration for an AskMeDB engine instance.
 
     Attributes:
         model: LLM model string in LiteLLM format (e.g. "anthropic/claude-haiku-4-5-20251001").

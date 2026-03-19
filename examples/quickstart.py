@@ -1,5 +1,5 @@
 """
-AskDB Quickstart — Minimal example showing library usage.
+AskMeDB Quickstart — Minimal example showing library usage.
 
 Usage:
     1. Create the database: python examples/setup_db.py
@@ -17,7 +17,7 @@ PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..")
 sys.path.insert(0, PROJECT_ROOT)
 load_dotenv()
 
-from askdb import AskDBEngine, AskDBConfig, SQLiteConnector, AutoSchemaProvider
+from askmedb import AskMeDBEngine, AskMeDBConfig, SQLiteConnector, AutoSchemaProvider
 
 # Create a connector for your database (created by setup_db.py in examples/)
 EXAMPLES_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -27,10 +27,10 @@ db = SQLiteConnector(os.path.join(EXAMPLES_DIR, "cloudmetrics.db"))
 schema = AutoSchemaProvider(db, database_name="cloudmetrics", description="SaaS analytics database")
 
 # Create the engine
-engine = AskDBEngine(
+engine = AskMeDBEngine(
     db=db,
     schema=schema,
-    config=AskDBConfig(model=os.environ.get("LLM_MODEL", "anthropic/claude-haiku-4-5-20251001")),
+    config=AskMeDBConfig(model=os.environ.get("LLM_MODEL", "anthropic/claude-haiku-4-5-20251001")),
 )
 
 # Ask a question

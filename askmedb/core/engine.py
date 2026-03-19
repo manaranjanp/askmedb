@@ -1,8 +1,8 @@
-"""AskDBEngine — the main orchestrator for the AskDB library."""
+"""AskMeDBEngine — the main orchestrator for the AskMeDB library."""
 
 from typing import Callable, Optional
 
-from .config import AskDBConfig
+from .config import AskMeDBConfig
 from .result import QueryResult
 from ..db.base import BaseDBConnector
 from ..llm.base import BaseLLMProvider
@@ -16,7 +16,7 @@ from ..pipeline.correction import SelfCorrector
 from ..pipeline.validation import validate_results, format_results_for_llm
 
 
-class AskDBEngine:
+class AskMeDBEngine:
     """Main orchestrator — the single class most developers will use.
 
     Handles the full pipeline: question -> SQL generation -> execution ->
@@ -33,8 +33,8 @@ class AskDBEngine:
         agent_description: Description of the agent role for the system prompt.
 
     Example:
-        >>> from askdb import AskDBEngine, SQLiteConnector
-        >>> engine = AskDBEngine(
+        >>> from askmedb import AskMeDBEngine, SQLiteConnector
+        >>> engine = AskMeDBEngine(
         ...     db=SQLiteConnector("my.db"),
         ...     schema={"tables": [...]},
         ... )
@@ -46,14 +46,14 @@ class AskDBEngine:
         self,
         db: BaseDBConnector,
         schema: SchemaProvider | dict | str,
-        config: AskDBConfig = None,
+        config: AskMeDBConfig = None,
         llm: BaseLLMProvider = None,
         business_rules: Optional[dict | str] = None,
         query_patterns: Optional[str] = None,
         prompt_template: Optional[PromptTemplate] = None,
         agent_description: str = "You are a data analyst agent. You answer natural language questions by generating SQL queries.",
     ):
-        self.config = config or AskDBConfig()
+        self.config = config or AskMeDBConfig()
         self.db = db
         self.llm = llm or LiteLLMProvider(
             model=self.config.model,

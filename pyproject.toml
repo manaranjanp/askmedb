@@ -3,14 +3,14 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "askdb"
+name = "askmedb"
 version = "0.1.0"
 description = "A library for building natural-language database query agents"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
 authors = [
-    { name = "AskDB Contributors" },
+    { name = "AskMeDB Contributors" },
 ]
 keywords = ["database", "sql", "llm", "natural-language", "agent", "data-agent"]
 classifiers = [
@@ -42,12 +42,12 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/askdb/askdb"
-Repository = "https://github.com/askdb/askdb"
-Issues = "https://github.com/askdb/askdb/issues"
+Homepage = "https://github.com/manaranjanp/askmedb"
+Repository = "https://github.com/manaranjanp/askmedb"
+Issues = "https://github.com/manaranjanp/askmedb/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["askdb"]
+packages = ["askmedb"]
 
 [tool.ruff]
 target-version = "py310"

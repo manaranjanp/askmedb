@@ -1,5 +1,5 @@
 """
-CloudMetrics Data Agent — Example CLI application using AskDB library.
+CloudMetrics Data Agent — Example CLI application using AskMeDB library.
 
 A natural language data agent for querying SaaS business data.
 
@@ -19,11 +19,11 @@ from rich.panel import Panel
 from rich.syntax import Syntax
 from rich.table import Table
 
-# Add project root to path so askdb can be imported without installing
+# Add project root to path so askmedb can be imported without installing
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..")
 sys.path.insert(0, PROJECT_ROOT)
 
-from askdb import AskDBEngine, AskDBConfig, SQLiteConnector, JSONSchemaProvider
+from askmedb import AskMeDBEngine, AskMeDBConfig, SQLiteConnector, JSONSchemaProvider
 
 # Load .env file
 load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
@@ -37,17 +37,17 @@ DB_PATH = os.path.join(EXAMPLES_ROOT, "cloudmetrics.db")
 KNOWLEDGE_DIR = os.path.join(EXAMPLE_DIR, "knowledge")
 
 
-def create_engine() -> AskDBEngine:
-    """Create and configure the AskDB engine for CloudMetrics."""
+def create_engine() -> AskMeDBEngine:
+    """Create and configure the AskMeDB engine for CloudMetrics."""
     model = os.environ.get("LLM_MODEL", "anthropic/claude-haiku-4-5-20251001")
 
-    config = AskDBConfig(
+    config = AskMeDBConfig(
         model=model,
         enable_learnings=True,
         learnings_path=os.path.join(KNOWLEDGE_DIR, "learnings.json"),
     )
 
-    engine = AskDBEngine(
+    engine = AskMeDBEngine(
         db=SQLiteConnector(DB_PATH),
         schema=JSONSchemaProvider(os.path.join(KNOWLEDGE_DIR, "schema.json")),
         config=config,
@@ -152,7 +152,7 @@ def main():
     console.print(
         Panel.fit(
             "[bold blue]CloudMetrics Data Agent[/bold blue]\n"
-            "[dim]Powered by AskDB | Ask questions about your SaaS data[/dim]\n"
+            "[dim]Powered by AskMeDB | Ask questions about your SaaS data[/dim]\n"
             "[dim]Type 'help' for commands, 'exit' to quit[/dim]",
             border_style="blue",
         )

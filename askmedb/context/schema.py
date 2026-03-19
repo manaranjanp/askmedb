@@ -11,7 +11,7 @@ class SchemaProvider(ABC):
 
     @abstractmethod
     def get_schema(self) -> dict:
-        """Return schema dict in AskDB format.
+        """Return schema dict in AskMeDB format.
 
         Expected format:
             {
@@ -84,7 +84,7 @@ class DictSchemaProvider(SchemaProvider):
     """Use a pre-built dictionary as schema.
 
     Args:
-        schema: Schema dictionary in AskDB format.
+        schema: Schema dictionary in AskMeDB format.
     """
 
     def __init__(self, schema: dict):

@@ -1,8 +1,8 @@
-# AskDB
+# AskMeDB
 
 A Python library for building natural-language database query agents. Ask questions in plain English, get SQL-powered answers.
 
-AskDB connects an LLM to your database, generates SQL from natural language, executes it safely, self-corrects on errors, and synthesizes human-readable answers — all in a few lines of code.
+AskMeDB connects an LLM to your database, generates SQL from natural language, executes it safely, self-corrects on errors, and synthesizes human-readable answers — all in a few lines of code.
 
 ## Features
 
@@ -19,29 +19,29 @@ AskDB connects an LLM to your database, generates SQL from natural language, exe
 ## Installation
 
 ```bash
-pip install askdb
+pip install askmedb
 ```
 
 Or with [uv](https://docs.astral.sh/uv/):
 
 ```bash
-uv add askdb
+uv add askmedb
 ```
 
 ### Optional Dependencies
 
 ```bash
 # For PostgreSQL, MySQL, and other databases via SQLAlchemy
-pip install askdb[sql]
+pip install askmedb[sql]
 
 # For running the included examples
-pip install askdb[examples]
+pip install askmedb[examples]
 ```
 
 ## Quick Start
 
 ```python
-from askdb import AskDBEngine, SQLiteConnector, AutoSchemaProvider
+from askmedb import AskMeDBEngine, SQLiteConnector, AutoSchemaProvider
 
 # Connect to your database
 db = SQLiteConnector("my_database.db")
@@ -50,7 +50,7 @@ db = SQLiteConnector("my_database.db")
 schema = AutoSchemaProvider(db)
 
 # Create the engine and ask a question
-engine = AskDBEngine(db=db, schema=schema)
+engine = AskMeDBEngine(db=db, schema=schema)
 result = engine.ask("How many customers do we have?")
 
 print(result.answer)   # "There are 150 customers in the database."
@@ -60,9 +60,9 @@ print(result.sql)      # "SELECT COUNT(*) FROM customers"
 ## Configuration
 
 ```python
-from askdb import AskDBEngine, AskDBConfig, SQLiteConnector, AutoSchemaProvider
+from askmedb import AskMeDBEngine, AskMeDBConfig, SQLiteConnector, AutoSchemaProvider
 
-config = AskDBConfig(
+config = AskMeDBConfig(
     model="anthropic/claude-haiku-4-5-20251001",  # Any LiteLLM-supported model
     sql_temperature=0.0,           # Deterministic SQL generation
     answer_temperature=0.3,        # Slightly creative answers
@@ -73,7 +73,7 @@ config = AskDBConfig(
     learnings_path="learnings.json",  # Persist learnings to file
 )
 
-engine = AskDBEngine(
+engine = AskMeDBEngine(
     db=SQLiteConnector("my_database.db"),
     schema=AutoSchemaProvider(db),
     config=config,
@@ -82,10 +82,10 @@ engine = AskDBEngine(
 
 ## Schema Providers
 
-AskDB supports multiple ways to provide your database schema:
+AskMeDB supports multiple ways to provide your database schema:
 
 ```python
-from askdb import AutoSchemaProvider, JSONSchemaProvider, DictSchemaProvider
+from askmedb import AutoSchemaProvider, JSONSchemaProvider, DictSchemaProvider
 
 # Auto-detect from database (easiest)
 schema = AutoSchemaProvider(db)
@@ -114,7 +114,7 @@ schema = DictSchemaProvider({
 Add business rules, query patterns, and a custom agent description for better results:
 
 ```python
-engine = AskDBEngine(
+engine = AskMeDBEngine(
     db=db,
     schema=schema,
     config=config,
@@ -212,7 +212,7 @@ records = result.to_dicts()
 ### SQLite (built-in)
 
 ```python
-from askdb import SQLiteConnector
+from askmedb import SQLiteConnector
 
 db = SQLiteConnector("path/to/database.db")
 ```
@@ -220,11 +220,11 @@ db = SQLiteConnector("path/to/database.db")
 ### SQLAlchemy (PostgreSQL, MySQL, etc.)
 
 ```bash
-pip install askdb[sql]
+pip install askmedb[sql]
 ```
 
 ```python
-from askdb.db.sqlalchemy_connector import SQLAlchemyConnector
+from askmedb.db.sqlalchemy_connector import SQLAlchemyConnector
 
 # PostgreSQL
 db = SQLAlchemyConnector("postgresql://user:pass@localhost/mydb")
@@ -236,7 +236,7 @@ db = SQLAlchemyConnector("mysql+pymysql://user:pass@localhost/mydb")
 ### Custom Connector
 
 ```python
-from askdb import BaseDBConnector
+from askmedb import BaseDBConnector
 
 class MyConnector(BaseDBConnector):
     def execute(self, sql: str) -> tuple[list[str], list[tuple]]:
@@ -250,7 +250,7 @@ class MyConnector(BaseDBConnector):
 ## Custom LLM Provider
 
 ```python
-from askdb import BaseLLMProvider
+from askmedb import BaseLLMProvider
 
 class MyLLMProvider(BaseLLMProvider):
     def generate(self, messages: list[dict], temperature: float = 0.0, max_tokens: int = 2048) -> str:
@@ -261,7 +261,7 @@ class MyLLMProvider(BaseLLMProvider):
 Pass it to the engine:
 
 ```python
-engine = AskDBEngine(db=db, schema=schema, llm=MyLLMProvider())
+engine = AskMeDBEngine(db=db, schema=schema, llm=MyLLMProvider())
 ```
 
 ## Running the Examples
@@ -281,7 +281,7 @@ This creates `examples/cloudmetrics.db` with realistic synthetic data.
 
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
-pip install askdb python-dotenv
+pip install askmedb python-dotenv
 
 python examples/quickstart.py
 ```
@@ -289,7 +289,7 @@ python examples/quickstart.py
 ### Step 3: Run the full CLI app (with Rich UI)
 
 ```bash
-pip install askdb[examples]
+pip install askmedb[examples]
 
 python examples/cloudmetrics/app.py
 ```
@@ -298,15 +298,15 @@ Type questions in plain English, use `samples` to see example queries, or `reset
 
 ### Try it on Google Colab
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/manaranjanp/askdb/blob/main/examples/askdb_colab_demo.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/manaranjanp/askmedb/blob/main/examples/askmedb_colab_demo.ipynb)
 
 The Colab notebook walks through the full setup: installing dependencies, creating the database, configuring knowledge files, and asking questions interactively.
 
 ## Project Structure
 
 ```
-askdb/
-├── askdb/                          # Python package
+askmedb/
+├── askmedb/                        # Python package
 │   ├── core/                       # Engine, config, result, exceptions
 │   ├── db/                         # Database connectors (SQLite, SQLAlchemy)
 │   ├── llm/                        # LLM providers (LiteLLM)
@@ -315,7 +315,7 @@ askdb/
 ├── examples/
 │   ├── setup_db.py                 # Creates sample CloudMetrics SQLite database
 │   ├── quickstart.py               # Minimal usage example
-│   ├── askdb_colab_demo.ipynb      # Google Colab notebook
+│   ├── askmedb_colab_demo.ipynb    # Google Colab notebook
 │   └── cloudmetrics/               # Full CLI app with Rich UI
 │       ├── app.py
 │       ├── sample_queries.py
