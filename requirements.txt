@@ -1,0 +1,8 @@
+litellm>=1.0.0
+
+# Optional: for non-SQLite databases
+# sqlalchemy>=2.0.0
+
+# Optional: for running examples
+# python-dotenv>=1.0.0
+# rich>=13.0.0

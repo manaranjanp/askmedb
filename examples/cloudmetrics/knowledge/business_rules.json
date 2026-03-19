@@ -1,0 +1,92 @@
+{
+  "metrics": [
+    {
+      "name": "MRR (Monthly Recurring Revenue)",
+      "definition": "Sum of mrr from the subscriptions table where status = 'active'.",
+      "sql_hint": "SELECT SUM(mrr) FROM subscriptions WHERE status = 'active'",
+      "gotchas": [
+        "Do NOT include churned, trial, or paused subscriptions in MRR calculations.",
+        "The mrr column is already a monthly value - no division needed.",
+        "For MRR by plan, JOIN with the plans table on plan_id."
+      ]
+    },
+    {
+      "name": "Total Revenue",
+      "definition": "Sum of amount from the invoices table where status = 'paid'.",
+      "sql_hint": "SELECT SUM(amount) FROM invoices WHERE status = 'paid'",
+      "gotchas": [
+        "Only count invoices with status = 'paid' for actual revenue.",
+        "Do NOT include pending, overdue, or refunded invoices.",
+        "For monthly revenue trends, group by strftime('%Y-%m', invoice_date)."
+      ]
+    },
+    {
+      "name": "Churn Rate",
+      "definition": "Number of subscriptions that moved to 'churned' status in a period divided by total active subscriptions at the start of that period.",
+      "sql_hint": "Count subscriptions where status = 'churned' AND end_date falls within the period, divided by count of subscriptions active at period start.",
+      "gotchas": [
+        "Use subscription-level churn, not customer-level.",
+        "A churned subscription has status = 'churned' and a non-NULL end_date.",
+        "For monthly churn, compare churned count in each month against active count at month start."
+      ]
+    },
+    {
+      "name": "Average Resolution Time",
+      "definition": "Average time between created_at and resolved_at for resolved support tickets.",
+      "sql_hint": "SELECT AVG((julianday(resolved_at) - julianday(created_at)) * 24) AS avg_hours FROM support_tickets WHERE resolved_at IS NOT NULL",
+      "gotchas": [
+        "Use julianday() for date arithmetic in SQLite - EXTRACT and EPOCH are NOT supported.",
+        "Multiply julianday difference by 24 for hours, by 24*60 for minutes.",
+        "Only include tickets where resolved_at IS NOT NULL."
+      ]
+    },
+    {
+      "name": "Customer Count",
+      "definition": "Count of distinct rows in the customers table.",
+      "sql_hint": "SELECT COUNT(*) FROM customers",
+      "gotchas": [
+        "This counts all registered customers regardless of subscription status.",
+        "For 'active customers', join with subscriptions and filter status = 'active'."
+      ]
+    },
+    {
+      "name": "ARPU (Average Revenue Per User)",
+      "definition": "Total MRR divided by count of active subscriptions.",
+      "sql_hint": "SELECT SUM(mrr) / COUNT(*) FROM subscriptions WHERE status = 'active'",
+      "gotchas": [
+        "Use active subscriptions only, not total customers.",
+        "This is a per-subscription metric, not per-customer (a customer can have multiple subs)."
+      ]
+    }
+  ],
+  "common_gotchas": [
+    {
+      "issue": "SQLite date functions",
+      "note": "Use strftime('%Y-%m', date_column) for month grouping. Use strftime('%Y', date_column) for year. Use date('now') for current date. Do NOT use DATE_TRUNC, EXTRACT, or DATEADD - these are NOT valid in SQLite."
+    },
+    {
+      "issue": "Date arithmetic in SQLite",
+      "note": "Use julianday(date1) - julianday(date2) to get difference in days. Multiply by 24 for hours. Do NOT use DATEDIFF, TIMESTAMPDIFF, or EPOCH."
+    },
+    {
+      "issue": "Active subscriptions",
+      "note": "An active subscription must have status = 'active'. Additionally, end_date should be NULL (ongoing) or in the future. Check both conditions for accuracy."
+    },
+    {
+      "issue": "Revenue vs MRR",
+      "note": "Revenue comes from the invoices table (actual payments). MRR comes from the subscriptions table (recurring amount). These are different metrics."
+    },
+    {
+      "issue": "Joining tables",
+      "note": "customers.customer_id joins to subscriptions.customer_id, invoices.customer_id, and support_tickets.customer_id. subscriptions.plan_id joins to plans.plan_id. subscriptions.subscription_id joins to invoices.subscription_id."
+    },
+    {
+      "issue": "NULL handling",
+      "note": "end_date is NULL for active/ongoing subscriptions. resolved_at is NULL for open/in-progress tickets. Always account for NULLs in WHERE clauses and aggregations."
+    },
+    {
+      "issue": "Date filtering for recent periods",
+      "note": "Use date('now', '-N months') for filtering last N months. Example: WHERE invoice_date >= date('now', '-12 months') for last 12 months."
+    }
+  ]
+}

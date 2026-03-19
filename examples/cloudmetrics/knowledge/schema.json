@@ -1,0 +1,91 @@
+{
+  "database": "cloudmetrics.db",
+  "description": "CloudMetrics SaaS subscription analytics database. Contains customer, subscription, billing, and support data for a B2B project management SaaS product.",
+  "tables": [
+    {
+      "name": "customers",
+      "description": "All registered customer companies. Each row represents one company account.",
+      "columns": [
+        {"name": "customer_id", "type": "INTEGER", "description": "Unique customer identifier", "primary_key": true},
+        {"name": "company_name", "type": "TEXT", "description": "Registered company name"},
+        {"name": "industry", "type": "TEXT", "description": "Industry vertical. One of: Technology, Healthcare, Finance, Retail, Education, Manufacturing"},
+        {"name": "company_size", "type": "TEXT", "description": "Company size tier. One of: Startup (1-50 employees), SMB (51-200), Mid-Market (201-1000), Enterprise (1001+)"},
+        {"name": "country", "type": "TEXT", "description": "Country where the company is headquartered"},
+        {"name": "signup_date", "type": "DATE", "description": "Date the customer first signed up (YYYY-MM-DD format)"},
+        {"name": "account_owner", "type": "TEXT", "description": "Internal sales representative assigned to this account"}
+      ],
+      "relationships": [
+        {"column": "customer_id", "references": "subscriptions.customer_id", "type": "one-to-many"},
+        {"column": "customer_id", "references": "invoices.customer_id", "type": "one-to-many"},
+        {"column": "customer_id", "references": "support_tickets.customer_id", "type": "one-to-many"}
+      ]
+    },
+    {
+      "name": "plans",
+      "description": "Available subscription plans. Fixed seed data with 4 pricing tiers.",
+      "columns": [
+        {"name": "plan_id", "type": "INTEGER", "description": "Unique plan identifier", "primary_key": true},
+        {"name": "plan_name", "type": "TEXT", "description": "Plan tier name. One of: Starter, Professional, Business, Enterprise"},
+        {"name": "monthly_price", "type": "REAL", "description": "List price per month in USD. Starter=$29, Professional=$79, Business=$149, Enterprise=$299"},
+        {"name": "max_users", "type": "INTEGER", "description": "Maximum number of user seats allowed on this plan"},
+        {"name": "features", "type": "TEXT", "description": "Comma-separated list of features included in the plan"}
+      ],
+      "relationships": [
+        {"column": "plan_id", "references": "subscriptions.plan_id", "type": "one-to-many"}
+      ]
+    },
+    {
+      "name": "subscriptions",
+      "description": "Customer subscriptions to plans. A customer may have multiple subscriptions over time (representing upgrades/downgrades). The most recent subscription per customer is typically the active one.",
+      "columns": [
+        {"name": "subscription_id", "type": "INTEGER", "description": "Unique subscription identifier", "primary_key": true},
+        {"name": "customer_id", "type": "INTEGER", "description": "Foreign key to customers table"},
+        {"name": "plan_id", "type": "INTEGER", "description": "Foreign key to plans table"},
+        {"name": "start_date", "type": "DATE", "description": "Date the subscription started (YYYY-MM-DD format)"},
+        {"name": "end_date", "type": "DATE", "description": "Date the subscription ended. NULL means the subscription is still ongoing/active"},
+        {"name": "status", "type": "TEXT", "description": "Current subscription status. One of: active, churned, trial, paused"},
+        {"name": "billing_cycle", "type": "TEXT", "description": "Billing frequency. One of: monthly, annual"},
+        {"name": "mrr", "type": "REAL", "description": "Monthly Recurring Revenue in USD for this subscription. Derived from plan price with possible discounts (+/-10% variance)"}
+      ],
+      "relationships": [
+        {"column": "customer_id", "references": "customers.customer_id", "type": "many-to-one"},
+        {"column": "plan_id", "references": "plans.plan_id", "type": "many-to-one"},
+        {"column": "subscription_id", "references": "invoices.subscription_id", "type": "one-to-many"}
+      ]
+    },
+    {
+      "name": "invoices",
+      "description": "Billing invoices generated for subscriptions. One invoice per billing period (monthly or annually).",
+      "columns": [
+        {"name": "invoice_id", "type": "INTEGER", "description": "Unique invoice identifier", "primary_key": true},
+        {"name": "subscription_id", "type": "INTEGER", "description": "Foreign key to subscriptions table"},
+        {"name": "customer_id", "type": "INTEGER", "description": "Foreign key to customers table (denormalized for convenience)"},
+        {"name": "invoice_date", "type": "DATE", "description": "Date the invoice was issued (YYYY-MM-DD format)"},
+        {"name": "amount", "type": "REAL", "description": "Invoice amount in USD"},
+        {"name": "status", "type": "TEXT", "description": "Payment status. One of: paid, pending, overdue, refunded"},
+        {"name": "payment_method", "type": "TEXT", "description": "How the customer paid. One of: credit_card, bank_transfer, paypal"}
+      ],
+      "relationships": [
+        {"column": "subscription_id", "references": "subscriptions.subscription_id", "type": "many-to-one"},
+        {"column": "customer_id", "references": "customers.customer_id", "type": "many-to-one"}
+      ]
+    },
+    {
+      "name": "support_tickets",
+      "description": "Customer support tickets. Tracks issues, requests, and bugs reported by customers.",
+      "columns": [
+        {"name": "ticket_id", "type": "INTEGER", "description": "Unique ticket identifier", "primary_key": true},
+        {"name": "customer_id", "type": "INTEGER", "description": "Foreign key to customers table"},
+        {"name": "created_at", "type": "DATETIME", "description": "When the ticket was created (YYYY-MM-DD HH:MM:SS format)"},
+        {"name": "resolved_at", "type": "DATETIME", "description": "When the ticket was resolved. NULL if the ticket is still open or in progress"},
+        {"name": "priority", "type": "TEXT", "description": "Ticket priority level. One of: low, medium, high, critical"},
+        {"name": "category", "type": "TEXT", "description": "Ticket category. One of: billing, technical, feature_request, onboarding, bug"},
+        {"name": "status", "type": "TEXT", "description": "Ticket status. One of: open, in_progress, resolved, closed"},
+        {"name": "subject", "type": "TEXT", "description": "Brief description of the issue"}
+      ],
+      "relationships": [
+        {"column": "customer_id", "references": "customers.customer_id", "type": "many-to-one"}
+      ]
+    }
+  ]
+}

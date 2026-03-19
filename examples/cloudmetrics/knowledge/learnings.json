@@ -1,0 +1,10 @@
+[
+  {
+    "timestamp": "2026-03-19T12:02:41.272890",
+    "question": "how many customers have not paid their invoices? Can you create a table of number of invoices not paid and number customers in that category?",
+    "error": "aggregate functions are not allowed in the GROUP BY clause",
+    "wrong_sql": "SELECT \n  COUNT(i.invoice_id) AS num_unpaid_invoices,\n  COUNT(DISTINCT c.customer_id) AS num_customers\nFROM customers c\nJOIN invoices i ON c.customer_id = i.customer_id\nWHERE i.status != 'paid'\nGROUP BY COUNT(i.invoice_id)\nORDER BY num_unpaid_invoices",
+    "corrected_sql": "SELECT \n  num_unpaid_invoices,\n  COUNT(DISTINCT customer_id) AS num_customers\nFROM (\n  SELECT \n    c.customer_id,\n    COUNT(i.invoice_id) AS num_unpaid_invoices\n  FROM customers c\n  JOIN invoices i ON c.customer_id = i.customer_id\n  WHERE i.status != 'paid'\n  GROUP BY c.customer_id\n) AS unpaid_invoices\nGROUP BY num_unpaid_invoices\nORDER BY num_unpaid_invoices",
+    "lesson": "Original query used invalid syntax. Error: aggregate functions are not allowed in the GROUP BY clause. Fixed by rewriting the query."
+  }
+]
