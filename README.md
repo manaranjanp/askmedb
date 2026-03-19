@@ -264,19 +264,62 @@ Pass it to the engine:
 engine = AskDBEngine(db=db, schema=schema, llm=MyLLMProvider())
 ```
 
+## Running the Examples
+
+The repo includes a sample **CloudMetrics** SaaS database with 5 tables (customers, plans, subscriptions, invoices, support_tickets) and ~200 customers of synthetic data.
+
+### Step 1: Set up the database
+
+```bash
+pip install faker
+python examples/setup_db.py
+```
+
+This creates `examples/cloudmetrics.db` with realistic synthetic data.
+
+### Step 2: Run the quickstart
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+pip install askdb python-dotenv
+
+python examples/quickstart.py
+```
+
+### Step 3: Run the full CLI app (with Rich UI)
+
+```bash
+pip install askdb[examples]
+
+python examples/cloudmetrics/app.py
+```
+
+Type questions in plain English, use `samples` to see example queries, or `reset` to clear conversation history.
+
+### Try it on Google Colab
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/manaranjanp/askdb/blob/main/examples/askdb_colab_demo.ipynb)
+
+The Colab notebook walks through the full setup: installing dependencies, creating the database, configuring knowledge files, and asking questions interactively.
+
 ## Project Structure
 
 ```
 askdb/
-├── askdb/                  # Python package
-│   ├── core/               # Engine, config, result, exceptions
-│   ├── db/                 # Database connectors (SQLite, SQLAlchemy)
-│   ├── llm/                # LLM providers (LiteLLM)
-│   ├── context/            # Schema, prompt building, context layers
-│   └── pipeline/           # Conversation, parsing, validation, self-correction
+├── askdb/                          # Python package
+│   ├── core/                       # Engine, config, result, exceptions
+│   ├── db/                         # Database connectors (SQLite, SQLAlchemy)
+│   ├── llm/                        # LLM providers (LiteLLM)
+│   ├── context/                    # Schema, prompt building, context layers
+│   └── pipeline/                   # Conversation, parsing, validation, self-correction
 ├── examples/
-│   ├── quickstart.py       # Minimal usage example
-│   └── cloudmetrics/       # Full CLI app with Rich UI
+│   ├── setup_db.py                 # Creates sample CloudMetrics SQLite database
+│   ├── quickstart.py               # Minimal usage example
+│   ├── askdb_colab_demo.ipynb      # Google Colab notebook
+│   └── cloudmetrics/               # Full CLI app with Rich UI
+│       ├── app.py
+│       ├── sample_queries.py
+│       └── knowledge/              # Schema, business rules, query patterns
 ├── pyproject.toml
 └── README.md
 ```

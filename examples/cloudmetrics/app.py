@@ -3,7 +3,10 @@ CloudMetrics Data Agent — Example CLI application using AskDB library.
 
 A natural language data agent for querying SaaS business data.
 
-Usage: python askdb/examples/cloudmetrics/app.py
+Usage:
+    1. Create the database: python examples/setup_db.py
+    2. Set your API key: export ANTHROPIC_API_KEY=...
+    3. Run: python examples/cloudmetrics/app.py
 """
 
 import os
@@ -17,7 +20,7 @@ from rich.syntax import Syntax
 from rich.table import Table
 
 # Add project root to path so askdb can be imported without installing
-PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..", "..")
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..")
 sys.path.insert(0, PROJECT_ROOT)
 
 from askdb import AskDBEngine, AskDBConfig, SQLiteConnector, JSONSchemaProvider
@@ -29,7 +32,8 @@ console = Console()
 
 # Paths relative to this example
 EXAMPLE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(PROJECT_ROOT, "cloudmetrics.db")
+EXAMPLES_ROOT = os.path.join(EXAMPLE_DIR, "..")
+DB_PATH = os.path.join(EXAMPLES_ROOT, "cloudmetrics.db")
 KNOWLEDGE_DIR = os.path.join(EXAMPLE_DIR, "knowledge")
 
 
