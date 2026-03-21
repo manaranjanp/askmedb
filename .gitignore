@@ -11,6 +11,5 @@ venv/
 .pytest_cache/
 .ruff_cache/
 
-# Generated example data (run examples/setup_db.py to create these)
+# Data generator script — internal use only
 examples/setup_db.py
-examples/data/

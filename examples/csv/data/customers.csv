@@ -1,0 +1,201 @@
+customer_id,company_name,industry,company_size,country,signup_date,account_owner
+1,"Rodriguez, Figueroa and Sanchez",Technology,Startup,United States,2024-12-05,Bob Smith
+2,Doyle Ltd,Education,Startup,United Kingdom,2025-01-11,Alice Johnson
+3,"Mcclain, Miller and Henderson",Technology,SMB,Canada,2022-12-04,Grace Chen
+4,Davis and Sons,Finance,Mid-Market,United States,2023-07-19,Carol Williams
+5,"Guzman, Hoffman and Baldwin",Healthcare,Startup,Japan,2025-02-01,Frank Lee
+6,"Gardner, Robinson and Lawrence",Healthcare,Startup,United States,2022-12-23,Eva Martinez
+7,Blake and Sons,Retail,SMB,Netherlands,2025-05-15,Grace Chen
+8,"Henderson, Ramirez and Lewis",Technology,SMB,Brazil,2022-11-01,Frank Lee
+9,Garcia-James,Retail,Startup,United States,2024-10-03,Eva Martinez
+10,Abbott-Munoz,Education,Mid-Market,United States,2025-10-18,Henry Wilson
+11,Blair PLC,Healthcare,Startup,United States,2024-12-02,Eva Martinez
+12,Dudley Group,Retail,Startup,Germany,2025-02-05,David Brown
+13,Arnold Ltd,Healthcare,Enterprise,Germany,2023-04-17,David Brown
+14,"Mcclure, Ward and Lee",Education,Mid-Market,United States,2025-01-19,Alice Johnson
+15,Williams and Sons,Healthcare,Startup,Japan,2025-05-13,Frank Lee
+16,Galloway-Wyatt,Finance,Mid-Market,Germany,2023-07-07,Carol Williams
+17,James Group,Technology,SMB,United States,2023-09-23,Grace Chen
+18,"Flowers, Martin and Kelly",Healthcare,Startup,Netherlands,2025-08-04,Henry Wilson
+19,"Adams, Zuniga and Wong",Technology,Startup,Germany,2022-11-28,Grace Chen
+20,"Reid, Ferguson and Sanchez",Healthcare,SMB,United Kingdom,2024-10-22,Eva Martinez
+21,Gray-Mayo,Education,Startup,Australia,2025-10-06,Eva Martinez
+22,"Watts, Robinson and Nguyen",Healthcare,Startup,United States,2025-04-09,Alice Johnson
+23,Perez Inc,Education,Startup,United Kingdom,2025-09-21,Carol Williams
+24,Morales-Jones,Technology,SMB,India,2024-07-20,David Brown
+25,"Walter, Edwards and Rios",Retail,SMB,France,2023-03-30,Alice Johnson
+26,Wilkerson-Day,Finance,Startup,United States,2024-10-25,Eva Martinez
+27,Baker and Sons,Technology,SMB,United States,2023-08-17,Henry Wilson
+28,"Hoffman, Baker and Richards",Manufacturing,SMB,United States,2025-05-23,Henry Wilson
+29,"Ross, Robinson and Bright",Technology,SMB,Germany,2025-09-15,David Brown
+30,"Snyder, Campos and Callahan",Retail,SMB,Australia,2025-08-31,Grace Chen
+31,Burton Ltd,Finance,SMB,United Kingdom,2025-10-26,Bob Smith
+32,Carlson-Cruz,Technology,Startup,Canada,2023-08-29,David Brown
+33,"Ferrell, Rice and Maddox",Retail,Startup,United States,2022-03-14,Alice Johnson
+34,Frazier Inc,Technology,Startup,Germany,2025-07-01,David Brown
+35,"Dyer, Potter and Mack",Retail,Mid-Market,Canada,2024-08-23,David Brown
+36,Rodriguez-Graham,Education,Startup,United States,2025-04-24,Grace Chen
+37,Smith-Bowen,Healthcare,Mid-Market,United States,2024-01-21,Bob Smith
+38,"Baker, Mason and White",Retail,Mid-Market,United States,2022-09-18,David Brown
+39,Harrell LLC,Healthcare,SMB,United States,2023-06-01,David Brown
+40,"Romero, Gonzalez and Brooks",Technology,Mid-Market,India,2025-07-14,Bob Smith
+41,Ryan PLC,Manufacturing,Mid-Market,Netherlands,2022-08-22,David Brown
+42,George Group,Finance,Startup,United Kingdom,2023-04-22,Alice Johnson
+43,Rodriguez LLC,Technology,Startup,Japan,2023-04-19,Henry Wilson
+44,Allen-Allen,Retail,Mid-Market,France,2023-10-22,Henry Wilson
+45,"Arroyo, Miller and Tucker",Technology,Enterprise,Canada,2023-04-02,Alice Johnson
+46,Spence PLC,Technology,SMB,United Kingdom,2025-03-21,Carol Williams
+47,Anderson Group,Finance,Mid-Market,United States,2022-09-08,Bob Smith
+48,"Martin, Rose and Obrien",Technology,Startup,Brazil,2025-01-10,David Brown
+49,Hickman Ltd,Technology,Startup,Germany,2024-10-04,Frank Lee
+50,"Harris, Collins and Carney",Technology,Mid-Market,United States,2025-09-05,Grace Chen
+51,"Brooks, Lam and Hayes",Finance,SMB,Japan,2023-02-17,Bob Smith
+52,Walker LLC,Finance,SMB,United States,2022-03-26,David Brown
+53,Chapman and Sons,Technology,Startup,United States,2024-07-18,David Brown
+54,"Robinson, Jones and Welch",Technology,Mid-Market,Australia,2024-02-09,Alice Johnson
+55,Jones Inc,Finance,Enterprise,United States,2025-01-03,Carol Williams
+56,Jones-Young,Education,Mid-Market,United States,2023-09-22,Eva Martinez
+57,"Washington, Ryan and Cummings",Retail,Startup,Germany,2024-10-31,Eva Martinez
+58,"Johnston, Sanchez and Kennedy",Technology,Enterprise,United States,2024-07-17,Grace Chen
+59,Lee-Davis,Technology,Startup,United States,2025-06-04,Eva Martinez
+60,Gomez-Jenkins,Healthcare,Mid-Market,Canada,2023-04-14,Bob Smith
+61,"Brown, Valdez and Lucas",Education,Enterprise,Canada,2022-10-24,Frank Lee
+62,Powell LLC,Technology,Startup,United States,2024-10-08,Alice Johnson
+63,Wright and Sons,Technology,Startup,United States,2025-08-05,Grace Chen
+64,"West, Henderson and Ramirez",Retail,Enterprise,United States,2025-10-08,Carol Williams
+65,Baxter Inc,Education,Mid-Market,United States,2025-10-10,Frank Lee
+66,Morton-Chase,Healthcare,SMB,Australia,2025-04-22,David Brown
+67,Williams PLC,Retail,Startup,Brazil,2023-09-26,Henry Wilson
+68,Novak and Sons,Education,SMB,United States,2023-07-22,David Brown
+69,Russell Group,Retail,Startup,United States,2023-07-23,Bob Smith
+70,Hancock Inc,Technology,SMB,United States,2025-10-03,Frank Lee
+71,Gray Group,Technology,Enterprise,United States,2025-09-09,Eva Martinez
+72,House-Glover,Finance,Startup,France,2022-07-17,Grace Chen
+73,Henderson-Bernard,Finance,Startup,Canada,2024-11-02,Eva Martinez
+74,"Stanley, Tucker and Lee",Healthcare,SMB,India,2022-08-04,David Brown
+75,Novak PLC,Technology,SMB,United States,2024-02-03,Frank Lee
+76,"Daniels, Adkins and Brown",Technology,Enterprise,United Kingdom,2024-12-29,Grace Chen
+77,"Woods, Calhoun and Schmidt",Retail,SMB,United States,2023-12-16,Grace Chen
+78,Yu Inc,Manufacturing,SMB,United States,2025-01-12,Alice Johnson
+79,Jones Inc,Technology,Mid-Market,Germany,2023-11-16,Frank Lee
+80,"Hensley, Powell and David",Healthcare,Startup,United Kingdom,2024-06-02,Carol Williams
+81,"Sanchez, Wheeler and Harvey",Technology,SMB,Germany,2024-12-25,Bob Smith
+82,Sandoval-Cunningham,Retail,SMB,United States,2025-05-25,David Brown
+83,Donovan-Harris,Technology,Enterprise,Germany,2023-03-20,Bob Smith
+84,"Edwards, Baker and Anderson",Education,SMB,Australia,2024-05-22,Grace Chen
+85,"Evans, Stewart and Walton",Technology,SMB,United States,2024-07-05,Bob Smith
+86,Smith PLC,Technology,Mid-Market,Australia,2025-04-18,Henry Wilson
+87,"Ferrell, Jones and Lewis",Technology,Mid-Market,United Kingdom,2022-08-21,Henry Wilson
+88,Anderson-Bailey,Manufacturing,SMB,Japan,2025-01-02,Henry Wilson
+89,Suarez LLC,Retail,SMB,India,2024-11-08,Henry Wilson
+90,Moore-Bass,Retail,SMB,United States,2025-08-03,David Brown
+91,"Turner, Riggs and Roman",Technology,Mid-Market,United Kingdom,2025-06-13,David Brown
+92,"Smith, Montoya and Evans",Technology,Startup,United States,2023-10-07,Frank Lee
+93,"Garcia, Humphrey and Baker",Technology,Startup,United States,2025-07-31,Carol Williams
+94,Newton and Sons,Technology,SMB,Canada,2025-02-09,Grace Chen
+95,Campbell-Clark,Education,Startup,France,2022-09-22,Alice Johnson
+96,Harris-Walters,Retail,Startup,United States,2025-06-29,Frank Lee
+97,Wagner-King,Healthcare,Mid-Market,India,2023-11-09,David Brown
+98,Davis Group,Technology,SMB,United States,2024-06-28,Grace Chen
+99,Williams-Cook,Education,Enterprise,Netherlands,2025-02-26,Alice Johnson
+100,Walsh LLC,Finance,SMB,United States,2025-08-12,Grace Chen
+101,Figueroa PLC,Finance,Startup,United States,2023-02-27,David Brown
+102,"Patterson, Smith and Jones",Healthcare,Mid-Market,United States,2024-05-21,Grace Chen
+103,"Mckee, Gardner and Davenport",Technology,Startup,Canada,2023-09-05,Frank Lee
+104,"Tran, Jordan and Williams",Technology,Enterprise,United States,2023-07-25,Alice Johnson
+105,Nolan-Flynn,Technology,Startup,United States,2025-09-18,Carol Williams
+106,Nolan and Sons,Technology,Enterprise,United Kingdom,2024-06-12,Eva Martinez
+107,"Wright, Garcia and Deleon",Technology,SMB,France,2025-04-08,Bob Smith
+108,Dickson-Brady,Technology,Startup,Canada,2025-04-18,Eva Martinez
+109,Hancock and Sons,Manufacturing,Startup,Japan,2024-10-01,David Brown
+110,Johnson-Doyle,Retail,SMB,United States,2022-10-26,Eva Martinez
+111,Patton-Jenkins,Finance,Startup,Netherlands,2025-06-23,Alice Johnson
+112,"Shields, Cochran and Adams",Healthcare,Startup,United Kingdom,2024-01-12,Frank Lee
+113,"Rodriguez, Brennan and Garrison",Healthcare,SMB,United Kingdom,2022-04-12,Frank Lee
+114,Gonzalez Group,Education,Mid-Market,United Kingdom,2024-12-01,Eva Martinez
+115,Torres-Pope,Manufacturing,Mid-Market,United Kingdom,2024-11-11,Eva Martinez
+116,Walker Ltd,Technology,Enterprise,United States,2023-12-11,Henry Wilson
+117,Ross LLC,Finance,SMB,United States,2023-08-23,Alice Johnson
+118,Rasmussen LLC,Healthcare,SMB,United States,2024-07-05,Eva Martinez
+119,May-Ross,Education,Mid-Market,United States,2024-01-03,Alice Johnson
+120,"Rivera, Johnson and Wiley",Technology,Startup,United Kingdom,2024-07-30,David Brown
+121,White-Estes,Finance,SMB,France,2025-01-25,Bob Smith
+122,Johnson-Carlson,Healthcare,Startup,Germany,2023-11-03,Frank Lee
+123,Chandler-Edwards,Finance,SMB,France,2024-06-12,Frank Lee
+124,"Joyce, Wilson and Lam",Finance,Startup,United States,2024-01-18,David Brown
+125,Scott Ltd,Retail,Enterprise,Australia,2023-12-02,David Brown
+126,Smith-Frost,Finance,Mid-Market,Netherlands,2023-07-13,Eva Martinez
+127,"Mcdaniel, Bentley and Mclaughlin",Education,Startup,United States,2025-10-14,Eva Martinez
+128,Diaz Inc,Finance,Startup,Netherlands,2022-04-19,Eva Martinez
+129,"Mccall, Hanson and Alvarado",Technology,Mid-Market,United Kingdom,2025-01-31,Alice Johnson
+130,Cortez LLC,Finance,SMB,United States,2024-09-29,Alice Johnson
+131,"Parker, Ortiz and Powell",Education,Startup,United States,2023-09-05,Henry Wilson
+132,Spencer-Lee,Finance,Startup,United States,2022-10-21,Eva Martinez
+133,"Bentley, Byrd and Orr",Technology,SMB,United Kingdom,2022-11-16,David Brown
+134,"Carroll, Sullivan and Bass",Healthcare,Enterprise,United States,2025-04-16,Grace Chen
+135,Mitchell-Jordan,Finance,SMB,France,2023-11-18,David Brown
+136,"Lawson, Morris and Ramos",Technology,Startup,United States,2024-11-21,Bob Smith
+137,"Lewis, Kennedy and Santana",Healthcare,SMB,United Kingdom,2023-04-05,Alice Johnson
+138,"Jackson, Miller and Robertson",Retail,Mid-Market,United Kingdom,2023-08-05,David Brown
+139,"Harvey, Davis and Crane",Retail,SMB,Germany,2025-08-27,David Brown
+140,Chambers and Sons,Finance,SMB,Brazil,2024-04-17,Carol Williams
+141,Hernandez Inc,Technology,Startup,France,2022-10-15,Eva Martinez
+142,Riggs PLC,Finance,Startup,United Kingdom,2024-05-03,Eva Martinez
+143,Gibson Ltd,Finance,Startup,United States,2024-07-12,Grace Chen
+144,"Lee, Horton and Snyder",Finance,Startup,United States,2025-03-08,Alice Johnson
+145,Hernandez Ltd,Retail,Startup,United States,2025-10-30,Carol Williams
+146,Stafford Inc,Retail,Enterprise,United States,2024-06-08,Grace Chen
+147,Robinson-Brock,Finance,Startup,United States,2024-12-01,Frank Lee
+148,"Holmes, Williams and Wright",Technology,Startup,United Kingdom,2023-12-09,Henry Wilson
+149,Bryant Group,Manufacturing,Mid-Market,Canada,2023-10-26,Henry Wilson
+150,"Schmidt, Hansen and Stewart",Technology,Startup,France,2022-11-22,Alice Johnson
+151,Salazar-Ball,Finance,SMB,United States,2024-12-23,Frank Lee
+152,"Simmons, Meadows and Griffin",Finance,SMB,United States,2024-11-18,Eva Martinez
+153,Manning Group,Manufacturing,SMB,Australia,2024-09-03,Bob Smith
+154,Green-Wright,Finance,Mid-Market,Australia,2022-06-16,Eva Martinez
+155,"Ramirez, Strickland and Washington",Finance,Startup,Netherlands,2024-09-05,Bob Smith
+156,Hill Inc,Technology,Mid-Market,United Kingdom,2024-05-29,Eva Martinez
+157,"Mitchell, Nelson and Flores",Technology,Mid-Market,Netherlands,2024-07-21,David Brown
+158,"Miller, Hernandez and Reyes",Technology,Startup,Canada,2024-05-24,Carol Williams
+159,Mccarthy Inc,Technology,Mid-Market,United Kingdom,2025-07-05,Eva Martinez
+160,Russell-Daniels,Technology,Startup,Canada,2025-05-27,Henry Wilson
+161,Brown-Wall,Healthcare,SMB,United States,2025-07-06,Grace Chen
+162,Stein-Silva,Healthcare,Startup,Australia,2024-05-22,Grace Chen
+163,"Smith, Gilmore and Johnston",Retail,Startup,France,2023-08-08,Grace Chen
+164,Smith-Bell,Retail,Mid-Market,Netherlands,2024-03-01,Henry Wilson
+165,Castaneda-Ashley,Technology,Enterprise,United States,2025-10-01,Bob Smith
+166,Medina-Navarro,Healthcare,SMB,United Kingdom,2025-07-14,Carol Williams
+167,"Hurst, Freeman and Nelson",Retail,Startup,United Kingdom,2024-03-30,Eva Martinez
+168,Johnson-Rogers,Retail,SMB,India,2024-01-01,Grace Chen
+169,"Yates, Ramsey and Pittman",Finance,Mid-Market,United Kingdom,2025-09-22,Alice Johnson
+170,Hooper PLC,Technology,SMB,United States,2024-11-13,David Brown
+171,Meadows PLC,Healthcare,Startup,Germany,2025-03-20,Bob Smith
+172,"Alvarado, Miller and Patterson",Retail,Enterprise,United States,2024-05-09,Alice Johnson
+173,White-Green,Healthcare,Startup,Canada,2023-11-02,Carol Williams
+174,Lewis-Murphy,Technology,Mid-Market,Germany,2023-04-29,David Brown
+175,Ramirez-Bean,Finance,Startup,Germany,2024-07-09,Henry Wilson
+176,King-Miller,Technology,Mid-Market,Brazil,2023-09-09,Carol Williams
+177,Curry Inc,Manufacturing,Enterprise,United States,2022-10-21,Grace Chen
+178,Walker-Jones,Finance,Startup,Netherlands,2025-01-25,Henry Wilson
+179,"Williams, Johnson and Wright",Healthcare,Startup,United States,2023-01-01,Eva Martinez
+180,Howell and Sons,Education,Startup,United States,2022-05-22,Alice Johnson
+181,Wells Inc,Retail,Mid-Market,Brazil,2025-08-15,David Brown
+182,"Gould, Marshall and Scott",Healthcare,SMB,Germany,2024-11-02,Carol Williams
+183,Jackson-Lawson,Manufacturing,SMB,United States,2024-11-24,Henry Wilson
+184,"Higgins, Strickland and Martin",Healthcare,Startup,Brazil,2022-07-01,Frank Lee
+185,Rodriguez-Johnson,Technology,Startup,Canada,2025-03-20,Frank Lee
+186,Johnston-Odonnell,Manufacturing,Mid-Market,United States,2024-08-14,Henry Wilson
+187,Sanders-Espinoza,Technology,Mid-Market,India,2025-10-03,Henry Wilson
+188,Vargas Ltd,Technology,Enterprise,Brazil,2025-09-29,Grace Chen
+189,Garcia LLC,Education,Startup,France,2025-10-03,Alice Johnson
+190,"Burke, Martinez and Riggs",Technology,Startup,France,2023-09-22,Eva Martinez
+191,Reed Group,Education,Enterprise,United States,2024-10-10,David Brown
+192,"Wood, Hunter and Peterson",Finance,Enterprise,United States,2024-06-10,David Brown
+193,Short-Garcia,Finance,SMB,Australia,2024-12-14,Grace Chen
+194,Reid-Poole,Technology,Startup,Netherlands,2023-01-21,Bob Smith
+195,"Hernandez, Thompson and Boyd",Education,Startup,United Kingdom,2022-12-12,Grace Chen
+196,"Nelson, Morton and Medina",Retail,Mid-Market,Germany,2024-10-13,Henry Wilson
+197,Marshall-Petersen,Manufacturing,Startup,Australia,2024-11-11,David Brown
+198,"Adams, Christian and Rivas",Manufacturing,Mid-Market,United States,2024-05-08,Frank Lee
+199,Ramirez Group,Manufacturing,Startup,United States,2024-08-29,David Brown
+200,Christensen PLC,Manufacturing,Mid-Market,United States,2025-10-04,David Brown

@@ -42,42 +42,6 @@ Or add it to a `.env` file in the project root:
 ANTHROPIC_API_KEY=your-key-here
 ```
 
-### 3. Generate the data
-
-`setup_db.py` creates both the SQLite database and the CSV files in `examples/data/`.
-Run it once from the **project root**:
-
-```bash
-python examples/setup_db.py
-```
-
-Expected output:
-
-```
-Creating CloudMetrics database...
-
-  plans:            4 rows
-  customers:        200 rows
-  subscriptions:    282 rows
-  invoices:        1831 rows
-  support_tickets:  709 rows
-
-Foreign key integrity: OK
-
-Total rows generated: 3026
-Database setup complete!
-
-Exporting CSV files...
-  customers.csv       -> examples/data/customers.csv
-  plans.csv           -> examples/data/plans.csv
-  subscriptions.csv   -> examples/data/subscriptions.csv
-  invoices.csv        -> examples/data/invoices.csv
-  support_tickets.csv -> examples/data/support_tickets.csv
-CSV export complete!
-```
-
-> **Note:** `setup_db.py` and `examples/data/` are git-ignored — the data lives only on your machine.
-
 ---
 
 ## SQLite Examples
@@ -215,15 +179,9 @@ You> Now show only annual billing
 
 ```
 examples/
-  setup_db.py                  ← data generator (git-ignored)
-  data/                        ← generated files (git-ignored)
-    cloudmetrics.db
-    customers.csv
-    plans.csv
-    subscriptions.csv
-    invoices.csv
-    support_tickets.csv
   sqlite/
+    data/
+      cloudmetrics.db          ← SQLite database
     quickstart.py              ← minimal SQLite example
     cloudmetrics/
       app.py                   ← interactive CLI (SQLite)
@@ -234,6 +192,12 @@ examples/
         query_patterns.sql     ← example SQL patterns
         learnings.json         ← auto-saved corrections
   csv/
+    data/
+      customers.csv
+      plans.csv
+      subscriptions.csv
+      invoices.csv
+      support_tickets.csv
     quickstart.py              ← minimal CSV example
     cloudmetrics/
       app.py                   ← interactive CLI (CSV)
@@ -247,7 +211,6 @@ examples/
 
 | | SQLite | CSV |
 |-|--------|-----|
-| **Setup** | Run `setup_db.py` once | Run `setup_db.py` once |
 | **Schema quality** | Hand-crafted JSON with descriptions | Auto-inferred from column types |
 | **Business rules** | `business_rules.json` provides metric hints | Not included (add via `PandasSchemaProvider`) |
 | **Data persistence** | Rows survive restarts | Reloaded from CSV on each run |

@@ -1,0 +1,5 @@
+plan_id,plan_name,monthly_price,max_users,features
+1,Starter,29.0,5,"task_mgmt,basic_reports"
+2,Professional,79.0,20,"task_mgmt,advanced_reports,integrations"
+3,Business,149.0,50,"task_mgmt,advanced_reports,integrations,api_access,sso"
+4,Enterprise,299.0,200,"task_mgmt,advanced_reports,integrations,api_access,sso,custom_branding,dedicated_support"

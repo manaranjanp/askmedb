@@ -23,8 +23,8 @@ load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
 from askmedb import AskMeDBEngine, AskMeDBConfig, PandasConnector, PandasSchemaProvider
 
-# Path to the generated CSV files
-DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
+# Path to the CSV files bundled with this example
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 
 # Load all five CSV files into a shared in-memory SQLite database
 db = PandasConnector({

@@ -34,7 +34,7 @@ console = Console()
 
 # Paths
 EXAMPLE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(EXAMPLE_DIR, "..", "..", "data")
+DATA_DIR = os.path.join(EXAMPLE_DIR, "..", "data")
 
 # Inter-table relationships — tells the LLM how to JOIN the CSV-backed tables
 RELATIONSHIPS = [

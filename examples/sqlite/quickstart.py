@@ -19,8 +19,8 @@ load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
 from askmedb import AskMeDBEngine, AskMeDBConfig, SQLiteConnector, AutoSchemaProvider
 
-# Path to the generated database
-DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
+# Path to the database bundled with this example
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 db = SQLiteConnector(os.path.join(DATA_DIR, "cloudmetrics.db"))
 
 # Auto-detect schema from the database

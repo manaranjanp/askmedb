@@ -32,8 +32,7 @@ console = Console()
 
 # Paths relative to this example
 EXAMPLE_DIR = os.path.dirname(os.path.abspath(__file__))
-EXAMPLES_ROOT = os.path.join(EXAMPLE_DIR, "..", "..")
-DB_PATH = os.path.join(EXAMPLES_ROOT, "data", "cloudmetrics.db")
+DB_PATH = os.path.join(EXAMPLE_DIR, "..", "data", "cloudmetrics.db")
 KNOWLEDGE_DIR = os.path.join(EXAMPLE_DIR, "knowledge")
 
 

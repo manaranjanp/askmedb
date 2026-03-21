@@ -1,0 +1,710 @@
+ticket_id,customer_id,created_at,resolved_at,priority,category,status,subject
+1,1,2025-07-06 15:58:00,,high,billing,in_progress,Question about pricing for annual plan
+2,1,2025-06-08 10:52:00,2025-06-08 19:47:27,critical,technical,resolved,Dashboard loading slowly
+3,3,2024-03-12 12:08:00,2024-03-14 19:10:07,critical,technical,resolved,SSO login not working with Okta
+4,3,2023-03-01 11:06:00,2023-03-02 05:38:38,medium,billing,resolved,Invoice discrepancy for May
+5,3,2022-12-25 09:50:00,2022-12-25 16:46:34,medium,billing,resolved,Invoice discrepancy for March
+6,3,2024-06-24 17:22:00,2024-06-26 18:20:46,high,technical,resolved,Cannot export report to PDF
+7,4,2025-09-07 08:33:00,2025-09-13 11:17:20,low,technical,resolved,Dashboard loading slowly
+8,4,2025-07-12 15:23:00,2025-07-18 10:16:38,low,onboarding,resolved,Training session request for our team
+9,5,2025-09-27 09:33:00,2025-09-28 22:13:38,high,billing,closed,Refund request for double charge
+10,5,2025-08-17 12:29:00,,medium,feature_request,in_progress,Support for custom fields in tasks
+11,5,2025-08-28 12:54:00,,high,technical,in_progress,API timeout errors on bulk requests
+12,5,2025-02-07 18:31:00,2025-02-09 17:13:11,medium,onboarding,closed,Training session request for our team
+13,6,2023-07-19 10:04:00,2023-07-23 03:15:13,low,technical,resolved,SSO login not working with Okta
+14,8,2024-05-13 18:25:00,,medium,technical,in_progress,Data sync delay with Salesforce integration
+15,8,2023-08-29 15:06:00,2023-09-13 21:38:44,medium,billing,closed,Invoice discrepancy for March
+16,8,2024-12-23 17:43:00,2024-12-28 21:18:04,medium,technical,closed,SSO login not working with Okta
+17,8,2024-06-24 18:31:00,2024-06-30 03:39:48,low,technical,resolved,SSO login not working with Okta
+18,9,2025-04-13 15:29:00,2025-04-14 03:31:12,low,billing,closed,Refund request for double charge
+19,9,2025-10-29 09:36:00,2025-10-31 03:32:43,medium,onboarding,resolved,Help importing existing project data
+20,10,2025-10-30 12:31:00,2025-11-02 03:14:50,medium,feature_request,resolved,Add Gantt chart view for projects
+21,10,2025-10-19 10:53:00,2025-10-24 02:20:45,high,technical,closed,Cannot export report to PDF
+22,10,2025-10-29 13:26:00,2025-11-01 03:12:21,medium,technical,resolved,API timeout errors on bulk requests
+23,10,2025-10-28 10:01:00,2025-10-29 11:11:35,low,feature_request,closed,Dark mode for the web interface
+24,10,2025-11-09 15:37:00,2025-11-10 15:14:34,medium,billing,closed,Invoice discrepancy for December
+25,11,2025-08-16 18:21:00,,low,billing,open,Refund request for double charge
+26,11,2025-01-09 16:13:00,,low,technical,in_progress,Dashboard loading slowly
+27,12,2025-03-24 17:06:00,2025-03-26 05:26:37,low,feature_request,closed,Add Gantt chart view for projects
+28,13,2024-02-18 14:42:00,2024-02-20 15:42:46,low,feature_request,resolved,Add Gantt chart view for projects
+29,13,2025-04-06 16:55:00,2025-04-07 03:56:41,medium,billing,closed,Need updated billing address
+30,13,2025-01-17 08:33:00,2025-01-25 17:30:03,medium,technical,closed,SSO login not working with Okta
+31,13,2025-09-13 09:40:00,2025-09-15 08:03:01,medium,technical,resolved,SSO login not working with Okta
+32,13,2023-08-11 10:12:00,2023-08-11 12:03:31,high,billing,closed,Invoice discrepancy for April
+33,14,2025-04-10 12:08:00,2025-04-12 06:25:23,high,billing,resolved,Refund request for double charge
+34,15,2025-08-01 17:19:00,2025-08-02 10:01:41,critical,bug,resolved,File attachments lost after page refresh
+35,15,2025-06-17 11:07:00,2025-06-20 03:55:29,medium,feature_request,closed,Mobile app notifications for deadlines
+36,15,2025-07-12 17:07:00,2025-07-23 22:30:16,medium,onboarding,resolved,Training session request for our team
+37,15,2025-06-18 09:11:00,2025-06-20 01:16:27,low,technical,resolved,API timeout errors on bulk requests
+38,15,2025-08-29 15:43:00,2025-08-30 02:05:22,low,technical,closed,API timeout errors on bulk requests
+39,15,2025-10-25 17:02:00,,medium,onboarding,open,Migration assistance from Asana
+40,15,2025-08-19 12:40:00,2025-08-23 06:58:56,medium,bug,closed,Calendar view shows incorrect dates
+41,15,2025-06-05 11:19:00,,high,technical,in_progress,SSO login not working with Okta
+42,15,2025-07-22 09:52:00,2025-07-26 13:00:11,medium,onboarding,closed,Need help setting up team workspace
+43,16,2025-06-21 12:32:00,2025-06-23 01:55:53,medium,billing,resolved,Invoice discrepancy for November
+44,16,2025-04-23 10:40:00,2025-04-24 02:27:07,medium,technical,resolved,Cannot export report to PDF
+45,16,2024-03-18 16:45:00,2024-03-27 20:51:28,high,bug,closed,File attachments lost after page refresh
+46,16,2025-07-28 10:16:00,2025-07-29 08:16:09,medium,billing,closed,Unable to update payment method
+47,16,2024-07-27 17:14:00,2024-07-29 11:43:01,low,billing,resolved,Refund request for double charge
+48,17,2023-11-12 14:39:00,2023-11-12 22:53:45,low,technical,closed,SSO login not working with Okta
+49,17,2024-05-09 11:12:00,2024-05-12 04:50:25,high,bug,closed,Email notifications sent to wrong recipients
+50,17,2024-04-30 12:46:00,2024-05-01 02:50:23,medium,onboarding,closed,How to configure user roles and permissions
+51,18,2025-09-30 11:23:00,2025-10-01 09:14:42,medium,feature_request,closed,Support for custom fields in tasks
+52,18,2025-09-22 14:47:00,2025-09-23 21:26:15,low,feature_request,resolved,Add Gantt chart view for projects
+53,18,2025-10-07 17:24:00,2025-10-09 09:18:41,medium,technical,closed,API timeout errors on bulk requests
+54,18,2025-08-20 09:20:00,2025-08-21 16:48:24,medium,onboarding,closed,Migration assistance from Asana
+55,18,2025-09-09 12:39:00,2025-09-10 17:40:18,critical,onboarding,closed,How to configure user roles and permissions
+56,18,2025-10-27 18:51:00,2025-10-28 06:43:07,low,technical,resolved,SSO login not working with Okta
+57,18,2025-08-18 15:02:00,2025-08-19 21:33:08,critical,technical,resolved,Cannot export report to PDF
+58,18,2025-08-15 11:55:00,2025-08-20 09:29:12,high,technical,resolved,Data sync delay with Salesforce integration
+59,20,2025-05-23 09:15:00,,medium,onboarding,open,Migration assistance from Asana
+60,20,2025-10-05 09:25:00,2025-10-06 09:39:47,critical,technical,closed,SSO login not working with Okta
+61,20,2025-09-08 12:38:00,2025-09-10 13:14:37,medium,onboarding,resolved,How to configure user roles and permissions
+62,21,2025-10-09 09:35:00,2025-10-12 05:45:40,medium,bug,closed,Calendar view shows incorrect dates
+63,21,2025-10-15 09:19:00,2025-10-15 21:05:27,medium,technical,resolved,API timeout errors on bulk requests
+64,21,2025-10-12 13:32:00,2025-10-13 01:47:29,medium,billing,resolved,Refund request for double charge
+65,21,2025-11-14 10:27:00,,low,feature_request,in_progress,Bulk task import from CSV
+66,22,2025-09-21 16:05:00,,medium,technical,in_progress,API timeout errors on bulk requests
+67,22,2025-05-11 18:57:00,2025-05-13 13:58:41,low,technical,resolved,Data sync delay with Salesforce integration
+68,23,2025-10-20 18:46:00,2025-10-21 02:34:26,low,feature_request,resolved,Mobile app notifications for deadlines
+69,24,2025-08-26 10:53:00,,low,technical,in_progress,API timeout errors on bulk requests
+70,24,2025-07-25 15:48:00,2025-07-26 08:56:28,medium,onboarding,closed,Need help setting up team workspace
+71,24,2025-04-19 08:00:00,2025-04-20 13:31:17,low,technical,closed,API timeout errors on bulk requests
+72,25,2025-03-06 18:44:00,2025-03-07 10:00:41,high,onboarding,resolved,How to configure user roles and permissions
+73,25,2023-10-30 15:41:00,2023-11-04 21:06:40,low,billing,resolved,Question about pricing for annual plan
+74,25,2023-08-28 15:27:00,2023-08-29 14:48:45,low,billing,resolved,Unable to update payment method
+75,25,2024-11-02 14:03:00,2024-11-03 17:09:19,low,technical,closed,Data sync delay with Salesforce integration
+76,25,2025-04-16 16:18:00,2025-04-17 12:35:40,medium,billing,resolved,Refund request for double charge
+77,27,2025-06-10 14:56:00,,medium,technical,in_progress,SSO login not working with Okta
+78,27,2024-11-05 08:10:00,2024-11-06 02:32:31,low,technical,closed,Data sync delay with Salesforce integration
+79,27,2025-06-19 15:08:00,2025-06-19 18:03:42,high,bug,closed,File attachments lost after page refresh
+80,28,2025-10-29 11:18:00,2025-10-30 04:20:31,low,onboarding,closed,Need help setting up team workspace
+81,28,2025-09-26 12:15:00,2025-09-30 07:44:56,low,technical,resolved,Dashboard loading slowly
+82,28,2025-05-31 09:21:00,2025-06-01 02:51:03,medium,technical,closed,API timeout errors on bulk requests
+83,28,2025-10-12 12:57:00,2025-10-16 06:06:04,medium,billing,closed,Refund request for double charge
+84,29,2025-10-24 09:52:00,2025-10-25 00:23:05,medium,feature_request,closed,Support for custom fields in tasks
+85,29,2025-10-03 15:48:00,2025-10-05 16:11:14,high,feature_request,resolved,Add Gantt chart view for projects
+86,29,2025-10-13 14:49:00,2025-10-14 09:55:23,low,onboarding,resolved,Migration assistance from Asana
+87,29,2025-10-30 14:23:00,2025-11-01 08:26:28,low,feature_request,resolved,Mobile app notifications for deadlines
+88,29,2025-11-12 14:57:00,2025-11-13 16:53:06,high,technical,resolved,Cannot export report to PDF
+89,29,2025-11-05 16:04:00,,medium,billing,open,Refund request for double charge
+90,29,2025-10-10 08:42:00,2025-10-15 22:30:10,low,bug,closed,Calendar view shows incorrect dates
+91,29,2025-09-15 12:57:00,2025-09-16 18:26:03,critical,feature_request,closed,Dark mode for the web interface
+92,30,2025-10-21 11:56:00,2025-10-27 14:12:57,low,technical,resolved,Data sync delay with Salesforce integration
+93,30,2025-10-06 11:05:00,2025-10-08 05:06:43,medium,feature_request,closed,Support for custom fields in tasks
+94,30,2025-10-24 16:07:00,2025-10-26 01:43:19,high,onboarding,resolved,Training session request for our team
+95,31,2025-11-05 11:51:00,2025-11-08 11:28:10,medium,onboarding,closed,Migration assistance from Asana
+96,31,2025-11-13 18:08:00,2025-11-14 10:27:38,medium,onboarding,closed,Training session request for our team
+97,31,2025-10-30 14:53:00,2025-10-31 05:38:27,low,technical,resolved,API timeout errors on bulk requests
+98,32,2025-02-17 14:37:00,,high,feature_request,in_progress,Mobile app notifications for deadlines
+99,32,2025-08-03 15:46:00,2025-08-03 19:22:58,high,bug,resolved,Search results not returning recent items
+100,32,2023-12-27 11:29:00,,high,technical,in_progress,Cannot export report to PDF
+101,33,2024-04-08 17:18:00,2024-04-09 22:47:56,low,billing,resolved,Need updated billing address
+102,33,2022-06-21 12:56:00,2022-06-22 20:32:07,low,technical,closed,API timeout errors on bulk requests
+103,33,2024-11-11 17:08:00,2024-11-12 21:28:04,medium,onboarding,closed,Need help setting up team workspace
+104,33,2025-09-11 14:24:00,2025-09-15 22:15:17,medium,technical,resolved,Cannot export report to PDF
+105,34,2025-09-18 16:41:00,2025-09-20 22:16:03,medium,billing,resolved,Need updated billing address
+106,34,2025-08-18 15:32:00,,low,bug,open,Task status not updating after drag-and-drop
+107,34,2025-08-22 11:53:00,2025-08-27 18:15:42,high,onboarding,closed,Help importing existing project data
+108,36,2025-07-20 14:11:00,2025-07-21 10:52:12,high,technical,resolved,Data sync delay with Salesforce integration
+109,36,2025-07-06 10:11:00,2025-07-07 13:31:42,low,technical,closed,Dashboard loading slowly
+110,36,2025-10-23 08:19:00,2025-10-24 04:44:55,medium,technical,resolved,Cannot export report to PDF
+111,36,2025-06-24 17:37:00,2025-06-28 16:43:16,medium,technical,closed,SSO login not working with Okta
+112,37,2025-03-13 18:14:00,2025-03-15 09:16:16,low,bug,resolved,Calendar view shows incorrect dates
+113,38,2024-12-29 15:05:00,2024-12-29 23:47:51,medium,onboarding,resolved,How to configure user roles and permissions
+114,38,2025-02-01 16:28:00,,high,billing,in_progress,Unable to update payment method
+115,38,2023-01-19 15:17:00,2023-01-20 07:50:33,high,feature_request,closed,Add Gantt chart view for projects
+116,38,2025-09-15 17:04:00,2025-09-16 01:17:00,medium,technical,closed,SSO login not working with Okta
+117,38,2025-07-17 13:56:00,2025-07-20 15:03:12,medium,onboarding,resolved,Migration assistance from Asana
+118,39,2024-05-02 08:58:00,2024-05-03 06:58:31,medium,onboarding,resolved,Training session request for our team
+119,39,2025-05-14 15:48:00,,low,technical,open,Data sync delay with Salesforce integration
+120,39,2025-09-30 18:28:00,2025-10-04 01:54:22,medium,onboarding,resolved,Need help setting up team workspace
+121,39,2024-09-16 13:59:00,2024-09-22 02:38:43,low,billing,closed,Unable to update payment method
+122,39,2025-09-13 17:40:00,2025-09-15 02:14:04,high,technical,closed,SSO login not working with Okta
+123,40,2025-10-12 17:13:00,2025-10-13 06:21:59,critical,billing,closed,Unable to update payment method
+124,40,2025-08-07 18:47:00,2025-08-08 06:52:15,medium,feature_request,resolved,Bulk task import from CSV
+125,40,2025-10-22 12:12:00,,low,onboarding,in_progress,Help importing existing project data
+126,40,2025-07-14 14:41:00,,medium,onboarding,in_progress,Training session request for our team
+127,40,2025-08-18 09:43:00,2025-08-19 21:38:14,medium,feature_request,closed,Support for custom fields in tasks
+128,40,2025-07-24 17:51:00,,high,billing,in_progress,Invoice discrepancy for April
+129,40,2025-08-08 10:21:00,2025-08-09 14:02:11,medium,technical,closed,API timeout errors on bulk requests
+130,40,2025-07-27 15:15:00,2025-07-29 01:51:45,high,bug,resolved,Search results not returning recent items
+131,40,2025-09-08 09:40:00,,low,technical,open,SSO login not working with Okta
+132,40,2025-11-04 09:50:00,2025-11-04 23:08:54,critical,billing,resolved,Invoice discrepancy for November
+133,41,2024-10-11 14:06:00,,medium,feature_request,open,Mobile app notifications for deadlines
+134,41,2025-03-29 14:56:00,2025-03-31 12:03:54,low,feature_request,closed,Bulk task import from CSV
+135,41,2023-03-31 09:00:00,2023-03-31 18:39:51,low,feature_request,closed,Dark mode for the web interface
+136,41,2025-05-03 17:28:00,2025-05-04 00:35:06,low,billing,closed,Question about pricing for annual plan
+137,42,2025-10-14 16:49:00,2025-10-16 05:00:00,medium,billing,resolved,Invoice discrepancy for April
+138,42,2024-09-22 16:54:00,,medium,billing,open,Invoice discrepancy for June
+139,42,2023-11-01 18:30:00,2023-11-02 11:09:29,critical,onboarding,closed,Help importing existing project data
+140,42,2024-06-23 13:10:00,,high,billing,in_progress,Unable to update payment method
+141,43,2024-08-08 17:13:00,,high,technical,in_progress,SSO login not working with Okta
+142,44,2024-12-04 10:52:00,2024-12-05 08:04:02,medium,bug,closed,Task status not updating after drag-and-drop
+143,45,2023-11-12 12:46:00,2023-11-13 06:21:03,high,billing,closed,Invoice discrepancy for January
+144,45,2025-07-31 18:08:00,2025-08-04 19:19:03,high,technical,resolved,API timeout errors on bulk requests
+145,45,2025-02-06 10:33:00,,critical,bug,open,Task status not updating after drag-and-drop
+146,45,2025-09-21 10:50:00,2025-09-22 05:59:15,medium,billing,resolved,Invoice discrepancy for October
+147,46,2025-08-18 11:54:00,2025-08-19 07:08:23,high,feature_request,closed,Bulk task import from CSV
+148,46,2025-05-02 16:24:00,2025-05-04 01:21:57,medium,onboarding,closed,Migration assistance from Asana
+149,46,2025-09-14 15:45:00,2025-09-18 22:25:32,medium,bug,resolved,Email notifications sent to wrong recipients
+150,46,2025-11-05 11:28:00,2025-11-12 00:23:20,medium,bug,closed,Calendar view shows incorrect dates
+151,46,2025-04-11 10:48:00,2025-04-13 06:09:08,medium,billing,closed,Refund request for double charge
+152,47,2025-06-22 13:17:00,2025-06-24 14:08:56,low,technical,resolved,API timeout errors on bulk requests
+153,48,2025-09-29 16:41:00,2025-09-30 04:35:30,low,billing,resolved,Question about pricing for annual plan
+154,48,2025-06-27 12:19:00,2025-06-27 20:59:06,high,onboarding,resolved,Help importing existing project data
+155,48,2025-01-14 12:18:00,2025-01-15 10:50:08,high,onboarding,resolved,Training session request for our team
+156,48,2025-09-29 10:55:00,2025-09-30 17:09:52,low,technical,closed,SSO login not working with Okta
+157,49,2025-01-08 14:49:00,2025-01-09 00:05:48,medium,bug,closed,Calendar view shows incorrect dates
+158,49,2025-01-27 14:27:00,2025-01-29 02:53:31,medium,onboarding,resolved,Help importing existing project data
+159,49,2024-12-14 10:21:00,,high,feature_request,in_progress,Mobile app notifications for deadlines
+160,49,2025-04-22 09:34:00,2025-04-23 07:39:56,medium,technical,resolved,Cannot export report to PDF
+161,50,2025-11-06 08:11:00,2025-11-07 00:26:09,critical,billing,resolved,Refund request for double charge
+162,51,2024-01-17 14:25:00,2024-01-18 22:13:53,low,billing,resolved,Unable to update payment method
+163,51,2023-12-31 14:52:00,2024-01-09 04:33:04,medium,onboarding,closed,Migration assistance from Asana
+164,51,2023-02-24 10:28:00,2023-02-26 16:45:59,medium,billing,closed,Refund request for double charge
+165,52,2025-06-17 08:47:00,,medium,billing,in_progress,Question about pricing for annual plan
+166,52,2025-09-01 10:26:00,2025-09-02 01:08:41,high,technical,resolved,Data sync delay with Salesforce integration
+167,52,2024-06-08 08:15:00,,low,bug,in_progress,Task status not updating after drag-and-drop
+168,52,2023-06-13 15:26:00,,medium,bug,open,Task status not updating after drag-and-drop
+169,53,2025-03-05 10:16:00,2025-03-08 07:17:17,low,technical,closed,SSO login not working with Okta
+170,53,2025-08-03 14:54:00,2025-08-05 17:04:11,low,billing,closed,Refund request for double charge
+171,53,2024-08-21 09:35:00,2024-08-22 16:28:29,high,onboarding,resolved,How to configure user roles and permissions
+172,53,2025-05-24 09:11:00,2025-05-26 08:37:27,medium,technical,closed,Dashboard loading slowly
+173,54,2024-03-15 18:34:00,2024-03-21 21:18:17,medium,technical,resolved,SSO login not working with Okta
+174,55,2025-01-05 08:49:00,2025-01-08 16:22:40,low,technical,resolved,SSO login not working with Okta
+175,55,2025-01-10 13:52:00,2025-01-13 07:18:56,medium,billing,resolved,Invoice discrepancy for July
+176,55,2025-09-22 09:52:00,2025-09-22 20:55:49,medium,technical,closed,Cannot export report to PDF
+177,56,2024-04-27 09:22:00,2024-04-27 17:30:04,low,technical,closed,Data sync delay with Salesforce integration
+178,56,2023-11-05 09:56:00,2023-11-08 06:21:08,medium,technical,resolved,Data sync delay with Salesforce integration
+179,56,2025-06-29 14:43:00,2025-06-29 17:54:52,high,bug,closed,File attachments lost after page refresh
+180,56,2024-08-30 08:38:00,2024-09-02 12:59:17,medium,bug,resolved,Email notifications sent to wrong recipients
+181,59,2025-08-05 17:05:00,2025-08-06 08:42:32,medium,billing,resolved,Unable to update payment method
+182,59,2025-11-04 15:47:00,2025-11-07 21:41:19,low,bug,closed,Task status not updating after drag-and-drop
+183,60,2025-08-28 13:21:00,,medium,technical,open,Dashboard loading slowly
+184,60,2025-09-23 14:33:00,2025-09-23 22:22:22,medium,technical,resolved,Dashboard loading slowly
+185,60,2023-07-16 10:37:00,2023-07-17 20:28:31,high,feature_request,closed,Dark mode for the web interface
+186,60,2025-04-21 11:15:00,2025-04-22 04:22:33,medium,technical,closed,SSO login not working with Okta
+187,60,2023-10-02 15:28:00,2023-10-03 20:33:13,medium,technical,closed,Cannot export report to PDF
+188,60,2024-12-13 16:09:00,2024-12-14 12:57:27,low,feature_request,closed,Add Gantt chart view for projects
+189,60,2023-08-31 15:12:00,2023-09-02 00:27:37,low,billing,closed,Refund request for double charge
+190,61,2024-11-26 14:31:00,2024-11-29 06:45:02,critical,technical,closed,API timeout errors on bulk requests
+191,61,2023-02-19 18:24:00,2023-02-22 12:42:22,high,bug,resolved,Calendar view shows incorrect dates
+192,61,2025-05-13 18:09:00,,medium,technical,open,Cannot export report to PDF
+193,61,2023-05-01 18:45:00,2023-05-07 12:57:53,medium,bug,resolved,File attachments lost after page refresh
+194,61,2025-03-16 12:44:00,2025-03-17 13:29:54,critical,technical,closed,Cannot export report to PDF
+195,61,2024-09-28 10:17:00,2024-09-29 23:46:07,critical,onboarding,closed,How to configure user roles and permissions
+196,61,2024-11-29 10:45:00,2024-11-29 17:49:01,medium,billing,resolved,Unable to update payment method
+197,61,2023-02-21 10:51:00,,low,onboarding,in_progress,Training session request for our team
+198,61,2023-06-04 18:10:00,2023-06-05 07:51:00,low,billing,resolved,Invoice discrepancy for January
+199,61,2024-04-20 08:42:00,2024-04-21 19:07:06,critical,feature_request,closed,Mobile app notifications for deadlines
+200,62,2025-10-30 13:38:00,,medium,technical,in_progress,Dashboard loading slowly
+201,63,2025-08-12 13:55:00,2025-08-17 08:07:58,low,technical,resolved,Cannot export report to PDF
+202,63,2025-08-20 16:17:00,2025-08-21 17:44:39,high,bug,closed,Search results not returning recent items
+203,64,2025-10-20 08:40:00,2025-10-21 10:25:22,high,bug,closed,File attachments lost after page refresh
+204,65,2025-10-15 13:27:00,2025-10-18 23:13:21,critical,bug,resolved,File attachments lost after page refresh
+205,65,2025-10-22 10:55:00,,medium,feature_request,open,Support for custom fields in tasks
+206,66,2025-11-11 09:19:00,,critical,onboarding,in_progress,How to configure user roles and permissions
+207,66,2025-05-21 15:42:00,2025-05-22 12:08:03,low,feature_request,closed,Support for custom fields in tasks
+208,67,2025-08-12 09:42:00,2025-08-16 17:40:54,medium,billing,closed,Refund request for double charge
+209,67,2025-10-25 14:41:00,,medium,feature_request,open,Support for custom fields in tasks
+210,67,2024-01-22 12:05:00,2024-01-24 02:17:50,medium,billing,closed,Refund request for double charge
+211,68,2025-08-14 08:19:00,2025-08-18 23:21:46,medium,billing,closed,Unable to update payment method
+212,68,2025-05-31 17:37:00,2025-06-02 00:12:57,medium,technical,closed,Dashboard loading slowly
+213,68,2025-06-17 15:09:00,2025-06-25 11:50:36,low,feature_request,closed,Dark mode for the web interface
+214,68,2025-06-26 09:17:00,2025-06-30 14:26:11,high,bug,closed,Task status not updating after drag-and-drop
+215,68,2023-12-25 11:54:00,2023-12-25 23:12:30,high,onboarding,closed,Migration assistance from Asana
+216,68,2024-01-01 08:35:00,2024-01-02 06:10:39,medium,technical,resolved,Data sync delay with Salesforce integration
+217,69,2024-02-07 16:25:00,2024-02-11 17:05:01,medium,billing,resolved,Need updated billing address
+218,69,2024-10-17 15:18:00,2024-10-17 22:42:39,low,bug,closed,Search results not returning recent items
+219,69,2025-06-16 10:24:00,2025-06-19 00:46:56,medium,bug,resolved,File attachments lost after page refresh
+220,70,2025-10-05 09:15:00,2025-10-05 12:54:02,medium,technical,resolved,SSO login not working with Okta
+221,70,2025-10-27 12:40:00,2025-10-27 20:49:06,medium,onboarding,resolved,Need help setting up team workspace
+222,70,2025-11-08 17:30:00,2025-11-09 04:57:56,high,technical,closed,API timeout errors on bulk requests
+223,70,2025-10-11 09:20:00,2025-10-13 07:31:06,critical,billing,closed,Invoice discrepancy for September
+224,70,2025-11-09 16:45:00,2025-11-10 00:21:53,medium,onboarding,resolved,How to configure user roles and permissions
+225,70,2025-10-14 08:35:00,2025-10-16 08:33:52,medium,technical,resolved,Data sync delay with Salesforce integration
+226,70,2025-10-05 09:07:00,2025-10-05 12:05:25,medium,feature_request,resolved,Support for custom fields in tasks
+227,71,2025-10-16 18:34:00,2025-11-08 01:04:34,medium,technical,closed,Data sync delay with Salesforce integration
+228,71,2025-11-13 11:44:00,2025-11-14 03:09:22,high,billing,resolved,Unable to update payment method
+229,71,2025-10-06 17:22:00,2025-10-08 06:32:34,high,technical,resolved,SSO login not working with Okta
+230,71,2025-09-19 12:43:00,2025-09-20 03:00:54,medium,technical,resolved,SSO login not working with Okta
+231,71,2025-10-19 14:24:00,2025-10-21 02:35:31,medium,billing,resolved,Question about pricing for annual plan
+232,71,2025-10-13 10:55:00,2025-10-13 19:22:55,low,onboarding,closed,Help importing existing project data
+233,71,2025-09-21 16:22:00,2025-09-29 21:13:34,high,onboarding,resolved,Migration assistance from Asana
+234,71,2025-10-02 13:51:00,2025-10-06 15:18:41,critical,onboarding,closed,Help importing existing project data
+235,71,2025-10-12 08:43:00,2025-10-12 23:48:29,low,feature_request,resolved,Dark mode for the web interface
+236,72,2023-12-09 18:38:00,2023-12-10 15:18:06,medium,technical,closed,API timeout errors on bulk requests
+237,72,2025-06-17 11:19:00,2025-06-19 05:50:51,low,feature_request,resolved,Add Gantt chart view for projects
+238,72,2025-10-07 08:05:00,2025-10-08 09:28:44,medium,onboarding,resolved,Training session request for our team
+239,72,2025-06-05 18:43:00,2025-06-18 17:21:25,medium,bug,resolved,File attachments lost after page refresh
+240,72,2025-07-15 13:15:00,,medium,bug,open,Search results not returning recent items
+241,73,2025-07-28 11:11:00,2025-08-02 18:14:40,high,billing,closed,Unable to update payment method
+242,73,2024-12-29 13:58:00,,high,onboarding,open,Migration assistance from Asana
+243,73,2025-07-07 12:16:00,2025-07-08 04:45:25,high,technical,resolved,SSO login not working with Okta
+244,73,2025-07-09 08:22:00,2025-07-09 20:06:51,medium,billing,resolved,Refund request for double charge
+245,73,2024-11-06 09:27:00,2024-11-07 02:15:35,low,technical,closed,Cannot export report to PDF
+246,73,2025-10-04 12:14:00,2025-10-10 09:36:10,medium,technical,closed,Cannot export report to PDF
+247,73,2025-10-04 15:10:00,2025-10-05 04:10:48,high,billing,resolved,Refund request for double charge
+248,74,2024-06-12 08:10:00,,critical,onboarding,in_progress,Need help setting up team workspace
+249,74,2025-05-01 16:31:00,2025-05-03 03:02:33,high,onboarding,closed,How to configure user roles and permissions
+250,74,2023-03-12 08:08:00,2023-03-12 16:15:26,medium,billing,closed,Refund request for double charge
+251,75,2024-11-25 12:31:00,2024-11-27 18:13:47,medium,billing,closed,Invoice discrepancy for May
+252,75,2024-10-13 18:52:00,2024-10-15 12:45:04,medium,technical,resolved,Dashboard loading slowly
+253,75,2024-06-17 14:02:00,2024-06-21 08:50:20,low,technical,closed,Dashboard loading slowly
+254,76,2025-06-19 14:30:00,2025-06-20 02:04:31,medium,billing,closed,Refund request for double charge
+255,77,2024-01-26 08:03:00,2024-01-26 20:44:56,medium,onboarding,closed,How to configure user roles and permissions
+256,77,2025-05-02 13:21:00,2025-05-05 04:22:06,low,technical,closed,API timeout errors on bulk requests
+257,77,2024-12-20 17:33:00,2024-12-22 08:21:09,low,feature_request,resolved,Support for custom fields in tasks
+258,78,2025-03-14 08:37:00,2025-03-14 21:25:02,high,bug,resolved,Task status not updating after drag-and-drop
+259,78,2025-07-06 12:46:00,2025-07-07 05:31:23,high,technical,closed,Data sync delay with Salesforce integration
+260,78,2025-05-21 16:22:00,2025-05-21 20:44:38,medium,bug,resolved,Email notifications sent to wrong recipients
+261,78,2025-06-01 10:18:00,2025-06-06 09:40:33,medium,billing,closed,Refund request for double charge
+262,79,2024-01-31 10:28:00,2024-02-01 12:41:11,medium,onboarding,resolved,Need help setting up team workspace
+263,80,2025-01-11 17:44:00,2025-01-13 03:38:02,critical,billing,closed,Question about pricing for annual plan
+264,80,2025-04-01 12:35:00,2025-04-02 00:52:38,low,billing,closed,Unable to update payment method
+265,80,2024-07-24 18:15:00,2024-07-27 12:33:11,low,bug,closed,Calendar view shows incorrect dates
+266,81,2025-05-09 10:26:00,,low,bug,open,Calendar view shows incorrect dates
+267,81,2025-05-17 10:16:00,,medium,bug,open,File attachments lost after page refresh
+268,81,2025-05-05 18:40:00,2025-05-06 17:20:32,low,feature_request,closed,Support for custom fields in tasks
+269,81,2025-04-22 14:23:00,2025-04-23 13:04:46,medium,billing,resolved,Unable to update payment method
+270,81,2025-09-02 10:41:00,,medium,technical,in_progress,Data sync delay with Salesforce integration
+271,81,2025-01-29 10:04:00,2025-01-30 04:07:11,medium,technical,resolved,Cannot export report to PDF
+272,81,2025-02-14 14:24:00,2025-02-16 09:18:50,high,billing,resolved,Invoice discrepancy for May
+273,81,2025-03-08 18:38:00,,critical,billing,open,Need updated billing address
+274,82,2025-08-19 09:12:00,,high,billing,open,Question about pricing for annual plan
+275,82,2025-09-24 10:15:00,2025-09-24 22:49:02,medium,billing,closed,Unable to update payment method
+276,83,2024-05-30 14:09:00,,low,technical,in_progress,Cannot export report to PDF
+277,83,2023-09-09 09:14:00,2023-09-11 02:42:35,critical,billing,resolved,Invoice discrepancy for October
+278,83,2023-08-21 10:27:00,2023-08-21 15:54:18,medium,feature_request,closed,Bulk task import from CSV
+279,83,2024-03-10 09:17:00,,medium,bug,open,Task status not updating after drag-and-drop
+280,84,2024-10-19 13:09:00,2024-10-20 20:58:38,high,technical,closed,API timeout errors on bulk requests
+281,84,2024-08-22 13:08:00,2024-08-23 10:45:25,medium,billing,closed,Need updated billing address
+282,84,2025-04-28 10:51:00,2025-04-30 02:38:08,critical,bug,closed,Search results not returning recent items
+283,85,2025-04-28 14:33:00,2025-04-30 18:46:28,medium,feature_request,resolved,Support for custom fields in tasks
+284,85,2025-01-06 16:30:00,2025-01-06 22:29:48,critical,bug,resolved,Calendar view shows incorrect dates
+285,85,2024-09-16 16:59:00,2024-09-17 19:40:05,low,bug,closed,Calendar view shows incorrect dates
+286,85,2025-06-29 09:42:00,2025-06-30 02:21:12,medium,feature_request,resolved,Add Gantt chart view for projects
+287,85,2024-08-13 08:36:00,2024-08-14 15:46:36,medium,onboarding,closed,Training session request for our team
+288,86,2025-10-19 13:28:00,2025-10-20 22:46:18,medium,onboarding,closed,Training session request for our team
+289,87,2025-11-04 16:19:00,2025-11-12 04:54:38,medium,onboarding,resolved,How to configure user roles and permissions
+290,87,2022-12-13 11:25:00,2022-12-14 18:01:17,high,billing,closed,Refund request for double charge
+291,87,2022-12-10 13:41:00,2022-12-11 01:06:04,low,technical,closed,Cannot export report to PDF
+292,88,2025-05-26 10:34:00,2025-05-29 17:14:17,low,billing,resolved,Invoice discrepancy for April
+293,88,2025-05-19 09:36:00,2025-05-19 20:13:17,medium,feature_request,closed,Add Gantt chart view for projects
+294,89,2025-07-22 11:20:00,,high,onboarding,open,Migration assistance from Asana
+295,89,2025-07-23 09:32:00,2025-07-24 05:50:33,low,onboarding,resolved,Migration assistance from Asana
+296,89,2025-01-24 18:29:00,,medium,billing,open,Unable to update payment method
+297,89,2025-10-08 10:49:00,2025-10-10 02:10:24,critical,onboarding,closed,How to configure user roles and permissions
+298,91,2025-10-01 08:57:00,2025-10-09 20:09:23,medium,onboarding,closed,Need help setting up team workspace
+299,91,2025-07-19 12:35:00,,high,bug,in_progress,Task status not updating after drag-and-drop
+300,91,2025-09-01 10:59:00,2025-09-02 12:14:32,low,technical,closed,API timeout errors on bulk requests
+301,92,2024-06-25 15:41:00,,critical,bug,in_progress,Task status not updating after drag-and-drop
+302,92,2024-07-26 14:26:00,2024-07-26 22:01:16,critical,bug,closed,Calendar view shows incorrect dates
+303,92,2025-09-04 14:32:00,,high,technical,open,Data sync delay with Salesforce integration
+304,92,2023-12-04 11:44:00,,low,onboarding,in_progress,Training session request for our team
+305,92,2025-05-12 14:54:00,2025-05-12 23:52:28,medium,billing,closed,Invoice discrepancy for February
+306,92,2024-04-08 09:58:00,2024-04-09 13:36:38,medium,bug,closed,Search results not returning recent items
+307,92,2024-05-11 15:07:00,2024-05-12 19:48:49,low,technical,closed,Data sync delay with Salesforce integration
+308,93,2025-08-07 13:50:00,2025-08-09 16:49:08,medium,technical,resolved,Cannot export report to PDF
+309,93,2025-08-08 12:25:00,2025-08-09 16:12:32,high,billing,closed,Unable to update payment method
+310,93,2025-08-11 14:21:00,2025-08-17 13:18:42,low,bug,resolved,File attachments lost after page refresh
+311,93,2025-10-27 17:24:00,,medium,onboarding,open,Need help setting up team workspace
+312,93,2025-10-24 17:39:00,2025-11-07 12:06:40,medium,billing,closed,Invoice discrepancy for March
+313,93,2025-09-27 10:31:00,,low,bug,in_progress,Calendar view shows incorrect dates
+314,93,2025-10-31 08:28:00,2025-11-02 18:44:42,high,bug,resolved,Email notifications sent to wrong recipients
+315,93,2025-08-24 14:44:00,2025-08-26 00:45:24,low,feature_request,closed,Mobile app notifications for deadlines
+316,94,2025-09-07 13:22:00,,medium,onboarding,in_progress,Need help setting up team workspace
+317,94,2025-10-01 14:23:00,2025-10-01 23:18:14,medium,billing,closed,Question about pricing for annual plan
+318,94,2025-03-31 09:51:00,2025-04-04 17:22:46,low,onboarding,resolved,Training session request for our team
+319,95,2024-05-07 14:13:00,2024-05-08 02:35:16,medium,technical,resolved,API timeout errors on bulk requests
+320,95,2025-01-14 18:45:00,,medium,onboarding,open,Help importing existing project data
+321,95,2024-03-23 18:16:00,,critical,technical,open,Cannot export report to PDF
+322,96,2025-07-07 08:01:00,2025-07-12 18:38:54,medium,billing,closed,Unable to update payment method
+323,96,2025-10-17 11:35:00,2025-10-19 02:11:09,low,bug,closed,Email notifications sent to wrong recipients
+324,96,2025-09-18 16:10:00,2025-09-20 01:56:41,low,technical,closed,API timeout errors on bulk requests
+325,97,2024-02-12 09:01:00,2024-02-13 00:09:07,medium,technical,resolved,SSO login not working with Okta
+326,97,2025-08-16 13:11:00,2025-08-18 01:04:29,high,technical,closed,API timeout errors on bulk requests
+327,97,2023-12-31 12:05:00,2024-01-02 02:37:43,medium,bug,closed,Search results not returning recent items
+328,97,2024-02-26 10:18:00,2024-02-27 05:16:17,low,technical,resolved,SSO login not working with Okta
+329,97,2025-03-21 18:04:00,,medium,technical,in_progress,Dashboard loading slowly
+330,98,2024-11-27 08:57:00,2024-11-29 11:55:14,medium,billing,resolved,Need updated billing address
+331,98,2024-11-05 09:12:00,2024-11-07 19:49:48,medium,feature_request,closed,Add Gantt chart view for projects
+332,98,2024-07-13 13:08:00,,high,technical,in_progress,API timeout errors on bulk requests
+333,98,2024-10-08 09:22:00,2024-10-11 22:08:38,medium,onboarding,closed,How to configure user roles and permissions
+334,98,2024-09-24 11:43:00,,high,onboarding,open,Help importing existing project data
+335,99,2025-11-02 14:56:00,2025-11-03 14:18:22,medium,technical,closed,SSO login not working with Okta
+336,99,2025-08-25 13:57:00,2025-08-25 20:23:37,low,feature_request,closed,Dark mode for the web interface
+337,100,2025-11-02 16:22:00,2025-11-03 20:54:12,low,technical,resolved,Cannot export report to PDF
+338,100,2025-11-04 13:23:00,2025-11-08 20:59:31,medium,billing,resolved,Refund request for double charge
+339,100,2025-09-22 11:35:00,2025-09-22 22:33:45,low,billing,resolved,Need updated billing address
+340,100,2025-10-04 18:48:00,2025-10-05 01:59:41,high,technical,resolved,API timeout errors on bulk requests
+341,100,2025-08-27 09:28:00,2025-08-29 01:14:46,medium,billing,resolved,Refund request for double charge
+342,100,2025-08-28 14:02:00,2025-08-30 09:16:45,critical,bug,resolved,File attachments lost after page refresh
+343,100,2025-09-19 12:20:00,2025-09-20 02:49:14,medium,onboarding,closed,Migration assistance from Asana
+344,100,2025-10-09 15:54:00,2025-10-22 17:34:11,critical,feature_request,resolved,Support for custom fields in tasks
+345,101,2024-03-10 16:00:00,2024-03-13 01:22:57,high,bug,closed,Task status not updating after drag-and-drop
+346,101,2024-01-30 17:50:00,2024-01-31 04:17:42,low,onboarding,resolved,Migration assistance from Asana
+347,101,2025-04-08 17:56:00,2025-04-11 06:29:05,high,bug,resolved,Search results not returning recent items
+348,101,2025-01-04 15:17:00,2025-01-05 09:54:13,high,technical,resolved,API timeout errors on bulk requests
+349,101,2025-07-01 11:42:00,2025-07-01 19:31:44,high,feature_request,resolved,Add Gantt chart view for projects
+350,102,2024-12-28 15:52:00,2025-01-10 21:04:04,medium,technical,closed,API timeout errors on bulk requests
+351,102,2025-08-28 18:09:00,2025-09-02 04:09:06,low,onboarding,closed,Help importing existing project data
+352,102,2024-12-14 14:12:00,2024-12-23 05:04:49,medium,billing,resolved,Unable to update payment method
+353,102,2024-09-07 09:15:00,2024-09-08 15:36:34,medium,billing,closed,Question about pricing for annual plan
+354,102,2024-08-15 13:27:00,2024-08-16 09:19:28,medium,technical,closed,Cannot export report to PDF
+355,102,2025-06-16 14:12:00,2025-06-18 02:48:13,medium,technical,closed,Cannot export report to PDF
+356,102,2024-07-11 18:15:00,2024-07-12 05:26:04,low,bug,resolved,Search results not returning recent items
+357,102,2025-02-27 11:56:00,2025-03-02 20:33:25,high,feature_request,resolved,Support for custom fields in tasks
+358,102,2025-05-11 18:18:00,2025-05-14 20:13:03,low,onboarding,resolved,How to configure user roles and permissions
+359,103,2024-08-10 15:09:00,2024-08-13 16:01:20,medium,bug,resolved,Search results not returning recent items
+360,103,2025-01-02 17:00:00,2025-01-07 14:15:18,low,technical,closed,Dashboard loading slowly
+361,103,2025-02-01 10:48:00,2025-02-04 08:13:23,low,billing,closed,Need updated billing address
+362,104,2025-06-03 15:16:00,2025-06-11 05:45:00,low,technical,resolved,API timeout errors on bulk requests
+363,104,2025-01-06 18:01:00,2025-01-11 21:48:41,medium,billing,resolved,Unable to update payment method
+364,105,2025-10-11 11:47:00,2025-10-12 00:53:48,critical,billing,closed,Need updated billing address
+365,105,2025-10-04 18:22:00,2025-10-05 00:47:16,medium,bug,closed,Search results not returning recent items
+366,105,2025-10-15 15:36:00,2025-10-22 12:49:41,high,bug,resolved,File attachments lost after page refresh
+367,107,2025-09-14 16:42:00,2025-09-15 10:04:40,medium,billing,resolved,Question about pricing for annual plan
+368,107,2025-05-09 08:31:00,2025-05-10 07:39:18,medium,technical,resolved,Cannot export report to PDF
+369,107,2025-06-16 10:46:00,2025-06-17 00:01:23,medium,billing,closed,Unable to update payment method
+370,107,2025-09-18 14:27:00,,critical,technical,in_progress,Data sync delay with Salesforce integration
+371,107,2025-05-22 17:27:00,2025-05-24 18:30:05,medium,onboarding,resolved,Training session request for our team
+372,107,2025-05-29 12:19:00,2025-05-31 01:52:43,medium,billing,closed,Invoice discrepancy for March
+373,107,2025-08-20 15:44:00,2025-08-21 21:51:15,critical,technical,closed,SSO login not working with Okta
+374,108,2025-04-25 16:01:00,2025-04-27 11:58:41,medium,bug,resolved,Search results not returning recent items
+375,108,2025-07-22 10:39:00,2025-07-25 06:46:02,medium,feature_request,closed,Add Gantt chart view for projects
+376,108,2025-11-10 16:29:00,2025-11-14 02:39:50,low,onboarding,closed,Migration assistance from Asana
+377,108,2025-05-19 17:43:00,2025-05-21 05:00:37,high,feature_request,closed,Support for custom fields in tasks
+378,108,2025-10-07 18:54:00,2025-10-09 14:04:54,medium,billing,resolved,Invoice discrepancy for March
+379,108,2025-09-19 09:33:00,2025-09-23 05:57:51,low,billing,resolved,Invoice discrepancy for May
+380,108,2025-07-30 15:11:00,2025-08-07 10:17:48,high,onboarding,resolved,Training session request for our team
+381,108,2025-09-27 08:11:00,2025-09-28 19:32:59,high,billing,resolved,Refund request for double charge
+382,108,2025-07-01 12:42:00,2025-07-02 06:22:22,medium,billing,resolved,Refund request for double charge
+383,109,2025-02-23 15:07:00,2025-03-09 19:55:57,low,feature_request,closed,Add Gantt chart view for projects
+384,109,2024-12-11 15:56:00,,low,onboarding,in_progress,Help importing existing project data
+385,109,2025-01-16 13:57:00,2025-01-18 15:59:01,medium,onboarding,closed,Training session request for our team
+386,109,2025-11-07 10:17:00,,medium,onboarding,open,Training session request for our team
+387,110,2025-06-18 17:42:00,2025-06-20 17:32:48,high,billing,closed,Need updated billing address
+388,110,2024-10-07 17:39:00,2024-10-10 01:21:02,low,onboarding,resolved,Training session request for our team
+389,112,2024-09-10 09:57:00,2024-09-10 22:05:59,high,bug,resolved,Task status not updating after drag-and-drop
+390,112,2025-01-29 17:40:00,2025-02-01 02:56:11,critical,onboarding,resolved,How to configure user roles and permissions
+391,112,2025-05-28 15:43:00,2025-05-29 01:04:48,low,technical,resolved,Dashboard loading slowly
+392,112,2024-06-03 08:23:00,,medium,onboarding,in_progress,How to configure user roles and permissions
+393,113,2025-03-28 15:12:00,2025-03-29 08:13:48,medium,onboarding,resolved,Need help setting up team workspace
+394,113,2024-09-03 18:24:00,2024-09-05 04:37:24,medium,bug,closed,Email notifications sent to wrong recipients
+395,113,2025-08-25 16:21:00,2025-08-29 03:44:18,high,billing,closed,Invoice discrepancy for March
+396,115,2025-09-01 11:54:00,2025-09-03 15:44:43,medium,feature_request,resolved,Bulk task import from CSV
+397,115,2025-03-25 18:01:00,2025-03-26 03:56:41,medium,billing,resolved,Unable to update payment method
+398,115,2024-12-18 17:57:00,2024-12-19 18:51:48,high,feature_request,closed,Bulk task import from CSV
+399,115,2025-09-20 09:56:00,2025-09-21 20:18:27,critical,feature_request,closed,Mobile app notifications for deadlines
+400,116,2024-07-31 08:59:00,2024-08-02 11:22:23,high,billing,resolved,Need updated billing address
+401,116,2024-02-02 14:49:00,2024-02-04 03:16:21,low,technical,resolved,Data sync delay with Salesforce integration
+402,116,2024-12-05 11:21:00,2024-12-07 03:39:50,low,technical,resolved,Cannot export report to PDF
+403,117,2023-10-20 10:28:00,2023-10-22 09:34:07,low,billing,closed,Unable to update payment method
+404,117,2024-10-03 15:42:00,2024-10-05 06:06:26,low,billing,closed,Unable to update payment method
+405,117,2025-08-22 12:23:00,2025-08-23 23:38:51,low,onboarding,resolved,Need help setting up team workspace
+406,117,2024-10-16 17:31:00,2024-10-19 01:32:36,low,technical,closed,Dashboard loading slowly
+407,118,2024-11-02 15:41:00,2024-11-05 16:42:03,critical,onboarding,closed,Migration assistance from Asana
+408,118,2024-08-04 12:54:00,,medium,feature_request,in_progress,Mobile app notifications for deadlines
+409,118,2024-10-27 11:24:00,2024-10-28 03:22:20,medium,billing,closed,Invoice discrepancy for October
+410,118,2025-07-26 13:59:00,2025-07-30 10:08:09,low,onboarding,closed,Need help setting up team workspace
+411,120,2025-07-12 12:54:00,2025-07-19 13:36:05,medium,bug,closed,Email notifications sent to wrong recipients
+412,122,2024-07-03 10:58:00,,high,billing,open,Unable to update payment method
+413,122,2024-08-31 13:36:00,2024-09-05 09:49:17,medium,technical,resolved,Cannot export report to PDF
+414,122,2025-06-07 18:20:00,2025-06-08 03:55:47,high,onboarding,resolved,Training session request for our team
+415,122,2025-06-18 09:17:00,,medium,bug,in_progress,Email notifications sent to wrong recipients
+416,122,2024-08-11 12:55:00,2024-08-20 07:47:19,low,technical,resolved,Cannot export report to PDF
+417,123,2025-09-05 17:20:00,2025-09-07 23:45:15,high,billing,closed,Invoice discrepancy for November
+418,123,2025-06-08 16:45:00,2025-06-10 02:18:46,low,billing,resolved,Unable to update payment method
+419,123,2025-05-11 17:23:00,2025-05-12 21:09:22,medium,onboarding,resolved,Migration assistance from Asana
+420,123,2025-06-15 13:26:00,,medium,bug,in_progress,Search results not returning recent items
+421,123,2024-11-23 13:02:00,2024-11-24 03:05:34,low,technical,closed,Data sync delay with Salesforce integration
+422,123,2025-11-14 17:45:00,,low,technical,in_progress,Data sync delay with Salesforce integration
+423,123,2024-10-14 16:51:00,2024-10-15 21:41:01,medium,billing,closed,Unable to update payment method
+424,124,2024-09-22 13:14:00,2024-09-22 19:30:49,high,technical,closed,API timeout errors on bulk requests
+425,124,2025-01-12 16:32:00,2025-01-12 20:20:03,medium,billing,resolved,Need updated billing address
+426,124,2025-07-21 11:49:00,2025-07-24 20:12:42,medium,bug,closed,Calendar view shows incorrect dates
+427,124,2024-04-10 14:26:00,2024-04-13 17:19:27,low,feature_request,resolved,Mobile app notifications for deadlines
+428,125,2025-06-21 15:47:00,2025-06-21 23:05:55,high,billing,closed,Refund request for double charge
+429,125,2024-04-10 14:44:00,2024-04-12 16:35:59,high,feature_request,resolved,Add Gantt chart view for projects
+430,125,2024-11-29 15:58:00,2024-11-30 08:33:17,medium,technical,resolved,Dashboard loading slowly
+431,125,2025-07-27 16:05:00,2025-07-30 01:14:54,low,billing,closed,Refund request for double charge
+432,125,2025-05-05 17:17:00,2025-05-06 11:00:09,low,bug,closed,Calendar view shows incorrect dates
+433,126,2024-08-09 13:48:00,2024-08-10 01:35:48,low,billing,closed,Invoice discrepancy for June
+434,126,2024-04-29 10:07:00,2024-04-29 21:43:44,medium,technical,resolved,Dashboard loading slowly
+435,126,2024-04-23 10:06:00,2024-05-01 01:59:37,high,technical,resolved,Cannot export report to PDF
+436,126,2025-11-11 08:23:00,2025-11-14 12:24:23,critical,technical,closed,API timeout errors on bulk requests
+437,126,2025-07-15 09:28:00,2025-07-15 23:25:51,medium,bug,resolved,Calendar view shows incorrect dates
+438,126,2025-08-13 11:46:00,2025-08-14 12:15:13,low,billing,resolved,Question about pricing for annual plan
+439,128,2025-03-21 13:12:00,,medium,onboarding,open,Need help setting up team workspace
+440,128,2023-01-24 17:24:00,2023-01-25 23:22:49,low,bug,resolved,File attachments lost after page refresh
+441,128,2023-01-13 11:40:00,,critical,bug,open,Task status not updating after drag-and-drop
+442,128,2022-09-03 15:35:00,2022-09-06 19:50:27,high,feature_request,resolved,Dark mode for the web interface
+443,128,2025-04-09 18:11:00,,high,bug,in_progress,File attachments lost after page refresh
+444,128,2024-06-30 17:22:00,2024-07-03 17:36:58,low,feature_request,closed,Dark mode for the web interface
+445,129,2025-09-25 13:42:00,2025-09-28 23:55:24,medium,billing,closed,Need updated billing address
+446,129,2025-05-31 08:18:00,,low,technical,in_progress,Cannot export report to PDF
+447,129,2025-07-15 12:43:00,2025-07-15 17:16:22,medium,technical,closed,SSO login not working with Okta
+448,130,2025-01-19 13:40:00,2025-01-21 04:06:43,medium,onboarding,resolved,Need help setting up team workspace
+449,130,2025-08-07 13:08:00,2025-08-09 23:42:21,low,feature_request,closed,Dark mode for the web interface
+450,131,2024-04-07 13:34:00,2024-04-10 15:19:19,low,billing,resolved,Question about pricing for annual plan
+451,131,2024-11-01 11:35:00,2024-11-01 22:15:11,critical,onboarding,closed,Need help setting up team workspace
+452,131,2024-06-20 12:01:00,2024-06-21 09:13:43,high,technical,closed,SSO login not working with Okta
+453,131,2025-10-02 12:55:00,2025-10-05 12:26:06,low,billing,resolved,Need updated billing address
+454,132,2023-08-27 09:47:00,2023-08-28 05:51:27,medium,feature_request,closed,Dark mode for the web interface
+455,132,2023-12-10 09:16:00,2023-12-11 13:36:54,medium,bug,closed,Search results not returning recent items
+456,132,2025-07-06 12:58:00,2025-07-09 05:48:59,medium,onboarding,resolved,Training session request for our team
+457,132,2025-04-23 13:30:00,2025-04-24 03:51:36,medium,feature_request,closed,Bulk task import from CSV
+458,133,2025-07-12 16:46:00,2025-07-14 01:15:08,high,onboarding,closed,How to configure user roles and permissions
+459,133,2024-09-04 17:38:00,2024-09-16 08:36:11,low,technical,closed,API timeout errors on bulk requests
+460,133,2024-03-12 13:29:00,,medium,onboarding,open,Need help setting up team workspace
+461,133,2023-04-23 14:08:00,2023-04-24 02:05:44,low,onboarding,resolved,Need help setting up team workspace
+462,133,2025-08-26 10:40:00,2025-08-28 00:32:57,medium,onboarding,closed,Need help setting up team workspace
+463,133,2024-07-10 18:17:00,2024-07-12 14:59:34,medium,feature_request,resolved,Bulk task import from CSV
+464,134,2025-07-20 16:38:00,,medium,technical,open,Dashboard loading slowly
+465,134,2025-10-16 15:00:00,2025-10-18 17:59:23,low,technical,resolved,Data sync delay with Salesforce integration
+466,134,2025-07-09 09:03:00,2025-07-19 14:58:38,medium,feature_request,closed,Add Gantt chart view for projects
+467,134,2025-06-25 12:52:00,2025-06-26 01:19:49,medium,bug,closed,Search results not returning recent items
+468,134,2025-09-27 18:12:00,2025-09-28 14:02:39,low,billing,resolved,Unable to update payment method
+469,136,2025-05-09 17:49:00,,medium,bug,in_progress,Email notifications sent to wrong recipients
+470,137,2023-11-12 09:59:00,2023-11-15 23:35:20,low,onboarding,resolved,How to configure user roles and permissions
+471,137,2025-07-09 15:27:00,2025-07-09 22:53:37,medium,onboarding,closed,Training session request for our team
+472,137,2024-08-02 13:19:00,2024-08-04 06:59:41,medium,onboarding,resolved,Migration assistance from Asana
+473,137,2023-08-29 14:35:00,2023-08-31 12:04:12,medium,technical,closed,SSO login not working with Okta
+474,137,2024-03-24 14:13:00,,high,feature_request,open,Mobile app notifications for deadlines
+475,138,2024-02-04 08:12:00,2024-02-05 07:19:31,medium,technical,closed,API timeout errors on bulk requests
+476,138,2023-08-18 17:17:00,2023-08-19 03:58:27,low,billing,resolved,Refund request for double charge
+477,138,2025-05-13 15:31:00,2025-05-15 03:39:07,high,billing,closed,Invoice discrepancy for October
+478,138,2025-08-04 10:45:00,2025-08-05 00:17:02,high,onboarding,resolved,Training session request for our team
+479,139,2025-11-04 12:54:00,2025-11-05 00:06:41,medium,billing,closed,Need updated billing address
+480,139,2025-10-17 14:53:00,2025-10-19 22:54:34,low,onboarding,closed,Need help setting up team workspace
+481,139,2025-10-22 08:17:00,2025-10-28 08:20:24,medium,feature_request,resolved,Dark mode for the web interface
+482,140,2025-11-12 13:07:00,2025-11-14 06:01:47,medium,technical,resolved,Cannot export report to PDF
+483,141,2022-11-25 10:50:00,2022-11-25 22:36:58,medium,billing,resolved,Unable to update payment method
+484,141,2023-02-01 14:45:00,2023-02-02 04:16:12,low,technical,closed,Dashboard loading slowly
+485,141,2024-06-10 12:44:00,2024-06-11 00:34:51,low,technical,closed,Dashboard loading slowly
+486,142,2025-06-01 10:34:00,2025-06-04 11:22:00,critical,feature_request,closed,Support for custom fields in tasks
+487,142,2025-09-30 16:53:00,2025-10-01 10:26:08,low,onboarding,closed,Need help setting up team workspace
+488,144,2025-07-07 10:29:00,2025-07-09 01:13:34,medium,feature_request,resolved,Dark mode for the web interface
+489,144,2025-04-17 14:30:00,2025-04-21 10:29:25,medium,technical,closed,Data sync delay with Salesforce integration
+490,144,2025-09-16 08:28:00,2025-09-17 11:58:08,medium,onboarding,resolved,Migration assistance from Asana
+491,145,2025-11-11 12:02:00,,high,bug,in_progress,File attachments lost after page refresh
+492,145,2025-11-11 17:01:00,2025-11-14 02:23:07,low,billing,resolved,Need updated billing address
+493,146,2024-10-19 18:21:00,2024-10-22 05:48:13,low,onboarding,closed,Training session request for our team
+494,146,2024-11-24 15:00:00,2024-11-25 13:05:18,low,onboarding,resolved,Training session request for our team
+495,146,2025-02-13 10:43:00,2025-02-15 00:50:57,high,feature_request,resolved,Mobile app notifications for deadlines
+496,146,2025-06-28 15:45:00,2025-06-29 17:24:19,critical,technical,closed,SSO login not working with Okta
+497,146,2025-07-16 16:04:00,,medium,technical,open,Dashboard loading slowly
+498,147,2025-06-04 13:32:00,2025-06-14 19:52:47,medium,onboarding,resolved,Training session request for our team
+499,147,2024-12-23 11:19:00,2024-12-24 15:01:33,medium,technical,closed,SSO login not working with Okta
+500,147,2025-04-13 14:11:00,2025-04-14 21:11:46,medium,billing,resolved,Refund request for double charge
+501,147,2025-02-21 13:08:00,2025-02-22 07:25:47,medium,feature_request,closed,Mobile app notifications for deadlines
+502,148,2024-10-14 14:16:00,2024-10-20 05:25:03,low,onboarding,closed,Migration assistance from Asana
+503,148,2024-12-16 09:50:00,2024-12-18 15:20:20,medium,billing,closed,Refund request for double charge
+504,148,2025-03-28 12:02:00,2025-04-09 02:22:02,medium,billing,closed,Refund request for double charge
+505,148,2025-10-30 12:49:00,2025-10-31 14:36:34,medium,onboarding,closed,Migration assistance from Asana
+506,148,2024-01-14 17:07:00,2024-01-15 13:47:49,low,technical,resolved,Dashboard loading slowly
+507,149,2024-08-02 13:29:00,2024-08-14 09:36:15,low,onboarding,closed,Need help setting up team workspace
+508,149,2024-09-24 13:02:00,2024-09-28 12:39:04,critical,billing,resolved,Question about pricing for annual plan
+509,149,2024-08-30 14:25:00,2024-09-12 13:36:42,critical,billing,closed,Invoice discrepancy for April
+510,149,2025-06-01 12:19:00,2025-06-03 11:19:36,medium,feature_request,closed,Support for custom fields in tasks
+511,149,2024-08-02 10:17:00,2024-08-03 01:41:53,low,feature_request,resolved,Mobile app notifications for deadlines
+512,150,2022-12-30 14:42:00,2023-01-04 04:21:30,low,billing,resolved,Unable to update payment method
+513,150,2024-09-16 11:04:00,2024-09-17 16:32:19,high,feature_request,closed,Bulk task import from CSV
+514,150,2025-07-23 16:00:00,2025-07-25 00:59:28,medium,technical,resolved,SSO login not working with Okta
+515,150,2025-02-24 08:42:00,2025-02-25 23:35:17,critical,bug,resolved,Search results not returning recent items
+516,150,2024-08-05 12:48:00,2024-08-07 07:37:21,medium,technical,closed,Data sync delay with Salesforce integration
+517,150,2025-03-21 08:48:00,2025-03-21 15:25:52,medium,bug,resolved,Task status not updating after drag-and-drop
+518,151,2025-10-11 12:11:00,,high,bug,in_progress,Search results not returning recent items
+519,151,2025-06-21 11:26:00,2025-06-24 03:51:56,low,bug,closed,Search results not returning recent items
+520,151,2025-09-21 14:14:00,2025-09-25 09:43:36,medium,bug,resolved,File attachments lost after page refresh
+521,151,2024-12-24 16:53:00,2024-12-28 23:42:44,medium,technical,closed,SSO login not working with Okta
+522,151,2025-03-29 18:01:00,2025-03-30 16:12:35,low,feature_request,closed,Add Gantt chart view for projects
+523,152,2024-11-29 17:56:00,2024-11-30 19:25:34,medium,onboarding,resolved,How to configure user roles and permissions
+524,152,2025-02-28 13:08:00,2025-03-01 19:27:09,high,technical,closed,Dashboard loading slowly
+525,152,2025-07-12 16:41:00,2025-07-12 22:34:08,medium,billing,resolved,Invoice discrepancy for November
+526,152,2025-10-30 14:55:00,2025-11-05 08:07:19,medium,feature_request,resolved,Mobile app notifications for deadlines
+527,152,2024-12-18 12:51:00,2024-12-19 03:19:53,high,technical,closed,SSO login not working with Okta
+528,152,2025-01-10 10:54:00,2025-01-11 01:45:32,high,technical,closed,API timeout errors on bulk requests
+529,152,2025-03-22 15:13:00,2025-03-23 17:06:14,medium,technical,resolved,API timeout errors on bulk requests
+530,152,2025-04-18 15:21:00,2025-04-21 08:37:55,medium,onboarding,resolved,Help importing existing project data
+531,152,2024-12-01 11:56:00,2024-12-03 15:14:12,medium,technical,closed,API timeout errors on bulk requests
+532,152,2025-11-08 10:09:00,2025-11-10 01:18:36,high,feature_request,resolved,Dark mode for the web interface
+533,152,2025-08-05 16:25:00,,critical,technical,open,Data sync delay with Salesforce integration
+534,153,2025-05-09 18:10:00,2025-05-10 11:56:35,medium,bug,resolved,Calendar view shows incorrect dates
+535,153,2025-02-08 11:14:00,2025-02-09 01:55:33,medium,billing,closed,Refund request for double charge
+536,153,2025-07-26 08:53:00,2025-07-27 10:52:49,high,onboarding,resolved,Migration assistance from Asana
+537,154,2022-10-31 12:35:00,2022-11-01 15:54:57,high,bug,resolved,Calendar view shows incorrect dates
+538,154,2023-06-25 18:54:00,2023-06-27 07:25:47,medium,technical,resolved,Cannot export report to PDF
+539,154,2025-05-21 12:03:00,2025-05-22 19:45:52,low,technical,resolved,API timeout errors on bulk requests
+540,154,2022-11-12 11:30:00,2022-11-13 23:49:41,low,billing,closed,Question about pricing for annual plan
+541,154,2022-07-05 17:27:00,,low,bug,open,Search results not returning recent items
+542,154,2025-01-05 08:16:00,2025-01-05 19:00:14,medium,onboarding,closed,Migration assistance from Asana
+543,155,2025-01-23 18:35:00,2025-01-26 03:18:45,medium,feature_request,resolved,Dark mode for the web interface
+544,155,2025-05-03 15:10:00,2025-05-04 05:07:50,high,billing,resolved,Unable to update payment method
+545,155,2025-09-30 11:13:00,2025-10-01 15:37:57,medium,technical,resolved,Data sync delay with Salesforce integration
+546,155,2024-11-23 13:10:00,2024-11-23 18:59:02,medium,billing,closed,Need updated billing address
+547,155,2025-08-05 17:50:00,2025-08-09 04:15:16,high,technical,closed,API timeout errors on bulk requests
+548,156,2025-05-26 13:28:00,2025-05-26 22:34:44,medium,technical,resolved,SSO login not working with Okta
+549,156,2024-06-17 11:13:00,2024-06-17 19:09:45,low,onboarding,closed,Migration assistance from Asana
+550,157,2024-11-08 17:32:00,2024-11-08 21:34:50,low,technical,closed,Cannot export report to PDF
+551,157,2025-02-05 15:15:00,2025-02-05 20:12:58,medium,technical,closed,Data sync delay with Salesforce integration
+552,158,2025-08-15 12:07:00,2025-08-17 11:39:52,high,technical,resolved,SSO login not working with Okta
+553,158,2025-04-24 17:34:00,2025-04-27 00:12:41,low,onboarding,closed,Migration assistance from Asana
+554,158,2024-12-29 10:20:00,2025-01-02 07:05:05,medium,technical,closed,Data sync delay with Salesforce integration
+555,159,2025-10-18 14:25:00,2025-10-19 10:30:21,high,onboarding,resolved,Help importing existing project data
+556,159,2025-11-07 12:36:00,2025-11-07 19:23:36,low,technical,resolved,Data sync delay with Salesforce integration
+557,159,2025-11-13 09:36:00,,medium,bug,open,File attachments lost after page refresh
+558,159,2025-11-01 15:56:00,2025-11-02 10:26:23,high,bug,closed,Task status not updating after drag-and-drop
+559,159,2025-09-18 08:39:00,2025-09-19 12:37:36,low,onboarding,resolved,Help importing existing project data
+560,160,2025-08-18 16:29:00,2025-08-21 23:37:40,low,onboarding,resolved,How to configure user roles and permissions
+561,160,2025-08-13 10:06:00,2025-08-17 08:00:59,medium,billing,resolved,Question about pricing for annual plan
+562,160,2025-07-24 18:13:00,,low,technical,open,Dashboard loading slowly
+563,161,2025-10-26 09:53:00,,low,bug,open,File attachments lost after page refresh
+564,161,2025-10-28 15:25:00,2025-10-30 01:26:51,high,billing,resolved,Unable to update payment method
+565,161,2025-08-05 15:47:00,2025-08-08 17:44:07,high,feature_request,closed,Bulk task import from CSV
+566,161,2025-10-30 08:00:00,,medium,technical,open,API timeout errors on bulk requests
+567,161,2025-09-23 09:27:00,2025-09-27 02:20:47,medium,bug,closed,File attachments lost after page refresh
+568,161,2025-09-14 18:57:00,2025-09-16 08:33:05,low,technical,resolved,Dashboard loading slowly
+569,161,2025-11-03 08:03:00,2025-11-03 21:08:23,low,feature_request,resolved,Mobile app notifications for deadlines
+570,161,2025-08-19 16:09:00,2025-08-20 02:36:23,high,onboarding,closed,Training session request for our team
+571,161,2025-10-09 12:39:00,2025-10-09 22:08:54,high,technical,resolved,Dashboard loading slowly
+572,162,2024-06-06 13:57:00,2024-06-12 18:34:36,medium,technical,closed,Data sync delay with Salesforce integration
+573,162,2024-10-06 17:51:00,2024-10-08 20:23:39,medium,feature_request,resolved,Mobile app notifications for deadlines
+574,162,2024-12-08 10:14:00,2024-12-12 10:09:15,high,feature_request,closed,Dark mode for the web interface
+575,162,2024-09-06 11:14:00,2024-09-09 04:01:55,high,technical,closed,Dashboard loading slowly
+576,164,2025-10-15 08:47:00,2025-10-16 02:21:17,medium,bug,resolved,Task status not updating after drag-and-drop
+577,164,2024-08-13 14:20:00,,medium,billing,open,Need updated billing address
+578,164,2025-06-06 11:29:00,2025-06-06 17:56:08,medium,feature_request,closed,Dark mode for the web interface
+579,164,2024-11-17 13:51:00,2024-11-20 02:57:42,high,bug,closed,File attachments lost after page refresh
+580,164,2024-03-27 16:08:00,2024-03-28 04:31:42,critical,billing,closed,Refund request for double charge
+581,165,2025-11-02 10:25:00,2025-11-02 15:15:03,high,onboarding,resolved,How to configure user roles and permissions
+582,165,2025-10-23 16:38:00,2025-10-23 22:54:01,medium,onboarding,resolved,Help importing existing project data
+583,165,2025-10-24 10:06:00,,medium,onboarding,open,How to configure user roles and permissions
+584,165,2025-11-09 14:54:00,,low,technical,in_progress,API timeout errors on bulk requests
+585,165,2025-11-03 14:57:00,2025-11-04 13:48:13,medium,technical,closed,Dashboard loading slowly
+586,166,2025-09-30 17:04:00,2025-10-15 04:13:39,medium,billing,resolved,Refund request for double charge
+587,166,2025-10-04 14:25:00,2025-10-05 02:13:58,low,feature_request,resolved,Support for custom fields in tasks
+588,166,2025-08-01 18:17:00,2025-08-02 17:21:50,low,onboarding,closed,How to configure user roles and permissions
+589,168,2025-07-08 17:29:00,2025-07-11 17:37:58,high,billing,closed,Refund request for double charge
+590,168,2024-06-21 15:48:00,2024-06-24 19:24:12,medium,technical,closed,SSO login not working with Okta
+591,168,2024-02-28 18:06:00,2024-02-29 13:54:35,low,bug,closed,File attachments lost after page refresh
+592,168,2024-09-14 13:05:00,2024-09-16 05:05:18,high,billing,closed,Question about pricing for annual plan
+593,168,2025-05-14 16:38:00,2025-05-19 04:34:21,medium,onboarding,resolved,Help importing existing project data
+594,169,2025-09-29 11:23:00,2025-10-08 21:15:23,high,feature_request,resolved,Dark mode for the web interface
+595,169,2025-11-11 15:54:00,2025-11-12 05:28:05,high,technical,closed,Cannot export report to PDF
+596,169,2025-10-28 10:01:00,2025-10-29 14:22:25,medium,feature_request,closed,Dark mode for the web interface
+597,169,2025-11-13 18:22:00,,critical,technical,in_progress,Dashboard loading slowly
+598,169,2025-10-27 16:41:00,2025-10-31 03:38:32,medium,technical,resolved,API timeout errors on bulk requests
+599,169,2025-09-28 09:40:00,2025-09-30 19:09:34,medium,technical,closed,API timeout errors on bulk requests
+600,169,2025-11-12 15:57:00,2025-11-13 09:05:51,low,technical,closed,Data sync delay with Salesforce integration
+601,170,2025-02-12 14:39:00,2025-02-18 00:24:29,low,onboarding,closed,Migration assistance from Asana
+602,170,2025-11-14 13:34:00,,low,technical,in_progress,Data sync delay with Salesforce integration
+603,170,2024-12-25 13:14:00,2024-12-27 14:25:31,low,technical,closed,Dashboard loading slowly
+604,171,2025-05-16 15:41:00,2025-05-17 23:08:51,low,onboarding,resolved,Training session request for our team
+605,171,2025-10-23 16:37:00,,medium,technical,in_progress,API timeout errors on bulk requests
+606,171,2025-10-09 13:51:00,2025-10-13 03:48:22,medium,onboarding,closed,Need help setting up team workspace
+607,171,2025-04-23 13:55:00,2025-04-25 04:23:20,high,onboarding,closed,Help importing existing project data
+608,171,2025-04-15 17:14:00,2025-04-16 22:01:33,high,onboarding,resolved,Training session request for our team
+609,172,2025-07-31 15:37:00,2025-08-02 09:25:52,critical,technical,resolved,API timeout errors on bulk requests
+610,172,2024-10-07 09:43:00,2024-10-08 05:43:48,critical,technical,resolved,SSO login not working with Okta
+611,172,2025-08-14 12:34:00,2025-08-18 10:17:54,medium,onboarding,closed,How to configure user roles and permissions
+612,173,2023-11-08 17:03:00,2023-11-10 09:04:19,medium,onboarding,resolved,How to configure user roles and permissions
+613,173,2024-05-03 10:01:00,2024-05-20 01:43:57,medium,feature_request,closed,Mobile app notifications for deadlines
+614,173,2025-10-15 15:08:00,2025-10-16 03:40:04,low,onboarding,closed,Training session request for our team
+615,173,2024-05-08 12:25:00,2024-05-08 21:21:30,medium,technical,resolved,Data sync delay with Salesforce integration
+616,173,2023-11-22 17:03:00,2023-11-24 03:52:11,low,bug,closed,Calendar view shows incorrect dates
+617,173,2025-06-05 17:23:00,2025-06-07 12:03:01,critical,bug,resolved,Calendar view shows incorrect dates
+618,173,2025-10-01 10:38:00,2025-10-02 22:04:09,low,technical,closed,Cannot export report to PDF
+619,174,2023-06-07 16:56:00,2023-06-08 13:55:22,critical,bug,closed,Email notifications sent to wrong recipients
+620,174,2024-10-10 10:57:00,2024-10-12 07:20:31,low,billing,closed,Need updated billing address
+621,174,2025-07-09 15:07:00,2025-07-10 21:46:51,low,onboarding,resolved,Migration assistance from Asana
+622,175,2025-08-28 18:45:00,2025-08-28 23:05:12,medium,onboarding,closed,Help importing existing project data
+623,175,2024-10-19 12:20:00,2024-10-21 11:58:45,high,billing,closed,Invoice discrepancy for August
+624,175,2024-07-21 15:06:00,2024-07-22 23:35:13,medium,technical,closed,Cannot export report to PDF
+625,175,2025-09-07 08:12:00,2025-09-13 12:53:40,medium,bug,closed,Task status not updating after drag-and-drop
+626,175,2024-07-23 08:19:00,2024-07-31 08:30:35,medium,technical,closed,Data sync delay with Salesforce integration
+627,175,2025-09-16 10:32:00,,medium,technical,open,SSO login not working with Okta
+628,175,2025-10-08 11:45:00,2025-10-10 09:08:40,high,technical,resolved,SSO login not working with Okta
+629,175,2025-10-12 09:59:00,2025-10-16 09:59:25,critical,technical,resolved,SSO login not working with Okta
+630,176,2024-09-23 14:02:00,2024-09-27 14:21:50,medium,billing,closed,Unable to update payment method
+631,177,2022-11-10 14:52:00,,low,technical,in_progress,API timeout errors on bulk requests
+632,177,2022-11-11 18:44:00,2022-11-13 18:11:19,medium,technical,resolved,Cannot export report to PDF
+633,177,2025-07-17 09:11:00,2025-07-19 14:03:03,low,feature_request,closed,Dark mode for the web interface
+634,178,2025-06-07 09:48:00,,high,billing,open,Need updated billing address
+635,178,2025-05-07 10:33:00,2025-05-07 13:56:20,medium,bug,resolved,Email notifications sent to wrong recipients
+636,179,2023-10-20 15:38:00,2023-10-22 17:12:31,medium,onboarding,resolved,How to configure user roles and permissions
+637,180,2023-10-17 10:22:00,2023-10-18 19:53:41,critical,technical,resolved,API timeout errors on bulk requests
+638,180,2024-11-05 08:55:00,2024-11-06 06:22:26,high,technical,closed,Cannot export report to PDF
+639,181,2025-10-22 08:39:00,2025-10-23 05:51:33,high,onboarding,resolved,Need help setting up team workspace
+640,181,2025-10-23 09:01:00,,critical,feature_request,in_progress,Dark mode for the web interface
+641,182,2025-09-13 14:28:00,2025-09-15 18:24:49,low,bug,resolved,File attachments lost after page refresh
+642,183,2025-04-19 18:46:00,,critical,billing,open,Question about pricing for annual plan
+643,183,2024-12-04 14:51:00,2024-12-06 10:24:20,low,technical,closed,SSO login not working with Okta
+644,183,2025-07-17 15:28:00,2025-07-19 13:24:12,medium,bug,resolved,Email notifications sent to wrong recipients
+645,183,2025-03-01 17:12:00,2025-03-02 14:35:57,high,bug,closed,Calendar view shows incorrect dates
+646,183,2025-04-30 11:25:00,2025-04-30 15:40:49,low,billing,closed,Invoice discrepancy for April
+647,184,2023-09-18 13:35:00,,medium,bug,in_progress,Email notifications sent to wrong recipients
+648,184,2022-08-18 11:24:00,,low,feature_request,open,Mobile app notifications for deadlines
+649,185,2025-07-03 13:29:00,2025-07-04 20:42:47,high,technical,resolved,Cannot export report to PDF
+650,185,2025-04-10 08:00:00,2025-04-10 20:41:43,high,bug,resolved,Calendar view shows incorrect dates
+651,185,2025-06-20 17:58:00,2025-06-21 17:38:22,critical,technical,closed,Cannot export report to PDF
+652,185,2025-04-29 10:10:00,2025-04-29 19:06:23,medium,technical,closed,API timeout errors on bulk requests
+653,186,2025-10-22 11:07:00,2025-10-24 18:07:17,low,onboarding,closed,Training session request for our team
+654,186,2025-04-15 10:49:00,2025-04-23 15:22:32,medium,billing,resolved,Refund request for double charge
+655,187,2025-11-08 13:56:00,2025-11-08 21:31:35,low,technical,closed,Dashboard loading slowly
+656,187,2025-11-14 11:40:00,,high,technical,open,API timeout errors on bulk requests
+657,187,2025-11-03 08:39:00,2025-11-06 06:27:40,medium,bug,closed,Search results not returning recent items
+658,187,2025-11-03 13:57:00,2025-11-04 12:31:16,medium,billing,closed,Invoice discrepancy for June
+659,187,2025-11-07 08:08:00,2025-11-08 23:49:39,critical,bug,resolved,File attachments lost after page refresh
+660,187,2025-10-27 08:44:00,2025-10-30 12:05:20,medium,onboarding,closed,How to configure user roles and permissions
+661,187,2025-10-19 16:12:00,,low,technical,open,API timeout errors on bulk requests
+662,187,2025-10-10 08:51:00,2025-10-11 23:46:34,high,billing,resolved,Invoice discrepancy for January
+663,187,2025-10-03 13:55:00,2025-10-05 12:15:03,low,bug,resolved,Search results not returning recent items
+664,188,2025-10-02 10:12:00,2025-10-04 12:12:26,critical,bug,closed,Email notifications sent to wrong recipients
+665,188,2025-10-02 09:24:00,2025-10-04 02:45:29,medium,technical,closed,Data sync delay with Salesforce integration
+666,189,2025-10-08 10:12:00,2025-10-09 04:13:20,high,technical,resolved,Dashboard loading slowly
+667,190,2024-08-16 11:10:00,2024-08-17 08:57:12,high,technical,resolved,SSO login not working with Okta
+668,190,2024-09-09 11:33:00,2024-09-10 08:43:42,high,billing,resolved,Invoice discrepancy for August
+669,190,2024-09-08 08:39:00,2024-09-13 02:25:55,medium,onboarding,resolved,Migration assistance from Asana
+670,190,2024-09-26 18:38:00,2024-09-30 18:19:43,low,onboarding,closed,Migration assistance from Asana
+671,190,2024-07-25 15:20:00,2024-07-25 20:39:17,high,feature_request,closed,Mobile app notifications for deadlines
+672,191,2025-05-04 15:55:00,2025-05-07 13:21:50,medium,bug,resolved,Email notifications sent to wrong recipients
+673,192,2025-07-05 18:09:00,2025-07-07 16:27:58,low,technical,resolved,Dashboard loading slowly
+674,192,2024-06-26 14:30:00,2024-06-27 15:53:41,medium,billing,closed,Unable to update payment method
+675,192,2025-10-21 17:46:00,,medium,technical,in_progress,Cannot export report to PDF
+676,192,2024-09-26 09:20:00,2024-09-27 20:37:29,medium,onboarding,resolved,Training session request for our team
+677,192,2024-06-23 12:40:00,2024-06-24 17:29:35,medium,billing,resolved,Need updated billing address
+678,192,2025-05-25 13:51:00,2025-05-26 21:28:08,low,onboarding,closed,Training session request for our team
+679,192,2025-01-10 13:44:00,2025-01-14 17:46:56,high,technical,closed,Dashboard loading slowly
+680,193,2025-10-03 11:45:00,2025-10-04 19:39:54,low,feature_request,resolved,Dark mode for the web interface
+681,193,2025-01-31 14:48:00,2025-02-01 08:12:42,medium,billing,closed,Invoice discrepancy for August
+682,193,2025-07-01 11:50:00,2025-07-04 21:43:49,high,onboarding,resolved,Need help setting up team workspace
+683,193,2025-06-14 17:30:00,,high,feature_request,in_progress,Dark mode for the web interface
+684,193,2025-09-14 11:52:00,,low,onboarding,open,Migration assistance from Asana
+685,193,2025-01-14 11:33:00,2025-01-15 03:32:12,low,onboarding,resolved,Migration assistance from Asana
+686,193,2025-03-28 10:18:00,2025-03-28 18:52:42,medium,billing,resolved,Refund request for double charge
+687,193,2025-06-27 16:10:00,2025-06-28 11:31:53,high,feature_request,closed,Dark mode for the web interface
+688,194,2023-10-11 13:01:00,2023-10-12 12:51:22,high,billing,closed,Need updated billing address
+689,194,2025-06-28 18:20:00,2025-06-29 05:12:29,medium,technical,resolved,Data sync delay with Salesforce integration
+690,194,2023-10-18 15:04:00,2023-10-18 19:28:04,low,bug,resolved,Calendar view shows incorrect dates
+691,195,2023-05-03 15:25:00,2023-05-04 18:13:42,medium,feature_request,resolved,Support for custom fields in tasks
+692,195,2023-11-02 09:48:00,2023-11-04 19:51:30,low,bug,resolved,Email notifications sent to wrong recipients
+693,196,2024-11-03 08:14:00,,critical,onboarding,open,Help importing existing project data
+694,196,2025-03-27 14:48:00,2025-03-30 04:57:26,medium,feature_request,resolved,Add Gantt chart view for projects
+695,196,2025-08-10 08:13:00,2025-08-11 20:30:57,medium,technical,closed,Dashboard loading slowly
+696,196,2025-07-14 08:58:00,2025-07-15 08:14:32,medium,feature_request,resolved,Bulk task import from CSV
+697,196,2025-04-02 11:20:00,2025-04-03 15:50:50,medium,bug,closed,Email notifications sent to wrong recipients
+698,196,2024-12-09 08:24:00,,high,onboarding,open,Help importing existing project data
+699,197,2025-10-22 11:56:00,2025-10-24 09:57:45,medium,feature_request,closed,Support for custom fields in tasks
+700,197,2024-11-23 12:00:00,2024-11-24 21:01:58,low,technical,closed,SSO login not working with Okta
+701,197,2025-09-15 10:58:00,2025-09-15 21:43:19,medium,technical,resolved,Cannot export report to PDF
+702,199,2025-01-16 08:19:00,,high,technical,open,Cannot export report to PDF
+703,199,2024-12-17 18:12:00,2024-12-18 05:20:13,high,bug,closed,Task status not updating after drag-and-drop
+704,199,2025-01-30 10:16:00,,critical,technical,open,Cannot export report to PDF
+705,199,2025-09-14 18:50:00,2025-09-16 15:56:59,critical,billing,closed,Invoice discrepancy for December
+706,200,2025-11-09 15:04:00,2025-11-11 12:26:05,low,onboarding,closed,Training session request for our team
+707,200,2025-10-30 10:00:00,2025-11-02 00:59:17,low,feature_request,closed,Mobile app notifications for deadlines
+708,200,2025-10-21 08:42:00,2025-10-31 22:37:21,high,technical,closed,Data sync delay with Salesforce integration
+709,200,2025-11-04 11:45:00,2025-11-06 08:52:15,low,onboarding,closed,Help importing existing project data
