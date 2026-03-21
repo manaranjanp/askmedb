@@ -1,10 +1,10 @@
 """
-AskMeDB Quickstart — Minimal example showing library usage.
+AskMeDB Quickstart — Minimal SQLite example.
 
 Usage:
-    1. Create the database: python examples/setup_db.py
+    1. Generate data: python examples/setup_db.py
     2. Set your API key: export ANTHROPIC_API_KEY=...
-    3. Run: python examples/quickstart.py
+    3. Run: python examples/sqlite/quickstart.py
 """
 
 import os
@@ -12,16 +12,16 @@ import sys
 
 from dotenv import load_dotenv
 
-# Add project root to path
-PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..")
+# Add project root to path so askmedb can be imported without installing
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..")
 sys.path.insert(0, PROJECT_ROOT)
-load_dotenv()
+load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
 from askmedb import AskMeDBEngine, AskMeDBConfig, SQLiteConnector, AutoSchemaProvider
 
-# Create a connector for your database (created by setup_db.py in examples/)
-EXAMPLES_DIR = os.path.dirname(os.path.abspath(__file__))
-db = SQLiteConnector(os.path.join(EXAMPLES_DIR, "cloudmetrics.db"))
+# Path to the generated database
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
+db = SQLiteConnector(os.path.join(DATA_DIR, "cloudmetrics.db"))
 
 # Auto-detect schema from the database
 schema = AutoSchemaProvider(db, database_name="cloudmetrics", description="SaaS analytics database")

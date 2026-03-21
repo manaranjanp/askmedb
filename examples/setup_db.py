@@ -3,10 +3,12 @@ CloudMetrics Database Setup & Synthetic Data Generator
 
 Creates an SQLite database with 5 tables and populates them with
 realistic synthetic data for a B2B SaaS subscription analytics demo.
+Also exports each table to a CSV file in the same data/ directory.
 
-Usage: python setup_db.py
+Usage: python examples/setup_db.py
 """
 
+import csv
 import sqlite3
 import random
 import os
@@ -18,7 +20,8 @@ random.seed(42)
 fake = Faker()
 Faker.seed(42)
 
-DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cloudmetrics.db")
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
+DB_PATH = os.path.join(DATA_DIR, "cloudmetrics.db")
 
 # --- Configuration ---
 
@@ -443,7 +446,24 @@ def generate_support_tickets(conn, customers):
     return tickets
 
 
+def export_to_csv(conn):
+    """Export each table to a CSV file in DATA_DIR."""
+    tables = ["customers", "plans", "subscriptions", "invoices", "support_tickets"]
+    for table in tables:
+        csv_path = os.path.join(DATA_DIR, f"{table}.csv")
+        cursor = conn.execute(f"SELECT * FROM {table}")
+        headers = [desc[0] for desc in cursor.description]
+        rows = cursor.fetchall()
+        with open(csv_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(headers)
+            writer.writerows(rows)
+        print(f"  {table}.csv       -> {csv_path}")
+
+
 def main():
+    os.makedirs(DATA_DIR, exist_ok=True)
+
     # Remove existing DB
     if os.path.exists(DB_PATH):
         os.remove(DB_PATH)
@@ -484,6 +504,10 @@ def main():
     total = len(plans) + len(customers) + len(subscriptions) + len(invoices) + len(tickets)
     print(f"\nTotal rows generated: {total}")
     print("Database setup complete!")
+
+    print("\nExporting CSV files...")
+    export_to_csv(conn)
+    print("CSV export complete!")
 
     conn.close()
 

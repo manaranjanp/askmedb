@@ -1,12 +1,14 @@
 """
-CloudMetrics Data Agent — Example CLI application using AskMeDB library.
+CloudMetrics Data Agent — CSV/pandas CLI application using AskMeDB.
 
-A natural language data agent for querying SaaS business data.
+Loads five interrelated CSV files into a shared in-memory SQLite database,
+enabling natural language queries with full JOIN support across all tables.
 
 Usage:
-    1. Create the database: python examples/setup_db.py
-    2. Set your API key: export ANTHROPIC_API_KEY=...
-    3. Run: python examples/cloudmetrics/app.py
+    1. Generate data: python examples/setup_db.py
+    2. Install pandas extra: pip install askmedb[pandas]
+    3. Set your API key: export ANTHROPIC_API_KEY=...
+    4. Run: python examples/csv/cloudmetrics/app.py
 """
 
 import os
@@ -20,43 +22,64 @@ from rich.syntax import Syntax
 from rich.table import Table
 
 # Add project root to path so askmedb can be imported without installing
-PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..")
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), "..", "..", "..")
 sys.path.insert(0, PROJECT_ROOT)
 
-from askmedb import AskMeDBEngine, AskMeDBConfig, SQLiteConnector, JSONSchemaProvider
+from askmedb import AskMeDBEngine, AskMeDBConfig, PandasConnector, PandasSchemaProvider
 
 # Load .env file
 load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
 console = Console()
 
-# Paths relative to this example
+# Paths
 EXAMPLE_DIR = os.path.dirname(os.path.abspath(__file__))
-EXAMPLES_ROOT = os.path.join(EXAMPLE_DIR, "..")
-DB_PATH = os.path.join(EXAMPLES_ROOT, "cloudmetrics.db")
-KNOWLEDGE_DIR = os.path.join(EXAMPLE_DIR, "knowledge")
+DATA_DIR = os.path.join(EXAMPLE_DIR, "..", "..", "data")
+
+# Inter-table relationships — tells the LLM how to JOIN the CSV-backed tables
+RELATIONSHIPS = [
+    {"from_table": "subscriptions",   "from_col": "customer_id",    "to_table": "customers",     "to_col": "customer_id"},
+    {"from_table": "subscriptions",   "from_col": "plan_id",         "to_table": "plans",         "to_col": "plan_id"},
+    {"from_table": "invoices",        "from_col": "subscription_id", "to_table": "subscriptions", "to_col": "subscription_id"},
+    {"from_table": "invoices",        "from_col": "customer_id",     "to_table": "customers",     "to_col": "customer_id"},
+    {"from_table": "support_tickets", "from_col": "customer_id",     "to_table": "customers",     "to_col": "customer_id"},
+]
 
 
 def create_engine() -> AskMeDBEngine:
-    """Create and configure the AskMeDB engine for CloudMetrics."""
+    """Load CSV files and configure the AskMeDB engine."""
     model = os.environ.get("LLM_MODEL", "anthropic/claude-haiku-4-5-20251001")
 
-    config = AskMeDBConfig(
-        model=model,
-        enable_learnings=True,
-        learnings_path=os.path.join(KNOWLEDGE_DIR, "learnings.json"),
+    db = PandasConnector({
+        "customers":       os.path.join(DATA_DIR, "customers.csv"),
+        "plans":           os.path.join(DATA_DIR, "plans.csv"),
+        "subscriptions":   os.path.join(DATA_DIR, "subscriptions.csv"),
+        "invoices":        os.path.join(DATA_DIR, "invoices.csv"),
+        "support_tickets": os.path.join(DATA_DIR, "support_tickets.csv"),
+    })
+
+    schema = PandasSchemaProvider(
+        db,
+        relationships=RELATIONSHIPS,
+        database_name="cloudmetrics",
+        description=(
+            "CloudMetrics SaaS subscription analytics. "
+            "Contains customer, subscription, billing, and support data "
+            "for a B2B project management SaaS product. Loaded from CSV files."
+        ),
     )
 
+    config = AskMeDBConfig(model=model)
+
     engine = AskMeDBEngine(
-        db=SQLiteConnector(DB_PATH),
-        schema=JSONSchemaProvider(os.path.join(KNOWLEDGE_DIR, "schema.json")),
+        db=db,
+        schema=schema,
         config=config,
-        business_rules=os.path.join(KNOWLEDGE_DIR, "business_rules.json"),
-        query_patterns=os.path.join(KNOWLEDGE_DIR, "query_patterns.sql"),
         agent_description=(
             "You are a data analyst agent for CloudMetrics, a B2B SaaS company "
             "that sells project management software. "
-            "You answer natural language questions by generating SQL queries."
+            "You answer natural language questions by generating SQL queries. "
+            "Data is loaded from CSV files into an in-memory SQLite database."
         ),
     )
 
@@ -86,9 +109,6 @@ def create_engine() -> AskMeDBEngine:
     )
     engine.on_warning = lambda w: console.print(f"[yellow]Warning: {w}[/yellow]")
     engine.on_results = lambda cols, rows: _display_results(cols, rows)
-    engine.on_learning_saved = lambda: console.print(
-        "[dim]Saved learning for future reference.[/dim]"
-    )
 
     return engine
 
@@ -117,8 +137,9 @@ def print_help():
     """Print help information."""
     console.print(
         Panel(
-            "[bold]CloudMetrics Data Agent[/bold]\n\n"
-            "Ask questions about your SaaS business data in plain English.\n\n"
+            "[bold]CloudMetrics Data Agent (CSV)[/bold]\n\n"
+            "Ask questions about your SaaS business data in plain English.\n"
+            "Data is loaded from CSV files — no database server required!\n\n"
             "[bold]Commands:[/bold]\n"
             "  [cyan]help[/cyan]     - Show this help message\n"
             "  [cyan]samples[/cyan]  - Show sample queries you can try\n"
@@ -151,7 +172,7 @@ def print_samples():
 def main():
     console.print(
         Panel.fit(
-            "[bold blue]CloudMetrics Data Agent[/bold blue]\n"
+            "[bold blue]CloudMetrics Data Agent (CSV)[/bold blue]\n"
             "[dim]Powered by AskMeDB | Ask questions about your SaaS data[/dim]\n"
             "[dim]Type 'help' for commands, 'exit' to quit[/dim]",
             border_style="blue",
@@ -159,7 +180,9 @@ def main():
     )
 
     try:
+        console.print("[dim]Loading CSV files...[/dim]")
         engine = create_engine()
+        console.print("[dim]Ready.[/dim]")
     except Exception as e:
         console.print(f"[red]Failed to initialize: {e}[/red]")
         sys.exit(1)
