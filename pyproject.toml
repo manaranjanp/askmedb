@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "askmedb"
-version = "0.2.0"
+version = "0.2.1"
 description = "A library for building natural-language database query agents"
 readme = "README.md"
 license = "MIT"

@@ -15,6 +15,7 @@ from .core.result import QueryResult
 from .core.engine import AskMeDBEngine
 from .db.base import BaseDBConnector
 from .db.sqlite import SQLiteConnector
+from .db.pandas_connector import PandasConnector
 from .llm.base import BaseLLMProvider
 from .llm.litellm_provider import LiteLLMProvider
 from .context.schema import (
@@ -41,6 +42,7 @@ __all__ = [
     # Database
     "BaseDBConnector",
     "SQLiteConnector",
+    "PandasConnector",
     # Context (schema providers)
     "PandasSchemaProvider",
     # LLM
