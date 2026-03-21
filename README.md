@@ -1,8 +1,22 @@
 # AskMeDB
 
-A Python library for building natural-language database query agents. Ask questions in plain English, get SQL-powered answers.
+A Python library for building natural-language data agents that turn plain English questions into SQL-powered answers — across any database, flat file, or cloud data warehouse.
 
-AskMeDB connects an LLM to your database, generates SQL from natural language, executes it safely, self-corrects on errors, and synthesizes human-readable answers — all in a few lines of code.
+---
+
+## Why AskMeDB?
+
+Most teams sit on a wealth of data locked inside databases, spreadsheets, and data warehouses. Getting answers still requires writing SQL, knowing the schema, and understanding the quirks of each system. AskMeDB removes that barrier.
+
+Inspired by [OpenAI's in-house data agent](https://openai.com/index/inside-our-in-house-data-agent/) — which lets employees go from question to insight in minutes across 70,000 datasets — AskMeDB captures the same core ideas in a **minimal, self-contained Python library** that any developer can drop into their project:
+
+- Ask a question in plain English → get a human-readable answer backed by real SQL
+- Works with **any database**: SQLite, PostgreSQL, MySQL, MS SQL, Oracle, **Google BigQuery**, **Snowflake**, or any SQLAlchemy-compatible store
+- Works with **flat files**: load CSV and Excel files and query them with full JOIN support across multiple files
+- Goes beyond naive text-to-SQL with **four layers of context enrichment**: schema descriptions, business rules, example query patterns, and accumulated learnings from past corrections
+- **Self-corrects** when generated SQL fails — retries up to N times, learns from the fix, and remembers it for next time
+- Supports **multi-turn conversations** so follow-up questions like *"Break that down by plan"* or *"Now filter to Enterprise only"* just work
+- **LLM-agnostic** — swap between Claude, GPT-4o, Llama, Gemini, or any model supported by LiteLLM with a one-line config change
 
 ## Features
 
@@ -12,7 +26,7 @@ AskMeDB connects an LLM to your database, generates SQL from natural language, e
 - **Multi-Database Support** — SQLite, PostgreSQL, MySQL, Google BigQuery, Snowflake, CSV/Excel files, and any SQLAlchemy-compatible database
 - **LLM-Agnostic** — Works with 100+ models via LiteLLM (OpenAI, Anthropic, Groq, Ollama, etc.)
 - **Auto Schema Detection** — Introspects your database schema automatically
-- **Context Layers** — Enrich prompts with business rules, query patterns, and accumulated learnings
+- **Rich Context Enrichment** — Layer in schema descriptions, business-rule definitions, example SQL patterns, and self-learned corrections to dramatically improve query accuracy
 - **Event Hooks** — Monitor the full pipeline (reasoning, SQL generation, corrections, results)
 - **Pluggable Architecture** — Extend with custom DB connectors, LLM providers, or schema sources
 
@@ -74,9 +88,9 @@ print(result.sql)      # "SELECT COUNT(*) FROM customers"
 ### The Inspiration
 
 > *"Our data agent lets employees go from question to insight in minutes, not days. This lowers the bar to pulling data and nuanced analysis across all functions, not just by our data team."*
-> — OpenAI's Blog
+> — [OpenAI, Inside Our In-House Data Agent](https://openai.com/index/inside-our-in-house-data-agent/)
 
-OpenAI's agent operates across 70,000 datasets, uses GPT-5 for reasoning, and features six layers of context enrichment including code-level table understanding, institutional knowledge from Slack and Docs, and a self-learning memory system.
+OpenAI's agent operates across 70,000 datasets, uses GPT-4 for reasoning, and features six layers of context enrichment including code-level table understanding, institutional knowledge from Slack and Docs, and a self-learning memory system.
 
 AskMeDB captures the core concepts in a **minimal, self-contained library** anyone can run locally:
 
@@ -554,41 +568,36 @@ engine = AskMeDBEngine(db=db, schema=schema, llm=MyLLMProvider())
 
 ## Running the Examples
 
-The repo includes a sample **CloudMetrics** SaaS database with 5 tables (customers, plans, subscriptions, invoices, support_tickets) and ~200 customers of synthetic data.
+The repo includes a sample **CloudMetrics** SaaS dataset — a synthetic B2B subscription analytics database with 5 interrelated tables (customers, plans, subscriptions, invoices, support_tickets) and ~200 companies of realistic data. Two flavours of example are provided:
 
-### Step 1: Set up the database
+| Example | Command |
+|---------|---------|
+| SQLite quickstart | `python examples/sqlite/quickstart.py` |
+| SQLite CLI app | `python examples/sqlite/cloudmetrics/app.py` |
+| CSV quickstart | `python examples/csv/quickstart.py` |
+| CSV CLI app | `python examples/csv/cloudmetrics/app.py` |
 
-```bash
-pip install faker
-python examples/setup_db.py
-```
-
-This creates `examples/cloudmetrics.db` with realistic synthetic data.
-
-### Step 2: Run the quickstart
+### Setup
 
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
-pip install askmedb python-dotenv
 
-python examples/quickstart.py
+# SQLite examples
+pip install -e ".[examples]"
+python examples/sqlite/quickstart.py
+
+# CSV/pandas examples
+pip install -e ".[pandas,examples]"
+python examples/csv/quickstart.py
 ```
 
-### Step 3: Run the full CLI app (with Rich UI)
-
-```bash
-pip install askmedb[examples]
-
-python examples/cloudmetrics/app.py
-```
-
-Type questions in plain English, use `samples` to see example queries, or `reset` to clear conversation history.
+See [`examples/README.md`](examples/README.md) for the full walkthrough, sample queries, and a comparison of the two approaches.
 
 ### Try it on Google Colab
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/manaranjanp/askmedb/blob/main/examples/askmedb_colab_demo.ipynb)
 
-The Colab notebook walks through the full setup: installing dependencies, creating the database, configuring knowledge files, and asking questions interactively.
+The Colab notebook walks through the full setup: installing dependencies, configuring knowledge files, and asking questions interactively.
 
 ## Project Structure
 
@@ -601,13 +610,19 @@ askmedb/
 │   ├── context/                    # Schema, prompt building, context layers
 │   └── pipeline/                   # Conversation, parsing, validation, self-correction
 ├── examples/
-│   ├── setup_db.py                 # Creates sample CloudMetrics SQLite database
-│   ├── quickstart.py               # Minimal usage example
+│   ├── sqlite/                     # SQLite-based examples
+│   │   ├── data/cloudmetrics.db    # Sample database
+│   │   ├── quickstart.py           # Minimal SQLite example
+│   │   └── cloudmetrics/           # Full CLI app with Rich UI
+│   │       ├── app.py
+│   │       ├── sample_queries.py
+│   │       └── knowledge/          # Schema, business rules, query patterns, learnings
+│   ├── csv/                        # CSV/pandas examples
+│   │   ├── data/*.csv              # Sample CSV files (one per table)
+│   │   ├── quickstart.py           # Minimal CSV example with relationships
+│   │   └── cloudmetrics/           # Full CLI app (CSV version)
 │   ├── askmedb_colab_demo.ipynb    # Google Colab notebook
-│   └── cloudmetrics/               # Full CLI app with Rich UI
-│       ├── app.py
-│       ├── sample_queries.py
-│       └── knowledge/              # Schema, business rules, query patterns
+│   └── README.md                   # How to run the examples
 ├── pyproject.toml
 └── README.md
 ```
@@ -667,4 +682,4 @@ Any API key supported by [LiteLLM](https://docs.litellm.ai/docs/providers) works
 
 ## License
 
-MIT
+AskMeDB is released under the **MIT License** — free to use, modify, and distribute. See [LICENSE](LICENSE) for the full text.
