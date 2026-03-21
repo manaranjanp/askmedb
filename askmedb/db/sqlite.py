@@ -1,18 +1,54 @@
 """SQLite database connector."""
 
+import os
 import sqlite3
+
 from .base import BaseDBConnector
+
+_ENV_DB_PATH = "SQLITE_DB_PATH"
 
 
 class SQLiteConnector(BaseDBConnector):
     """SQLite database connector.
 
-    Args:
-        db_path: Path to the SQLite database file.
+    The database file path is read from the ``SQLITE_DB_PATH`` environment
+    variable by default.  Pass ``db_path`` explicitly to override it.
+
+    SQLite is an embedded, file-based database — it has no server, no user
+    accounts, and no password.  The file path is the only required value.
+
+    Required environment variable
+    --------------------------------
+    ``SQLITE_DB_PATH``
+        Path to the SQLite database file, e.g. ``/data/mydb.sqlite``.
+        Use the special value ``:memory:`` for a temporary in-memory database.
+
+    Example ``.env`` file::
+
+        SQLITE_DB_PATH=/data/mydb.sqlite
+
+    Example usage::
+
+        # Path from env var
+        from askmedb.db.sqlite import SQLiteConnector
+        db = SQLiteConnector()
+
+        # Explicit path (overrides env var)
+        db = SQLiteConnector(db_path="/data/mydb.sqlite")
+
+        # In-memory database (testing / PandasConnector internal use)
+        db = SQLiteConnector(db_path=":memory:")
     """
 
-    def __init__(self, db_path: str):
-        self.db_path = db_path
+    def __init__(self, db_path: str | None = None):
+        resolved = db_path or os.environ.get(_ENV_DB_PATH)
+        if not resolved:
+            raise ValueError(
+                f"SQLite database path is required. "
+                f"Set the {_ENV_DB_PATH!r} environment variable or pass db_path=.\n"
+                f"Example: {_ENV_DB_PATH}=/data/mydb.sqlite"
+            )
+        self.db_path = resolved
 
     def execute(self, sql: str) -> tuple[list[str], list[tuple]]:
         """Execute a SQL query against the SQLite database."""

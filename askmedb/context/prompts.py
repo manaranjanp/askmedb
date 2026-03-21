@@ -22,6 +22,29 @@ DIALECT_HINTS = {
         "TIMESTAMPDIFF(HOUR, date1, date2) for hours.\n"
         "7. For recent periods, use: DATE_SUB(CURDATE(), INTERVAL N MONTH)."
     ),
+    "bigquery": (
+        "5. For date operations, use BigQuery functions: DATE_TRUNC(), DATE_DIFF(), "
+        "DATE_ADD(), DATE_SUB(), TIMESTAMP_TRUNC(). "
+        "Do NOT use SQLite or MySQL date functions.\n"
+        "6. For date arithmetic, use: DATE_DIFF(date1, date2, DAY) for days, "
+        "DATE_DIFF(date1, date2, MONTH) for months.\n"
+        "7. For recent periods, use: DATE_SUB(CURRENT_DATE(), INTERVAL N DAY) or "
+        "DATE_SUB(CURRENT_DATE(), INTERVAL N MONTH).\n"
+        "8. Use SAFE_DIVIDE(numerator, denominator) instead of plain division to avoid "
+        "divide-by-zero errors. Use backticks for column names that are reserved words."
+    ),
+    "snowflake": (
+        "5. For date operations, use Snowflake functions: DATE_TRUNC(), DATEDIFF(), "
+        "DATEADD(), TO_DATE(), TO_TIMESTAMP(). "
+        "Do NOT use SQLite or MySQL date functions.\n"
+        "6. For date arithmetic, use: DATEDIFF('day', date1, date2) for days, "
+        "DATEDIFF('month', date1, date2) for months.\n"
+        "7. For recent periods, use: DATEADD('month', -N, CURRENT_DATE()) or "
+        "CURRENT_DATE - N.\n"
+        "8. Use IFF(condition, true_val, false_val) for simple conditionals. "
+        "Use QUALIFY to filter window function results without a subquery. "
+        "Identifiers are case-insensitive; use double quotes only for case-sensitive names."
+    ),
 }
 
 # Fallback for unknown dialects

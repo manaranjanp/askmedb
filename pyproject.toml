@@ -31,6 +31,25 @@ dependencies = [
 
 [project.optional-dependencies]
 sql = ["sqlalchemy>=2.0.0"]
+pandas = [
+    "pandas>=1.5.0",
+    "openpyxl>=3.0.0",       # Excel (.xlsx) support
+]
+bigquery = [
+    "google-cloud-bigquery>=3.0.0",
+]
+snowflake = [
+    "snowflake-connector-python>=3.0.0",
+    "cryptography>=3.0.0",   # required for key-pair auth
+]
+all = [
+    "sqlalchemy>=2.0.0",
+    "pandas>=1.5.0",
+    "openpyxl>=3.0.0",
+    "google-cloud-bigquery>=3.0.0",
+    "snowflake-connector-python>=3.0.0",
+    "cryptography>=3.0.0",
+]
 examples = [
     "python-dotenv>=1.0.0",
     "rich>=13.0.0",

@@ -9,7 +9,7 @@ AskMeDB connects an LLM to your database, generates SQL from natural language, e
 - **Natural Language to SQL** — Converts plain English questions into SQL queries
 - **Self-Correction** — Automatically retries and fixes failed SQL queries, learning from mistakes
 - **Multi-Turn Conversations** — Follow-up questions maintain context ("Break that down by plan")
-- **Multi-Database Support** — SQLite out of the box, PostgreSQL/MySQL/others via SQLAlchemy
+- **Multi-Database Support** — SQLite, PostgreSQL, MySQL, Google BigQuery, Snowflake, CSV/Excel files, and any SQLAlchemy-compatible database
 - **LLM-Agnostic** — Works with 100+ models via LiteLLM (OpenAI, Anthropic, Groq, Ollama, etc.)
 - **Auto Schema Detection** — Introspects your database schema automatically
 - **Context Layers** — Enrich prompts with business rules, query patterns, and accumulated learnings
@@ -31,8 +31,20 @@ uv add askmedb
 ### Optional Dependencies
 
 ```bash
-# For PostgreSQL, MySQL, and other databases via SQLAlchemy
+# PostgreSQL, MySQL, and other databases via SQLAlchemy
 pip install askmedb[sql]
+
+# CSV and Excel file support via pandas
+pip install askmedb[pandas]
+
+# Google BigQuery
+pip install askmedb[bigquery]
+
+# Snowflake
+pip install askmedb[snowflake]
+
+# All connectors at once
+pip install askmedb[all]
 
 # For running the included examples
 pip install askmedb[examples]
@@ -281,42 +293,246 @@ records = result.to_dicts()
 
 ## Database Connectors
 
+AskMeDB supports six connector types out of the box. All credentials are read from **environment variables** — never hardcode secrets in source code. Constructor arguments are optional overrides for testing.
+
+| Connector | Install extra | Credential env vars |
+|---|---|---|
+| `SQLiteConnector` | *(built-in)* | `SQLITE_DB_PATH` |
+| `SQLAlchemyConnector` | `askmedb[sql]` | `DATABASE_URL` |
+| `PandasConnector` | `askmedb[pandas]` | *(none — reads local files)* |
+| `BigQueryConnector` | `askmedb[bigquery]` | `BIGQUERY_PROJECT_ID`, `GOOGLE_APPLICATION_CREDENTIALS` |
+| `SnowflakeConnector` | `askmedb[snowflake]` | `SNOWFLAKE_ACCOUNT`, `SNOWFLAKE_USER`, `SNOWFLAKE_PASSWORD`, … |
+
+---
+
 ### SQLite (built-in)
+
+SQLite is a file-based, embedded database — no server, no user accounts, no password. Only the file path is needed.
+
+**Environment variable:**
+
+```bash
+SQLITE_DB_PATH=/data/mydb.sqlite
+```
+
+**Usage:**
 
 ```python
 from askmedb import SQLiteConnector
 
-db = SQLiteConnector("path/to/database.db")
+# Path from environment variable (recommended)
+db = SQLiteConnector()
+
+# Explicit path override
+db = SQLiteConnector(db_path="/data/mydb.sqlite")
 ```
 
-### SQLAlchemy (PostgreSQL, MySQL, etc.)
+---
+
+### SQLAlchemy — PostgreSQL, MySQL, MS SQL, Oracle
+
+Supports any SQLAlchemy-compatible database via a single connection URL. The URL encodes the driver, credentials, host, port, and database name.
 
 ```bash
 pip install askmedb[sql]
 ```
 
+**Environment variable:**
+
+```bash
+# PostgreSQL
+DATABASE_URL=postgresql://alice:s3cr3t@prod-db.internal:5432/analytics
+
+# MySQL
+DATABASE_URL=mysql+pymysql://root:pass@localhost:3306/mydb
+
+# SQLite via SQLAlchemy
+DATABASE_URL=sqlite:///./local.db
+
+# MS SQL Server
+DATABASE_URL=mssql+pyodbc://user:pass@host/dbname?driver=ODBC+Driver+17+for+SQL+Server
+
+# Oracle
+DATABASE_URL=oracle+cx_oracle://user:pass@host:1521/service
+```
+
+**Usage:**
+
 ```python
 from askmedb.db.sqlalchemy_connector import SQLAlchemyConnector
 
-# PostgreSQL
-db = SQLAlchemyConnector("postgresql://user:pass@localhost/mydb")
+# Connection string from DATABASE_URL env var (recommended)
+db = SQLAlchemyConnector()
 
-# MySQL
-db = SQLAlchemyConnector("mysql+pymysql://user:pass@localhost/mydb")
+# Explicit override
+db = SQLAlchemyConnector("postgresql://alice:s3cr3t@localhost/analytics")
+
+engine = AskMeDBEngine(db=db, schema="auto")
 ```
 
+---
+
+### CSV and Excel Files (pandas bridge)
+
+Loads one or more CSV/Excel files into an in-memory SQLite database so standard SQL — including cross-file JOINs — works transparently. Column names are normalised (lowercased, spaces → underscores) automatically.
+
+```bash
+pip install askmedb[pandas]
+```
+
+**No credentials required** — sources are local file paths.
+
+**Usage:**
+
+```python
+from askmedb import AskMeDBEngine, PandasSchemaProvider
+from askmedb.db.pandas_connector import PandasConnector
+
+# Load multiple related files
+db = PandasConnector({
+    "customers":   "data/customers.csv",
+    "orders":      "data/orders.csv",
+    "order_items": "data/order_items.xlsx",  # Excel supported
+})
+
+# Describe relationships explicitly (CSV has no foreign keys)
+schema = PandasSchemaProvider(
+    sources=db,
+    relationships=[
+        {"from_table": "orders",      "from_col": "customer_id",
+         "to_table":   "customers",   "to_col":   "customer_id"},
+        {"from_table": "order_items", "from_col": "order_id",
+         "to_table":   "orders",      "to_col":   "order_id"},
+    ],
+    database_name="ecommerce",
+    description="E-commerce data loaded from CSV exports",
+)
+
+engine = AskMeDBEngine(db=db, schema=schema)
+result = engine.ask("Top 5 customers by total revenue this year")
+```
+
+> **Why describe relationships manually?**
+> CSV and Excel files carry no foreign-key metadata. Without relationship hints the LLM cannot produce correct JOIN queries across files. The `PandasSchemaProvider` passes this information into the prompt alongside the auto-detected column types.
+
+---
+
+### Google BigQuery
+
+Runs queries against BigQuery using the native `google-cloud-bigquery` client.
+
+```bash
+pip install askmedb[bigquery]
+```
+
+**Authentication options (choose one):**
+
+| Method | How to configure |
+|---|---|
+| Service account key file | Set `GOOGLE_APPLICATION_CREDENTIALS` to the path of the JSON key |
+| Application Default Credentials | Run `gcloud auth application-default login` on your machine |
+| Workload Identity / GCE | Automatic when running on GCP infrastructure (Cloud Run, GKE, etc.) |
+
+**Environment variables:**
+
+```bash
+# Required
+BIGQUERY_PROJECT_ID=my-gcp-project
+
+# Required unless using ADC or running on GCP infrastructure
+GOOGLE_APPLICATION_CREDENTIALS=/path/to/service_account.json
+
+# Optional
+BIGQUERY_LOCATION=US          # processing region, default "US"
+BIGQUERY_DATASET=analytics    # default dataset for unqualified table names
+```
+
+**Usage:**
+
+```python
+from askmedb.db.bigquery_connector import BigQueryConnector
+from askmedb import AskMeDBEngine, AutoSchemaProvider
+
+# All config from environment variables (recommended)
+db = BigQueryConnector()
+
+# Override specific values
+db = BigQueryConnector(project_id="my-gcp-project", location="EU")
+
+engine = AskMeDBEngine(db=db, schema=AutoSchemaProvider(db))
+result = engine.ask("What was total revenue by region last quarter?")
+```
+
+---
+
+### Snowflake
+
+Runs queries against Snowflake using the native `snowflake-connector-python` client.
+
+```bash
+pip install askmedb[snowflake]
+```
+
+**Authentication options (choose one):**
+
+| Method | Environment variable(s) |
+|---|---|
+| Username + password | `SNOWFLAKE_PASSWORD` |
+| Key-pair (more secure) | `SNOWFLAKE_PRIVATE_KEY_PATH` + optionally `SNOWFLAKE_PRIVATE_KEY_PASSPHRASE` |
+
+**Environment variables:**
+
+```bash
+# Required
+SNOWFLAKE_ACCOUNT=xy12345.us-east-1
+SNOWFLAKE_USER=analyst
+SNOWFLAKE_DATABASE=ANALYTICS
+SNOWFLAKE_SCHEMA=PUBLIC
+SNOWFLAKE_WAREHOUSE=COMPUTE_WH
+
+# Authentication — set one of:
+SNOWFLAKE_PASSWORD=s3cr3t
+SNOWFLAKE_PRIVATE_KEY_PATH=/secrets/rsa_key.pem
+SNOWFLAKE_PRIVATE_KEY_PASSPHRASE=key_passphrase   # only if key is encrypted
+
+# Optional
+SNOWFLAKE_ROLE=ANALYST_ROLE
+```
+
+**Usage:**
+
+```python
+from askmedb.db.snowflake_connector import SnowflakeConnector
+from askmedb import AskMeDBEngine, AutoSchemaProvider
+
+# All config from environment variables (recommended)
+db = SnowflakeConnector()
+
+# Override specific values (e.g. point at a staging schema)
+db = SnowflakeConnector(database="STAGING", schema="RAW")
+
+engine = AskMeDBEngine(db=db, schema=AutoSchemaProvider(db))
+result = engine.ask("Which accounts had the highest usage last month?")
+```
+
+---
+
 ### Custom Connector
+
+Implement `BaseDBConnector` to connect AskMeDB to any data source — a REST API, a proprietary database, or a custom query engine.
 
 ```python
 from askmedb import BaseDBConnector
 
 class MyConnector(BaseDBConnector):
     def execute(self, sql: str) -> tuple[list[str], list[tuple]]:
-        # Execute SQL, return (column_names, rows)
+        # Run the query, return (column_name_list, row_tuples)
         ...
 
     def get_dialect(self) -> str:
-        return "postgresql"  # For dialect-specific SQL hints
+        # Return the SQL dialect for prompt hints
+        # Known values: "sqlite", "postgresql", "mysql", "bigquery", "snowflake"
+        return "postgresql"
 ```
 
 ## Custom LLM Provider
@@ -380,7 +596,7 @@ The Colab notebook walks through the full setup: installing dependencies, creati
 askmedb/
 ├── askmedb/                        # Python package
 │   ├── core/                       # Engine, config, result, exceptions
-│   ├── db/                         # Database connectors (SQLite, SQLAlchemy)
+│   ├── db/                         # Database connectors (SQLite, SQLAlchemy, Pandas, BigQuery, Snowflake)
 │   ├── llm/                        # LLM providers (LiteLLM)
 │   ├── context/                    # Schema, prompt building, context layers
 │   └── pipeline/                   # Conversation, parsing, validation, self-correction
@@ -398,6 +614,8 @@ askmedb/
 
 ## Environment Variables
 
+### LLM API Keys
+
 | Variable | Description | Example |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | Anthropic API key (for Claude models) | `sk-ant-...` |
@@ -405,6 +623,47 @@ askmedb/
 | `LLM_MODEL` | Override default model | `groq/llama-3.3-70b-versatile` |
 
 Any API key supported by [LiteLLM](https://docs.litellm.ai/docs/providers) works.
+
+### Database Connector Variables
+
+#### SQLite
+
+| Variable | Required | Description | Example |
+|---|---|---|---|
+| `SQLITE_DB_PATH` | Yes | Path to the SQLite database file | `/data/mydb.sqlite` |
+
+#### SQLAlchemy (PostgreSQL, MySQL, MS SQL, Oracle)
+
+| Variable | Required | Description | Example |
+|---|---|---|---|
+| `DATABASE_URL` | Yes | Full SQLAlchemy connection URL including credentials | `postgresql://user:pass@host:5432/db` |
+
+#### Google BigQuery
+
+| Variable | Required | Description | Example |
+|---|---|---|---|
+| `BIGQUERY_PROJECT_ID` | Yes | GCP project billed for queries | `my-gcp-project` |
+| `GOOGLE_APPLICATION_CREDENTIALS` | Yes* | Path to service-account JSON key file | `/secrets/sa.json` |
+| `BIGQUERY_LOCATION` | No | Processing region (default: `US`) | `EU` |
+| `BIGQUERY_DATASET` | No | Default dataset for unqualified table names | `analytics` |
+
+*Not required when using Application Default Credentials (`gcloud auth application-default login`) or running on GCP infrastructure.
+
+#### Snowflake
+
+| Variable | Required | Description | Example |
+|---|---|---|---|
+| `SNOWFLAKE_ACCOUNT` | Yes | Account identifier | `xy12345.us-east-1` |
+| `SNOWFLAKE_USER` | Yes | Snowflake username | `analyst` |
+| `SNOWFLAKE_DATABASE` | Yes | Default database | `ANALYTICS` |
+| `SNOWFLAKE_SCHEMA` | Yes | Default schema | `PUBLIC` |
+| `SNOWFLAKE_WAREHOUSE` | Yes | Compute warehouse | `COMPUTE_WH` |
+| `SNOWFLAKE_PASSWORD` | Yes* | Password for username/password auth | `s3cr3t` |
+| `SNOWFLAKE_PRIVATE_KEY_PATH` | Yes* | Path to PEM private key for key-pair auth | `/secrets/rsa_key.pem` |
+| `SNOWFLAKE_PRIVATE_KEY_PASSPHRASE` | No | Passphrase if private key is encrypted | `key_pass` |
+| `SNOWFLAKE_ROLE` | No | Snowflake role to assume | `ANALYST_ROLE` |
+
+*Either `SNOWFLAKE_PASSWORD` or `SNOWFLAKE_PRIVATE_KEY_PATH` must be set.
 
 ## License
 

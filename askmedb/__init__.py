@@ -23,6 +23,7 @@ from .context.schema import (
     DictSchemaProvider,
     AutoSchemaProvider,
 )
+from .context.pandas_schema import PandasSchemaProvider
 from .context.builder import ContextBuilder
 from .context.prompts import PromptTemplate, DIALECT_HINTS
 from .pipeline.conversation import ConversationManager
@@ -40,6 +41,8 @@ __all__ = [
     # Database
     "BaseDBConnector",
     "SQLiteConnector",
+    # Context (schema providers)
+    "PandasSchemaProvider",
     # LLM
     "BaseLLMProvider",
     "LiteLLMProvider",
