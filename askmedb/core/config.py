@@ -22,6 +22,9 @@ class AskMeDBConfig:
         system_prompt_override: If set, replaces the entire generated system prompt.
         enable_learnings: Whether to persist and use self-correction learnings.
         learnings_path: File path for persisting learnings. None = in-memory only.
+        read_only: If True, only SELECT/WITH/EXPLAIN queries are allowed. Mutations are blocked.
+        session_ttl_seconds: Seconds before an idle conversation session expires. 0 = no expiry.
+        max_sessions: Maximum number of concurrent conversation sessions. 0 = unlimited.
     """
 
     model: str = "anthropic/claude-haiku-4-5-20251001"
@@ -37,3 +40,6 @@ class AskMeDBConfig:
     system_prompt_override: Optional[str] = None
     enable_learnings: bool = True
     learnings_path: Optional[str] = None
+    read_only: bool = True
+    session_ttl_seconds: int = 1800
+    max_sessions: int = 1000

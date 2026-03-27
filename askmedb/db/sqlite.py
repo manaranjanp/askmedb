@@ -40,7 +40,7 @@ class SQLiteConnector(BaseDBConnector):
         db = SQLiteConnector(db_path=":memory:")
     """
 
-    def __init__(self, db_path: str | None = None):
+    def __init__(self, db_path: str | None = None, read_only: bool = False):
         resolved = db_path or os.environ.get(_ENV_DB_PATH)
         if not resolved:
             raise ValueError(
@@ -49,12 +49,15 @@ class SQLiteConnector(BaseDBConnector):
                 f"Example: {_ENV_DB_PATH}=/data/mydb.sqlite"
             )
         self.db_path = resolved
+        self.read_only = read_only
 
     def execute(self, sql: str) -> tuple[list[str], list[tuple]]:
         """Execute a SQL query against the SQLite database."""
         conn = sqlite3.connect(self.db_path)
         try:
             conn.execute("PRAGMA foreign_keys = ON")
+            if self.read_only:
+                conn.execute("PRAGMA query_only = ON")
             cursor = conn.execute(sql)
             columns = [desc[0] for desc in cursor.description] if cursor.description else []
             rows = cursor.fetchall()

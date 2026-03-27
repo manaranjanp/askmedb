@@ -72,10 +72,12 @@ class PromptTemplate:
         agent_description: str = "You are a data analyst agent. You answer natural language questions by generating SQL queries.",
         dialect: str = "sqlite",
         custom_instructions: str = "",
+        read_only: bool = False,
     ):
         self.agent_description = agent_description
         self.dialect = dialect
         self.custom_instructions = custom_instructions
+        self.read_only = read_only
 
     def build(
         self,
@@ -129,6 +131,14 @@ You generate {dialect_label}-compatible SQL queries.
 9. If the question is ambiguous, state your assumptions in the REASONING section.
 10. If this is a follow-up question, use context from previous messages to understand what "it", "that", "those" refer to.
 """
+
+        if self.read_only:
+            prompt += (
+                "\nIMPORTANT: This database is in READ-ONLY mode. "
+                "You MUST only generate SELECT queries. "
+                "Never generate INSERT, UPDATE, DELETE, DROP, ALTER, CREATE, TRUNCATE, "
+                "or any other DDL/DML statements.\n"
+            )
 
         if self.custom_instructions:
             prompt += f"\n{self.custom_instructions}\n"

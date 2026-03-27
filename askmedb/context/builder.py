@@ -28,11 +28,13 @@ class ContextBuilder:
         query_patterns: Optional[str] = None,
         dialect: str = "sqlite",
         agent_description: str = "You are a data analyst agent. You answer natural language questions by generating SQL queries.",
+        read_only: bool = False,
     ):
         self.schema_provider = schema_provider
         self.prompt_template = prompt_template or PromptTemplate(
             agent_description=agent_description,
             dialect=dialect,
+            read_only=read_only,
         )
         self._business_rules = self._load_business_rules(business_rules)
         self._query_patterns = self._load_query_patterns(query_patterns)

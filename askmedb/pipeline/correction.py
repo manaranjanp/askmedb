@@ -2,6 +2,8 @@
 
 import json
 import os
+import tempfile
+import threading
 from datetime import datetime
 from typing import Optional
 
@@ -12,6 +14,9 @@ from ..context.prompts import PromptTemplate
 
 class SelfCorrector:
     """Handles SQL self-correction and learning accumulation.
+
+    Thread-safe. Learnings are protected by a lock and persisted
+    atomically (temp file + rename) to prevent corruption.
 
     Args:
         llm: LLM provider for generating corrections.
@@ -33,6 +38,7 @@ class SelfCorrector:
         self.sql_temperature = sql_temperature
         self.sql_max_tokens = sql_max_tokens
         self._learnings: list[dict] = []
+        self._lock = threading.Lock()
         if learnings_path:
             self._load_learnings()
 
@@ -47,8 +53,9 @@ class SelfCorrector:
 
     @property
     def learnings(self) -> list[dict]:
-        """Get the current list of learnings."""
-        return list(self._learnings)
+        """Get a copy of the current learnings list."""
+        with self._lock:
+            return list(self._learnings)
 
     def attempt_correction(
         self,
@@ -96,11 +103,28 @@ class SelfCorrector:
             "corrected_sql": corrected_sql,
             "lesson": lesson,
         }
-        self._learnings.append(entry)
 
-        if self.learnings_path:
+        with self._lock:
+            self._learnings.append(entry)
+
+            if self.learnings_path:
+                self._persist_learnings()
+
+    def _persist_learnings(self):
+        """Write learnings to file atomically. Must be called with lock held."""
+        try:
+            dir_name = os.path.dirname(self.learnings_path) or "."
+            fd, tmp_path = tempfile.mkstemp(dir=dir_name, suffix=".tmp")
             try:
-                with open(self.learnings_path, "w") as f:
+                with os.fdopen(fd, "w") as f:
                     json.dump(self._learnings, f, indent=2)
-            except IOError:
-                pass
+                os.replace(tmp_path, self.learnings_path)
+            except Exception:
+                # Clean up temp file on failure
+                try:
+                    os.unlink(tmp_path)
+                except OSError:
+                    pass
+                raise
+        except IOError:
+            pass

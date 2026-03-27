@@ -1,5 +1,37 @@
 """Result validation and formatting utilities."""
 
+import re
+
+from ..core.exceptions import SQLExecutionError
+
+# SQL statements that are allowed in read-only mode
+_READ_ONLY_PREFIXES = ("select", "with", "explain", "pragma")
+
+# Pattern to strip SQL comments (both -- line and /* block */ styles)
+_COMMENT_PATTERN = re.compile(
+    r"--[^\n]*|/\*.*?\*/",
+    re.DOTALL,
+)
+
+
+def enforce_read_only(sql: str) -> None:
+    """Raise SQLExecutionError if the SQL statement is not a read-only query.
+
+    Only SELECT, WITH, EXPLAIN, and PRAGMA statements are allowed.
+    """
+    # Strip comments and whitespace to find the first meaningful token
+    cleaned = _COMMENT_PATTERN.sub("", sql).strip()
+    if not cleaned:
+        raise SQLExecutionError("Empty SQL query.", sql=sql)
+
+    first_token = cleaned.split()[0].lower()
+    if first_token not in _READ_ONLY_PREFIXES:
+        raise SQLExecutionError(
+            f"Read-only mode is enabled. Only SELECT queries are allowed, "
+            f"but got a {first_token.upper()} statement.",
+            sql=sql,
+        )
+
 
 def validate_results(columns: list[str], rows: list[tuple]) -> list[str]:
     """Run heuristic checks on query results and return warnings.

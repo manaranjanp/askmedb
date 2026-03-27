@@ -13,7 +13,7 @@ from ..context.prompts import PromptTemplate
 from ..pipeline.parser import parse_sql_response, parse_answer_response
 from ..pipeline.conversation import ConversationManager
 from ..pipeline.correction import SelfCorrector
-from ..pipeline.validation import validate_results, format_results_for_llm
+from ..pipeline.validation import validate_results, format_results_for_llm, enforce_read_only
 
 
 class AskMeDBEngine:
@@ -78,10 +78,15 @@ class AskMeDBEngine:
             query_patterns=query_patterns,
             dialect=db.get_dialect(),
             agent_description=agent_description,
+            read_only=self.config.read_only,
         )
 
         # Pipeline components
-        self._conversation = ConversationManager(max_turns=self.config.max_conversation_turns)
+        self._conversation = ConversationManager(
+            max_turns=self.config.max_conversation_turns,
+            session_ttl_seconds=self.config.session_ttl_seconds,
+            max_sessions=self.config.max_sessions,
+        )
         self._corrector = SelfCorrector(
             llm=self.llm,
             prompt_template=self._context_builder.prompt_template,
@@ -162,6 +167,8 @@ class AskMeDBEngine:
 
         for attempt in range(self.config.max_correction_attempts):
             try:
+                if self.config.read_only:
+                    enforce_read_only(sql)
                 columns, rows = self.db.execute(sql)
                 warnings = validate_results(columns, rows)
                 for w in warnings:
